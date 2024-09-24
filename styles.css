@@ -1,0 +1,98 @@
+/* Base Colors */
+:root {
+    --primary-color: #1300bd ;   /* Blue for trust and security */
+    --secondary-color: #121212; /* Dark gray for modernity and tech */
+    --accent-color: #4caf50;    /* Green for success and safety */
+    --background-color: #f5f5f5; /* Light gray for readability */
+    --text-color: #212121;      /* Almost black for clarity */
+    --secondary-text-color: #757575; /* Medium gray for less emphasis */
+}
+
+/* Body */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Buttons */
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Additional Elements */
+.card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.card h3 {
+    color: var(--primary-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    font-weight: bold;
+}
