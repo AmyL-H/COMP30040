@@ -9,9 +9,8 @@ Welcome to the **Cybersecurity Learning Platform**! This interactive platform em
 3. [Technologies Used](#technologies-used)
 4. [Installation and Setup](#installation-and-setup)
 5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+6. [License](#license)
+7. [Contact](#contact)
 
 ## Project Overview
 
