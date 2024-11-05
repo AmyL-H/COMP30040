@@ -1,0 +1,18 @@
+{
+  "name": "comp30040",
+  "version": "1.0.0",
+  "description": "Welcome to the **Cybersecurity Learning Platform** repository! This project is designed to help users learn the fundamentals of cybersecurity, ranging from basic concepts like encryption and network security to more advanced topics like ethical hacking and penetration testing. It includes interactive lessons, quizzes, hands-on labs, and resources for learners to improve their cybersecurity knowledge and skills.",
+  "main": "index.test.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix backend\" \"npm start --prefix frontend\""
+  },
+  "keywords": [],
+  "author": "Amy Leigh-Hyer",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
