@@ -1,3 +1,5 @@
+require('dotenv').config(); // Load environment variables at the top
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -13,6 +15,7 @@ app.use(cors()); // Enable CORS
 app.use('/api/users', userRoutes); // Define your routes after initializing 'app'
 
 // MongoDB connection
+console.log("MongoDB URI:", process.env.MONGO_URI); // Debugging line
 mongoose
     .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
