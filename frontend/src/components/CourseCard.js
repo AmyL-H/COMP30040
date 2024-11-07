@@ -1,19 +1,17 @@
-// CourseCard.js
 import React from 'react';
 import './CourseCard.css';
 
-const CourseCard = ({ title, description, progress, locked }) => {
+const CourseCard = ({ title, description, progress, locked, onClick }) => {
   return (
-    <div className={`course-card ${locked ? 'locked' : ''}`}>
-      <div className="course-card-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <div className="progress-bar">
-          <div className="progress-fill" style={{ width: `${progress}%` }}></div>
-        </div>
+    <div className={`course-card ${locked ? 'locked' : ''}`} onClick={!locked ? onClick : null}>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <div className="progress-bar">
+        <div className="progress-fill" style={{ width: `${progress}%` }}></div>
         <p>{progress}% Completed</p>
       </div>
-      {locked && <div className="lock-overlay">🔒 Locked</div>}
+      <br/><br/>
+      {locked && <p className="locked-message">🔒This course is locked. Complete previous courses to unlock.</p>}
     </div>
   );
 };

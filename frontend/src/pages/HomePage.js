@@ -2,8 +2,7 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
-import './HomePage.css'; // Import a separate CSS file for styles if needed
+import './HomePage.css';
 
 const HomePage = () => {
     return (

@@ -1,0 +1,84 @@
+/* CourseDetails.css */
+
+/* Overall container */
+.course-details {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f8f9fa; /* Light background for readability */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title of the course */
+  .course-details h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Description text */
+  .course-details p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* Lessons section */
+  .course-details h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff; /* Accent line */
+    padding-bottom: 5px;
+  }
+  
+  /* Lesson list */
+  .course-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .course-details li {
+    font-size: 1rem;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .course-details li:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Lesson text */
+  .course-details li::before {
+    content: '📘'; /* Icon for each lesson item */
+    margin-right: 10px;
+    color: #007bff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .course-details h1 {
+      font-size: 2rem;
+    }
+  
+    .course-details p {
+      font-size: 1rem;
+    }
+  
+    .course-details h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
