@@ -1,0 +1,13 @@
+/* CoursePage.css */
+.coursepage-container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .course-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  

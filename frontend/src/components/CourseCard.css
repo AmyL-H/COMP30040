@@ -1,0 +1,40 @@
+/* CourseCard.css */
+.course-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.course-card.locked {
+  opacity: 0.6;
+}
+
+.lock-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 8px;
+  width: 100%;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  background-color: #4caf50;
+}
