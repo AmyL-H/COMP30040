@@ -1,0 +1,99 @@
+.course-info-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.progress-bar-container {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  width: 80%;
+  height: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.progress-bar-filled {
+  background-color: #4caf50;
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s;
+}
+
+.quest-map {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.module-node {
+  width: 150px;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s;
+}
+
+.module-node:hover {
+  transform: scale(1.1);
+}
+
+.module-node.completed {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.module-node.in-progress {
+  border-color: #ffa000;
+  background-color: #fff8e1;
+}
+
+.module-node.locked {
+  border-color: #ccc;
+  background-color: #f0f0f0;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.node-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.resume-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.resume-button:hover {
+  background-color: #45a049;
+}
+
+.module-node.current-module {
+  border: 2px solid gold;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px gold;
+  }
+  50% {
+    box-shadow: 0 0 20px gold;
+  }
+  100% {
+    box-shadow: 0 0 10px gold;
+  }
+}

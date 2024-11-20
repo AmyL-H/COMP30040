@@ -6,7 +6,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import Navbar from './components/Navbar'; 
 import CoursePage from './pages/CoursePage';
 import LessonPage from './pages/LessonPage';
-import CourseDetails from './pages/CourseDetails';
+import CourseInfo from './pages/CourseInfo';
 import './App.css';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
           <Route path="/coursepage" element={<CoursePage />} />
           <Route path="/lesson" element={<LessonPage />} />
           {/* Route for individual course pages */}
-          <Route path="/course/:courseId" element={<CourseDetails />} />
+          <Route path="/course/:courseId" element={<CourseInfo />} />
         </Routes>
       </div>
     </Router>
