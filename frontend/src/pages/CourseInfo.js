@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './CourseInfo.css';
 
 const courseContent = {
@@ -9,11 +9,11 @@ const courseContent = {
     duration: "4 weeks",
     skillLevel: "Beginner",
     modules: [
-      { title: "What is Cybersecurity?", status: "Completed" },
-      { title: "Importance of Cybersecurity", status: "In Progress" },
-      { title: "Common Threats and Vulnerabilities", status: "Locked" },
-      { title: "Introduction to Security Frameworks", status: "Locked" },
-      { title: "Future Trends in Cybersecurity", status: "Locked" },
+      { id: "lesson1", title: "What is Cybersecurity?", status: "Completed" },
+      { id: "lesson2", title: "Importance of Cybersecurity", status: "In Progress" },
+      { id: "lesson3", title: "Common Threats and Vulnerabilities", status: "Locked" },
+      { id: "lesson4", title: "Introduction to Security Frameworks", status: "Locked" },
+      { id: "lesson5", title: "Future Trends in Cybersecurity", status: "Locked" },
     ],
   },
   "cryptography": {
@@ -22,11 +22,11 @@ const courseContent = {
     duration: "6 weeks",
     skillLevel: "Intermediate",
     modules: [
-      { title: "Introduction to Cryptography", status: "In Progress" },
-      { title: "Symmetric vs. Asymmetric Encryption", status: "Locked" },
-      { title: "Applications of Cryptography", status: "Locked" },
-      { title: "Public Key Infrastructure (PKI)", status: "Locked" },
-      { title: "Breaking and Defending Cryptographic Systems", status: "Locked" },
+      { id: "lesson1", title: "Introduction to Cryptography", status: "In Progress" },
+      { id: "lesson2", title: "Symmetric vs. Asymmetric Encryption", status: "Locked" },
+      { id: "lesson3", title: "Applications of Cryptography", status: "Locked" },
+      { id: "lesson4", title: "Public Key Infrastructure (PKI)", status: "Locked" },
+      { id: "lesson5", title: "Breaking and Defending Cryptographic Systems", status: "Locked" },
     ],
   },
   "network-security": {
@@ -35,11 +35,11 @@ const courseContent = {
     duration: "5 weeks",
     skillLevel: "Intermediate",
     modules: [
-      { title: "Introduction to Network Security", status: "Locked" },
-      { title: "Common Network Security Tools", status: "Locked" },
-      { title: "Securing Networks", status: "Locked" },
-      { title: "Wireless Network Security", status: "Locked" },
-      { title: "Network Vulnerability Assessments", status: "Locked" },
+      { id: "lesson1", title: "Introduction to Network Security", status: "Locked" },
+      { id: "lesson2", title: "Common Network Security Tools", status: "Locked" },
+      { id: "lesson3", title: "Securing Networks", status: "Locked" },
+      { id: "lesson4", title: "Wireless Network Security", status: "Locked" },
+      { id: "lesson5", title: "Network Vulnerability Assessments", status: "Locked" },
     ],
   },
   "ethical-hacking": {
@@ -48,11 +48,11 @@ const courseContent = {
     duration: "7 weeks",
     skillLevel: "Advanced",
     modules: [
-      { title: "Introduction to Ethical Hacking", status: "Locked" },
-      { title: "Penetration Testing Methodologies", status: "Locked" },
-      { title: "Ethical Hacking Tools and Techniques", status: "Locked" },
-      { title: "Exploiting Vulnerabilities", status: "Locked" },
-      { title: "Reporting and Remediation", status: "Locked" },
+      { id: "lesson1", title: "Introduction to Ethical Hacking", status: "Locked" },
+      { id: "lesson2", title: "Penetration Testing Methodologies", status: "Locked" },
+      { id: "lesson3", title: "Ethical Hacking Tools and Techniques", status: "Locked" },
+      { id: "lesson4", title: "Exploiting Vulnerabilities", status: "Locked" },
+      { id: "lesson5", title: "Reporting and Remediation", status: "Locked" },
     ],
   },
   "security-best-practices": {
@@ -61,37 +61,52 @@ const courseContent = {
     duration: "3 weeks",
     skillLevel: "Beginner",
     modules: [
-      { title: "Personal Security Best Practices", status: "Locked" },
-      { title: "Organizational Security Strategies", status: "Locked" },
-      { title: "Incident Response and Recovery", status: "Locked" },
-      { title: "Building a Security-First Culture", status: "Locked" },
+      { id: "lesson1", title: "Personal Security Best Practices", status: "Locked" },
+      { id: "lesson2", title: "Organizational Security Strategies", status: "Locked" },
+      { id: "lesson3", title: "Incident Response and Recovery", status: "Locked" },
+      { id: "lesson4", title: "Building a Security-First Culture", status: "Locked" },
     ],
   },
 };
 
 const CourseInfo = () => {
   const { courseId } = useParams();
+  const navigate = useNavigate();
   const course = courseContent[courseId];
+
   const [lastAccessed, setLastAccessed] = useState(
     JSON.parse(localStorage.getItem(`${courseId}-lastAccessed`)) || 0
   );
+
+  useEffect(() => {
+    if (course) {
+      localStorage.setItem(`${courseId}-lastAccessed`, JSON.stringify(lastAccessed));
+    }
+  }, [lastAccessed, courseId, course]);
 
   if (!course) {
     return <h2>Course not found</h2>;
   }
 
+  const handleModuleClick = (moduleId, status) => {
+    if (status !== "Locked") {
+      navigate(`/lesson/${moduleId}`);
+      const index = course.modules.findIndex((module) => module.id === moduleId);
+      setLastAccessed(index);
+    } else {
+      alert("This lesson is locked. Complete the previous lessons first!");
+    }
+  };
+
   // Save the last accessed module to localStorage
   const resumeCourse = () => {
     const nextModule = course.modules[lastAccessed];
     if (nextModule && nextModule.status !== "Locked") {
-      alert(`Resuming "${nextModule.title}"`);
-      setLastAccessed(lastAccessed + 1);
+      navigate(`/lesson/${nextModule.id}`);
     } else {
-      alert("All available modules are completed or locked.");
+      alert("No unlocked lessons available to resume.");
     }
   };
-
-  localStorage.setItem(`${courseId}-lastAccessed`, JSON.stringify(lastAccessed));
 
   // Calculate overall progress
   const totalModules = course.modules.length;
@@ -123,21 +138,16 @@ const CourseInfo = () => {
         Resume
       </button>
 
-      {/* Quest Map */}
+      {/* Modules */}
       <div className="quest-map">
         {course.modules.map((module, index) => (
           <div
             key={index}
-            className={`module-node ${module.status.toLowerCase()} ${
-              index === lastAccessed ? "current-module" : ""
-            }`}
+            className={`module-node ${module.status.toLowerCase()}`}
+            onClick={() => handleModuleClick(module.id, module.status)}
           >
             <div className="node-icon">
-              {module.status === "Completed"
-                ? "✔️"
-                : module.status === "In Progress"
-                ? "⏳"
-                : "🔒"}
+              {module.status === "Completed" ? "✔️" : module.status === "In Progress" ? "⏳" : "🔒"}
             </div>
             <h3>{module.title}</h3>
           </div>

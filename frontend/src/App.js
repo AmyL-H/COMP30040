@@ -27,8 +27,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/coursepage" element={<CoursePage />} />
-          <Route path="/lesson" element={<LessonPage />} />
-          {/* Route for individual course pages */}
+          <Route path="/lesson/:lessonId" element={<LessonPage />} />
           <Route path="/course/:courseId" element={<CourseInfo />} />
         </Routes>
       </div>
