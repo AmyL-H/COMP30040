@@ -5,8 +5,9 @@ import Register from './components/Register';
 import DarkModeToggle from './components/DarkModeToggle';
 import Navbar from './components/Navbar'; 
 import CoursePage from './pages/CoursePage';
-import LessonPage from './pages/LessonPage';
+import LessonPages from './pages/LessonPages';
 import CourseInfo from './pages/CourseInfo';
+import CyberSecurityIntro from './pages/CyberSecurityIntro';
 import './App.css';
 
 function App() {
@@ -27,8 +28,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/coursepage" element={<CoursePage />} />
-          <Route path="/lesson/:lessonId" element={<LessonPage />} />
+          <Route path="/lesson/:lessonId" element={<LessonPages />} />
           <Route path="/course/:courseId" element={<CourseInfo />} />
+          <Route path="/cybersecurity-intro" element={<CyberSecurityIntro />} />
         </Routes>
       </div>
     </Router>

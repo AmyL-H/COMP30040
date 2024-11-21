@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Quiz from '../components/Quiz';
-import './LessonPage.css';
+import './LessonPages.css';
 
-function LessonPage() {
+function LessonPages() {
   const [showTips, setShowTips] = useState(false);
   const toggleTips = () => setShowTips(!showTips);
 
@@ -65,6 +65,20 @@ function LessonPage() {
         </ol>
       </section>
 
+      <section className="lesson-section">
+        <h2>Enter the World of Cybersecurity</h2>
+        <div className="door-container">
+          <img
+            src="/images/door.png"
+            alt="Door to Cybersecurity"
+            className="door-image"
+            onClick={() => window.location.href = '/cybersecurity-intro'}
+          />
+          <br/>
+          <p>Click on the door to begin your journey.</p>
+        </div>
+      </section>
+
       <h2>Quiz</h2>
       <Quiz
         question="What is cybersecurity?"
@@ -80,4 +94,4 @@ function LessonPage() {
   );
 }
 
-export default LessonPage;
+export default LessonPages;

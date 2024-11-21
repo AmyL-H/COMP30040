@@ -13,6 +13,7 @@
   "author": "Amy Leigh-Hyer",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.0",
+    "react-pageflip": "^2.0.3"
   }
 }

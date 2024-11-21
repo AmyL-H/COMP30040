@@ -1,0 +1,23 @@
+.article-page {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-page h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+  }
+  
+  .article-page p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  
