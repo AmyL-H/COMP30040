@@ -11,9 +11,9 @@ const courseContent = {
     modules: [
       { id: "lesson1", title: "What is Cybersecurity?", status: "Completed" },
       { id: "lesson2", title: "Importance of Cybersecurity", status: "In Progress" },
-      { id: "lesson3", title: "Common Threats and Vulnerabilities", status: "Locked" },
-      { id: "lesson4", title: "Introduction to Security Frameworks", status: "Locked" },
-      { id: "lesson5", title: "Future Trends in Cybersecurity", status: "Locked" },
+      { id: "lesson3", title: "Common Threats and Vulnerabilities", status: "In Progress" },
+      { id: "lesson4", title: "Introduction to Security Frameworks", status: "In Progress" },
+      { id: "lesson5", title: "Future Trends in Cybersecurity", status: "In Progress" },
     ],
   },
   "cryptography": {
@@ -23,10 +23,10 @@ const courseContent = {
     skillLevel: "Intermediate",
     modules: [
       { id: "lesson1", title: "Introduction to Cryptography", status: "In Progress" },
-      { id: "lesson2", title: "Symmetric vs. Asymmetric Encryption", status: "Locked" },
-      { id: "lesson3", title: "Applications of Cryptography", status: "Locked" },
-      { id: "lesson4", title: "Public Key Infrastructure (PKI)", status: "Locked" },
-      { id: "lesson5", title: "Breaking and Defending Cryptographic Systems", status: "Locked" },
+      { id: "lesson2", title: "Symmetric vs. Asymmetric Encryption", status: "In Progress" },
+      { id: "lesson3", title: "Applications of Cryptography", status: "In Progress" },
+      { id: "lesson4", title: "Public Key Infrastructure (PKI)", status: "In Progress" },
+      { id: "lesson5", title: "Breaking and Defending Cryptographic Systems", status: "In Progress" },
     ],
   },
   "network-security": {
@@ -35,11 +35,11 @@ const courseContent = {
     duration: "5 weeks",
     skillLevel: "Intermediate",
     modules: [
-      { id: "lesson1", title: "Introduction to Network Security", status: "Locked" },
-      { id: "lesson2", title: "Common Network Security Tools", status: "Locked" },
-      { id: "lesson3", title: "Securing Networks", status: "Locked" },
-      { id: "lesson4", title: "Wireless Network Security", status: "Locked" },
-      { id: "lesson5", title: "Network Vulnerability Assessments", status: "Locked" },
+      { id: "lesson1", title: "Introduction to Network Security", status: "In Progress" },
+      { id: "lesson2", title: "Common Network Security Tools", status: "In Progress" },
+      { id: "lesson3", title: "Securing Networks", status: "In Progress" },
+      { id: "lesson4", title: "Wireless Network Security", status: "In Progress" },
+      { id: "lesson5", title: "Network Vulnerability Assessments", status: "In Progress" },
     ],
   },
   "ethical-hacking": {
@@ -48,11 +48,11 @@ const courseContent = {
     duration: "7 weeks",
     skillLevel: "Advanced",
     modules: [
-      { id: "lesson1", title: "Introduction to Ethical Hacking", status: "Locked" },
-      { id: "lesson2", title: "Penetration Testing Methodologies", status: "Locked" },
-      { id: "lesson3", title: "Ethical Hacking Tools and Techniques", status: "Locked" },
-      { id: "lesson4", title: "Exploiting Vulnerabilities", status: "Locked" },
-      { id: "lesson5", title: "Reporting and Remediation", status: "Locked" },
+      { id: "lesson1", title: "Introduction to Ethical Hacking", status: "In Progress" },
+      { id: "lesson2", title: "Penetration Testing Methodologies", status: "In Progress" },
+      { id: "lesson3", title: "Ethical Hacking Tools and Techniques", status: "In Progress" },
+      { id: "lesson4", title: "Exploiting Vulnerabilities", status: "In Progress" },
+      { id: "lesson5", title: "Reporting and Remediation", status: "In Progress" },
     ],
   },
   "security-best-practices": {
@@ -61,10 +61,10 @@ const courseContent = {
     duration: "3 weeks",
     skillLevel: "Beginner",
     modules: [
-      { id: "lesson1", title: "Personal Security Best Practices", status: "Locked" },
-      { id: "lesson2", title: "Organizational Security Strategies", status: "Locked" },
-      { id: "lesson3", title: "Incident Response and Recovery", status: "Locked" },
-      { id: "lesson4", title: "Building a Security-First Culture", status: "Locked" },
+      { id: "lesson1", title: "Personal Security Best Practices", status: "In Progress" },
+      { id: "lesson2", title: "Organizational Security Strategies", status: "In Progress" },
+      { id: "lesson3", title: "Incident Response and Recovery", status: "In Progress" },
+      { id: "lesson4", title: "Building a Security-First Culture", status: "In Progress" },
     ],
   },
 };

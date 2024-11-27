@@ -7,7 +7,7 @@ import Navbar from './components/Navbar';
 import CoursePage from './pages/CoursePage';
 import LessonPages from './pages/LessonPages';
 import CourseInfo from './pages/CourseInfo';
-import CyberSecurityIntro from './pages/CyberSecurityIntro';
+import Lesson1Door from './pages/IntroToCyberSecurity/Lesson1Door';
 import './App.css';
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
           <Route path="/coursepage" element={<CoursePage />} />
           <Route path="/lesson/:lessonId" element={<LessonPages />} />
           <Route path="/course/:courseId" element={<CourseInfo />} />
-          <Route path="/cybersecurity-intro" element={<CyberSecurityIntro />} />
+          <Route path="/cybersecurity-intro" element={<Lesson1Door />} />
         </Routes>
       </div>
     </Router>

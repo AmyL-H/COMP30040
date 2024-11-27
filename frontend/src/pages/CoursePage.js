@@ -11,9 +11,9 @@ const CoursePage = () => {
   const courseSections = [
     { id: "cybersecurity", title: "Introduction to Cybersecurity", description: "Learn the basics of cybersecurity and protect your data.", progress: 100, locked: false },
     { id: "cryptography", title: "Cryptography and Encryption", description: "Understand encryption techniques and secure communications.", progress: 70, locked: false },
-    { id: "network-security", title: "Network Security", description: "Explore how to secure networks from various threats.", progress: 0, locked: true },
-    { id: "ethical-hacking", title: "Ethical Hacking and Penetration Testing", description: "Gain hands-on hacking experience ethically.", progress: 0, locked: true },
-    { id: "security-best-practices", title: "Security Best Practices", description: "Learn strategies to maintain a secure environment.", progress: 0, locked: true },
+    { id: "network-security", title: "Network Security", description: "Explore how to secure networks from various threats.", progress: 0, locked: false },
+    { id: "ethical-hacking", title: "Ethical Hacking and Penetration Testing", description: "Gain hands-on hacking experience ethically.", progress: 0, locked: false },
+    { id: "security-best-practices", title: "Security Best Practices", description: "Learn strategies to maintain a secure environment.", progress: 0, locked: false },
   ];
 
   // Function to navigate to course details page

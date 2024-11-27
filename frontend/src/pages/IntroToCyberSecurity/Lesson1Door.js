@@ -1,7 +1,7 @@
 import React from 'react';
-import './CyberSecurityIntro.css';
+import './Lesson1Door.css';
 
-const CyberSecurityIntro = () => {
+const Lesson1Door = () => {
   return (
     <div className="article-page">
       <h1>Introduction to Cybersecurity</h1>
@@ -18,4 +18,4 @@ const CyberSecurityIntro = () => {
   );
 };
 
-export default CyberSecurityIntro;
+export default Lesson1Door;
