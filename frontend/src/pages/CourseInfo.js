@@ -84,10 +84,8 @@ const CourseInfo = () => {
     }
   }, [lastAccessed, courseId, course]);
 
-  if (!course) {
-    return <h2>Course not found</h2>;
-  }
 
+  // Navigate to a lesson when clicked
   const handleModuleClick = (moduleId, status) => {
     if (status !== "Locked") {
       navigate(`/lesson/${moduleId}`);
@@ -107,6 +105,10 @@ const CourseInfo = () => {
       alert("No unlocked lessons available to resume.");
     }
   };
+
+  if (!course) {
+    return <h2>Course not found</h2>;
+  }
 
   // Calculate overall progress
   const totalModules = course.modules.length;

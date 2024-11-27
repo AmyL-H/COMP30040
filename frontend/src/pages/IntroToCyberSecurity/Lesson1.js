@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Quiz from '../components/Quiz';
-import './LessonPages.css';
+import Quiz from '../../components/Quiz';
+import './Lesson1.css';
 
-function LessonPages() {
+function Lesson1() {
   const [showTips, setShowTips] = useState(false);
   const toggleTips = () => setShowTips(!showTips);
 
@@ -94,4 +94,4 @@ function LessonPages() {
   );
 }
 
-export default LessonPages;
+export default Lesson1;
