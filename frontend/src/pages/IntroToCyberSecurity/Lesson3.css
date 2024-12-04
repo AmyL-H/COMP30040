@@ -1,0 +1,44 @@
+.lesson-page {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f9f9f9, #e6f0ff);
+    color: #333;
+    border-radius: 10px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #4a90e2;
+  }
+  
+  .lesson-section {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .toggle-button {
+    padding: 10px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .toggle-button:hover {
+    background-color: #357ab7;
+  }
+  
+  .tips {
+    background: #eef5ff;
+    padding: 10px;
+    border-left: 4px solid #4a90e2;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
