@@ -1,54 +1,60 @@
 import React, { useState } from 'react';
-import Quiz from '../../components/Quiz';
+import { useNavigate } from 'react-router-dom';
 import './Lesson3.css';
 
-function Lesson3() {
+function IntroLesson3() {
   const [showTips, setShowTips] = useState(false);
-  const toggleTips = () => setShowTips(!showTips);
+  const navigate = useNavigate();
 
   return (
-    <div className="lesson-page">
-      <h1 className="title">Lesson 3: Common Threats and Vulnerabilities</h1>
+    <div className="lessonpage-container">
+      <h1 className="title">Welcome to Lesson 3: Common Threats and Vulnerabilities</h1>
+
+      {/* Explanation Section */}
       <section className="lesson-section">
         <h2>Understanding Cyber Threats</h2>
-        <p>
-          Cyber threats range from malware to phishing scams. Understanding these risks helps you better protect your systems.
+        <p className="lesson-text">
+          Cyber threats come in many forms—from malware and phishing scams to Denial-of-Service attacks. These threats often exploit vulnerabilities
+          in software or user behavior. Recognizing these threats is the first step to protecting your systems.
         </p>
-        <button className="toggle-button" onClick={toggleTips}>
-          {showTips ? 'Hide Tips' : 'Show Tips'}
-        </button>
-        {showTips && (
-          <div className="tips">
-            <h3>Examples:</h3>
-            <ul>
-              <li>Viruses and worms</li>
-              <li>Trojan horses</li>
-              <li>Social engineering attacks</li>
-            </ul>
-          </div>
-        )}
       </section>
 
+      {/* Examples Section */}
       <section className="lesson-section">
-        <h2>How to Identify Vulnerabilities</h2>
-        <p>
-          Learn to recognize outdated software, unsecured networks, and poor authentication practices as vulnerabilities.
-        </p>
+        <h2>Examples of Cyber Threats</h2>
+        <button className={`toggle-button ${showTips ? "active" : ""}`} onClick={() => setShowTips(!showTips)}>
+          {showTips ? 'Hide Examples' : 'Show Examples'}
+        </button>
+        <div className={`tips-container ${showTips ? "visible" : "hidden"}`}>
+          <div className="tip-card">
+            <h3>Malware</h3>
+            <p>Spreads through infected downloads and can damage or steal data.</p>
+          </div>
+          <div className="tip-card">
+            <h3>Phishing</h3>
+            <p>Tricks users into revealing sensitive information by imitating trusted sources.</p>
+          </div>
+          <div className="tip-card">
+            <h3>Denial-of-Service (DoS) Attacks</h3>
+            <p>Overwhelms servers to disrupt online services.</p>
+          </div>
+        </div>
       </section>
 
-      <h2>Quiz</h2>
-      <Quiz
-        question="What is a common vulnerability?"
-        options={['Strong passwords', 'Outdated software', 'Updated firewalls']}
-        correctAnswer="Outdated software"
-      />
-      <Quiz
-        question="What is a Trojan horse?"
-        options={['A virus disguised as legitimate software', 'An encryption method', 'A firewall']}
-        correctAnswer="A virus disguised as legitimate software"
-      />
+      {/* Door Interaction */}
+      <section className="lesson-section door-section">
+        <h2>Step into the Next Lesson</h2>
+        <div className="door-container" onClick={() => navigate('/cybersecurity-intro-L3')}>
+          <img
+            src="/images/door.png"
+            alt="Door to Next Lesson"
+            className="door-image"
+          />
+          <p className="door-text">Click the door to continue your cybersecurity journey!</p>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default Lesson3;
+export default IntroLesson3;

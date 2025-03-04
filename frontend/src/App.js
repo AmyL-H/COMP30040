@@ -8,6 +8,10 @@ import CoursePage from './pages/CoursePage';
 import CourseInfo from './pages/CourseInfo';
 import LessonHandler from './components/LessonHandler';
 import Lesson1Door from './pages/IntroToCyberSecurity/Lesson1Door';
+import Lesson2Door from './pages/IntroToCyberSecurity/Lesson2Door';
+import Lesson3Door from './pages/IntroToCyberSecurity/Lesson3Door';
+import Lesson4Door from './pages/IntroToCyberSecurity/Lesson4Door';
+import Lesson5Door from './pages/IntroToCyberSecurity/Lesson5Door';
 import './App.css';
 
 function App() {
@@ -29,8 +33,12 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/coursepage" element={<CoursePage />} />
           <Route path="/course/:courseId" element={<CourseInfo />} />
-          <Route path="/lesson/:lessonId" element={<LessonHandler />} />
-          <Route path="/cybersecurity-intro" element={<Lesson1Door />} />
+          <Route path="/course/:courseId/lesson/:lessonId" element={<LessonHandler />} />
+          <Route path="/cybersecurity-intro-L1" element={<Lesson1Door />} />
+          <Route path="/cybersecurity-intro-L2" element={<Lesson2Door />} />
+          <Route path="/cybersecurity-intro-L3" element={<Lesson3Door />} />
+          <Route path="/cybersecurity-intro-L4" element={<Lesson4Door />} />
+          <Route path="/cybersecurity-intro-L5" element={<Lesson5Door />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,112 @@
+.lessonpage-container {
+  padding: 30px;
+  text-align: center;
+  background-color: #1e1e2f;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.title {
+  color: #008CFF;
+  text-shadow: 0px 0px 8px rgba(0, 140, 255, 0.8);
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.lesson-section {
+  margin-bottom: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.lesson-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: black;
+}
+
+.lesson-section h2 {
+  color: #008CFF;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.toggle-button {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 15px auto;
+  padding: 12px;
+  background: #008CFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.toggle-button:hover {
+  background: #339DFF;
+  transform: scale(1.05);
+}
+
+.tips-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.tips-container.hidden {
+  display: none;
+}
+
+.tips-container.visible {
+  display: block;
+}
+
+.tip-card {
+  background: linear-gradient(145deg, #444466, #2a2a4c);
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 1rem;
+  color: white;
+}
+
+.door-section {
+  text-align: center;
+}
+
+.door-container {
+  margin-top: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.door-image {
+  width: 150px;
+  height: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.door-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 255, 100, 0.5);
+}
+
+.door-text {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
+}

@@ -1,44 +1,155 @@
+/* Overall Page Styling */
 .lesson-page {
-    padding: 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #f9f9f9, #e6f0ff);
-    color: #333;
-    border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  background-color: #1e1e2f;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+/* Title */
+h1.title {
+  color: #008CFF;
+  text-shadow: 0px 0px 8px rgba(0, 140, 255, 0.8);
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+/* Lesson Sections */
+.lesson-section {
+  margin-bottom: 30px;
+  background-color: #1e1e2f;
+  padding: 20px;
+  border-radius: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+/* Section Titles */
+.lesson-section h2 {
+  color: #008CFF;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+/* Paragraphs */
+.lesson-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: white;
+}
+
+/* Toggle Button */
+.toggle-button {
+  margin-top: 10px;
+  background: #00ff63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.toggle-button:hover {
+  background: #33ff80;
+  transform: scale(1.05);
+}
+
+/* Tips Section */
+.tips {
+  background: #2a2a4c;
+  padding: 10px 15px;
+  border-left: 4px solid #00ff63;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.tips h3 {
+  color: #008CFF;
+  margin-bottom: 10px;
+}
+
+/* Diagram Section */
+.diagram-section {
+  margin-bottom: 30px;
+  background-color: #1e1e2f;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.diagram-container {
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+}
+
+.diagram-caption {
+  font-size: 1rem;
+  color: white;
+  margin-top: 10px;
+}
+
+/* Animated SVG Nodes */
+.threat-node {
+  fill: #ff4747;
+  animation: pulse 2s infinite;
+}
+
+.vulnerability-node {
+  fill: #00ff63;
+  animation: pulse 2s infinite alternate;
+}
+
+.attack-node {
+  fill: #008CFF;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    r: 20;
+    opacity: 0.8;
   }
-  
-  .title {
-    font-size: 2.5rem;
-    color: #4a90e2;
+  50% {
+    r: 25;
+    opacity: 1;
   }
-  
-  .lesson-section {
-    background: #fff;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  100% {
+    r: 20;
+    opacity: 0.8;
   }
-  
-  .toggle-button {
-    padding: 10px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .toggle-button:hover {
-    background-color: #357ab7;
-  }
-  
-  .tips {
-    background: #eef5ff;
-    padding: 10px;
-    border-left: 4px solid #4a90e2;
-    margin-top: 10px;
-    border-radius: 5px;
-  }
-  
+}
+
+/* Assignment Section */
+/* (Reusing .lesson-section styling) */
+
+/* Quiz Button (if used) */
+.quiz-start-button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 18px;
+  background-color: #00ff63;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quiz-start-button:hover {
+  background-color: #33ff80;
+}
+
+/* Fade In Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

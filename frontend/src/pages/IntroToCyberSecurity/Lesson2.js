@@ -1,73 +1,80 @@
 import React, { useState } from 'react';
-import Quiz from '../../components/Quiz';
+import { useNavigate } from 'react-router-dom';
 import './Lesson2.css';
 
-function Lesson2() {
+function IntroLesson2() {
   const [showTips, setShowTips] = useState(false);
-  const toggleTips = () => setShowTips(!showTips);
+  const navigate = useNavigate();
 
   return (
-    <div className="lesson-page">
-      <h1 className="title">Lesson 2: Importance of Cybersecurity</h1>
+    <div className="lessonpage-container">
+      <h1 className="title">Welcome to Lesson 2: Importance of Cybersecurity</h1>
 
+      {/* Explanation Section */}
       <section className="lesson-section">
-        <h2>Impact of Cyber Threats</h2>
-        <p>
-          Cyber threats affect everyone — individuals, businesses, and governments. From stolen personal data to 
-          global infrastructure disruptions, the consequences are severe.
+        <p className="lesson-text">
+          Cyber threats affect everyone—individuals, businesses, and governments. Attacks can lead to financial loss,
+          reputational damage, and even compromise national security. Data breaches can expose sensitive personal and corporate information,
+          while ransomware attacks can cripple critical infrastructure. Understanding and mitigating these risks is essential to preserve privacy,
+          economic stability, and public trust.
         </p>
-        <button className="toggle-button" onClick={toggleTips}>
-          {showTips ? 'Hide Examples' : 'Show Examples'}
-        </button>
-        {showTips && (
-          <div className="examples">
-            <h3>Examples of Impacts:</h3>
-            <ul>
-              <li>📧 Phishing scams stealing personal information.</li>
-              <li>💸 Ransomware crippling hospital systems.</li>
-              <li>🌐 Data breaches exposing sensitive government data.</li>
-            </ul>
-          </div>
-        )}
       </section>
 
+      {/* Fun Facts Section */}
       <section className="lesson-section">
-        <h2>Case Studies: Major Cyber Incidents</h2>
-        <div className="case-studies">
-          <div className="case-card">
-            <h3>Equifax Data Breach (2017)</h3>
-            <p>
-              A breach exposed personal information of over 147 million individuals, including Social Security numbers.
-            </p>
+        <h2>Examples of Impacts</h2>
+        <div className="fun-facts">
+          <div className="fact-card">
+            <p>📧 <strong>Phishing Scams:</strong> Stealing personal data and credentials.</p>
           </div>
-          <div className="case-card">
-            <h3>WannaCry Ransomware (2017)</h3>
-            <p>
-              A global ransomware attack affected hundreds of thousands of computers, disrupting healthcare and transport systems.
-            </p>
+          <div className="fact-card">
+            <p>💸 <strong>Ransomware:</strong> Crippling healthcare and municipal services.</p>
           </div>
-          <div className="case-card">
-            <h3>SolarWinds Attack (2020)</h3>
-            <p>
-              A sophisticated cyber-espionage campaign targeting government agencies and private companies.
-            </p>
+          <div className="fact-card">
+            <p>🌐 <strong>Data Breaches:</strong> Exposing sensitive government and corporate data.</p>
+          </div>
+          <div className="fact-card">
+            <p>🔓 <strong>Unauthorized Access:</strong> Leading to identity theft and fraud.</p>
           </div>
         </div>
       </section>
 
-      <h2>Quiz</h2>
-      <Quiz
-        question="What is one consequence of a ransomware attack?"
-        options={['Encrypting and holding data hostage', 'Selling stolen hardware', 'Crashing servers for fun']}
-        correctAnswer="Encrypting and holding data hostage"
-      />
-      <Quiz
-        question="Which major data breach occurred in 2017?"
-        options={['Equifax', 'SolarWinds', 'Target']}
-        correctAnswer="Equifax"
-      />
+      {/* Case Studies Section */}
+      <section className="lesson-section">
+        <h2>Case Studies: Major Cyber Incidents</h2>
+        <button className={`toggle-button ${showTips ? "active" : ""}`} onClick={() => setShowTips(!showTips)}>
+          {showTips ? 'Hide Examples' : 'Show Examples'}
+        </button>
+        <div className={`tips-container ${showTips ? "visible" : "hidden"}`}>
+          <div className="tip-card">
+            <h3>Equifax Data Breach (2017)</h3>
+            <p>The breach exposed personal information for over 147 million individuals.</p>
+          </div>
+          <div className="tip-card">
+            <h3>WannaCry Ransomware (2017)</h3>
+            <p>A global ransomware attack that disrupted healthcare, transport, and more.</p>
+          </div>
+          <div className="tip-card">
+            <h3>SolarWinds Attack (2020)</h3>
+            <p>A sophisticated supply-chain attack compromising government agencies and private companies.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Door Interaction */}
+      <section className="lesson-section door-section">
+        <h2>Step into the Next Lesson</h2>
+        <div className="door-container" onClick={() => navigate('/cybersecurity-intro-L2')}>
+          <img
+            src="/images/door.png"
+            alt="Door to Next Lesson"
+            className="door-image"
+          />
+          <p className="door-text">Click the door to continue your cybersecurity journey!</p>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default Lesson2;
+export default IntroLesson2;

@@ -55,18 +55,6 @@ const courseContent = {
       { id: "lesson5", title: "Reporting and Remediation", status: "In Progress" },
     ],
   },
-  "security-best-practices": {
-    title: "Security Best Practices",
-    description: "Learn strategies to maintain a secure environment.",
-    duration: "3 weeks",
-    skillLevel: "Beginner",
-    modules: [
-      { id: "lesson1", title: "Personal Security Best Practices", status: "In Progress" },
-      { id: "lesson2", title: "Organizational Security Strategies", status: "In Progress" },
-      { id: "lesson3", title: "Incident Response and Recovery", status: "In Progress" },
-      { id: "lesson4", title: "Building a Security-First Culture", status: "In Progress" },
-    ],
-  },
 };
 
 const CourseInfo = () => {
@@ -74,84 +62,48 @@ const CourseInfo = () => {
   const navigate = useNavigate();
   const course = courseContent[courseId];
 
-  const [lastAccessed, setLastAccessed] = useState(
-    JSON.parse(localStorage.getItem(`${courseId}-lastAccessed`)) || 0
-  );
+  // Read last accessed lesson from localStorage
+  const [lastAccessed, setLastAccessed] = useState(() => {
+    return JSON.parse(localStorage.getItem(`${courseId}-lastAccessed`)) || null;
+  });
 
   useEffect(() => {
-    if (course) {
+    if (lastAccessed) {
       localStorage.setItem(`${courseId}-lastAccessed`, JSON.stringify(lastAccessed));
     }
-  }, [lastAccessed, courseId, course]);
-
-
-  // Navigate to a lesson when clicked
-  const handleModuleClick = (moduleId, status) => {
-    if (status !== "Locked") {
-      navigate(`/lesson/${moduleId}`);
-      const index = course.modules.findIndex((module) => module.id === moduleId);
-      setLastAccessed(index);
-    } else {
-      alert("This lesson is locked. Complete the previous lessons first!");
-    }
-  };
-
-  // Save the last accessed module to localStorage
-  const resumeCourse = () => {
-    const nextModule = course.modules[lastAccessed];
-    if (nextModule && nextModule.status !== "Locked") {
-      navigate(`/lesson/${nextModule.id}`);
-    } else {
-      alert("No unlocked lessons available to resume.");
-    }
-  };
+  }, [lastAccessed, courseId]);
 
   if (!course) {
-    return <h2>Course not found</h2>;
+    return <h2 className="error-message">Course not found</h2>;
   }
 
-  // Calculate overall progress
-  const totalModules = course.modules.length;
-  const completedModules = course.modules.filter((module) => module.status === "Completed").length;
-  const progressPercentage = Math.round((completedModules / totalModules) * 100);
-
-
   return (
-    <div className="course-info-container">
+    <div className="course-info">
       <h1>{course.title}</h1>
       <p>{course.description}</p>
       <p>
         <strong>Duration:</strong> {course.duration} | <strong>Skill Level:</strong> {course.skillLevel}
       </p>
 
-      {/* Progress Bar */}
-      <div className="progress-bar-container">
-        <div className="progress-bar">
-          <div
-            className="progress-bar-filled"
-            style={{ width: `${progressPercentage}%` }}
-          ></div>
-        </div>
-        <p>{progressPercentage}% Complete</p>
-      </div>
-
-      {/* Resume Button */}
-      <button className="resume-button" onClick={resumeCourse}>
-        Resume
-      </button>
-
-      {/* Modules */}
-      <div className="quest-map">
-        {course.modules.map((module, index) => (
-          <div
-            key={index}
-            className={`module-node ${module.status.toLowerCase()}`}
-            onClick={() => handleModuleClick(module.id, module.status)}
-          >
-            <div className="node-icon">
-              {module.status === "Completed" ? "✔️" : module.status === "In Progress" ? "⏳" : "🔒"}
+      <div className="lesson-cards">
+        {course.modules.map((module) => (
+          <div key={module.id} className={`lesson-card ${lastAccessed === module.id ? "last-accessed" : ""}`}>
+            <h2>{module.title}</h2>
+            <ul className="task-list">
+              <li className={module.status === "Completed" ? "completed" : ""}>Read the article</li>
+              <li className={module.status === "Completed" ? "completed" : ""}>Complete the quiz</li>
+              <li className={module.status === "Completed" ? "completed" : ""}>Take the final exam</li>
+            </ul>
+            <div className="card-buttons">
+              <button
+                onClick={() => {
+                  setLastAccessed(module.id); // Update last accessed lesson
+                  navigate(`/course/${courseId}/lesson/${module.id}`);
+                }}
+              >
+                {module.status === "Completed" ? "Review" : "Resume Lesson"}
+              </button>
             </div>
-            <h3>{module.title}</h3>
           </div>
         ))}
       </div>

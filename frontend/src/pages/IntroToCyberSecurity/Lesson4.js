@@ -1,67 +1,71 @@
 import React, { useState } from 'react';
-import Quiz from '../../components/Quiz';
+import { useNavigate } from 'react-router-dom';
 import './Lesson4.css';
 
-function Lesson4() {
+function IntroLesson4() {
   const [showDetails, setShowDetails] = useState(false);
-  const toggleDetails = () => setShowDetails(!showDetails);
+  const navigate = useNavigate();
 
   return (
-    <div className="lesson-page">
-      <h1 className="title">Lesson 4: Introduction to Security Frameworks</h1>
+    <div className="lessonpage-container">
+      <h1 className="title">Welcome to Lesson 4: Introduction to Security Frameworks</h1>
 
+      {/* Explanation Section */}
       <section className="lesson-section">
         <h2>What are Security Frameworks?</h2>
-        <p>
-          Security frameworks are structured approaches to managing cybersecurity risks. They provide organizations 
+        <p className="lesson-text">
+          Security frameworks are structured approaches to managing cybersecurity risks. They provide organizations
           with best practices and standards to protect their assets.
         </p>
-        <button className="toggle-button" onClick={toggleDetails}>
+        <button className={`toggle-button ${showDetails ? "active" : ""}`} onClick={() => setShowDetails(!showDetails)}>
           {showDetails ? 'Hide Details' : 'Show Details'}
         </button>
-        {showDetails && (
-          <div className="details">
-            <h3>Benefits:</h3>
-            <ul>
-              <li>Enhances organizational resilience.</li>
-              <li>Helps in regulatory compliance.</li>
-              <li>Promotes proactive cybersecurity culture.</li>
-            </ul>
+        <div className={`tips-container ${showDetails ? "visible" : "hidden"}`}>
+          <div className="tip-card">
+            <h3>Enhances Organizational Resilience</h3>
+            <p>Improves security posture by providing clear guidelines and best practices.</p>
           </div>
-        )}
-      </section>
-
-      <section className="lesson-section">
-        <h2>Popular Security Frameworks</h2>
-        <div className="framework-list">
-          <div className="framework-card">
-            <h3>NIST Cybersecurity Framework</h3>
-            <p>Focuses on identifying, protecting, detecting, responding, and recovering from cyber incidents.</p>
+          <div className="tip-card">
+            <h3>Helps in Regulatory Compliance</h3>
+            <p>Ensures adherence to industry standards and legal requirements.</p>
           </div>
-          <div className="framework-card">
-            <h3>ISO/IEC 27001</h3>
-            <p>An international standard for managing information security systems.</p>
-          </div>
-          <div className="framework-card">
-            <h3>COBIT</h3>
-            <p>Framework for governance and management of enterprise IT.</p>
+          <div className="tip-card">
+            <h3>Promotes Proactive Cybersecurity Culture</h3>
+            <p>Encourages organizations to stay ahead of emerging cyber threats.</p>
           </div>
         </div>
       </section>
 
-      <h2>Quiz</h2>
-      <Quiz
-        question="What is the purpose of a security framework?"
-        options={['To manage risks', 'To create attacks', 'To automate IT']}
-        correctAnswer="To manage risks"
-      />
-      <Quiz
-        question="Which framework focuses on information security management?"
-        options={['NIST', 'COBIT', 'ISO/IEC 27001']}
-        correctAnswer="ISO/IEC 27001"
-      />
+      {/* Popular Frameworks Section */}
+      <section className="lesson-section">
+        <h2>Popular Security Frameworks</h2>
+        <div className="fun-facts">
+          <div className="fact-card">
+            <p>📜 <strong>NIST Cybersecurity Framework:</strong> Focuses on identifying, protecting, detecting, responding, and recovering from cyber incidents.</p>
+          </div>
+          <div className="fact-card">
+            <p>🌍 <strong>ISO/IEC 27001:</strong> An international standard for managing information security systems.</p>
+          </div>
+          <div className="fact-card">
+            <p>🏛 <strong>COBIT:</strong> Framework for governance and management of enterprise IT.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Door Interaction */}
+      <section className="lesson-section door-section">
+        <h2>Step into the Next Lesson</h2>
+        <div className="door-container" onClick={() => navigate('/cybersecurity-intro-L4')}>
+          <img
+            src="/images/door.png"
+            alt="Door to Next Lesson"
+            className="door-image"
+          />
+          <p className="door-text">Click the door to continue your cybersecurity journey!</p>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default Lesson4;
+export default IntroLesson4;

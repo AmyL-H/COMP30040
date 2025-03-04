@@ -1,97 +1,80 @@
 import React, { useState } from 'react';
-import Quiz from '../../components/Quiz';
+import { useNavigate } from 'react-router-dom';
 import './Lesson1.css';
 
-function Lesson1() {
+function IntroLesson1() {
   const [showTips, setShowTips] = useState(false);
-  const toggleTips = () => setShowTips(!showTips);
+  const navigate = useNavigate();
 
   return (
-    <div className="lesson-page">
-      <h1 className="title">Welcome to Cybersecurity 101</h1>
+    <div className="lessonpage-container">
+      <h1 className="title">Welcome to Lesson 1: What is Cybersecurity?</h1>
+
+      {/* Explanation Section */}
       <section className="lesson-section">
-        <h2>What is Cybersecurity?</h2>
-        <p>
-          Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. These 
-          attacks aim to access, change, or destroy sensitive information, extort money, or disrupt operations.
+        <p className="lesson-text">
+          In this lesson, you'll embark on an exciting journey to understand the fundamentals of cybersecurity.
+          You'll learn how digital systems are protected, explore the evolution of cyber defenses, and discover essential strategies
+          to safeguard information. Whether you’re a complete beginner or refreshing your knowledge, we’ve got you covered!
         </p>
-        <button className="toggle-button" onClick={toggleTips}>
+        <p className="lesson-text">
+          To succeed, stay curious, take notes, and actively engage with the content. We’ve sprinkled practical tips and real-life examples
+          throughout the lesson to help you grasp the concepts quickly. And don't worry—you’ll get to test your understanding with an interactive quiz at the end.
+        </p>
+      </section>
+
+      {/* Fun Facts Section */}
+      <section className="lesson-section">
+        <h2>Fun Facts About Cybersecurity</h2>
+        <div className="fun-facts">
+          <div className="fact-card">
+            <p>💡 <strong>Cyber Term Origin:</strong> The word "cyberspace" was coined by writer William Gibson in his 1982 novel "Neuromancer".</p>
+          </div>
+          <div className="fact-card">
+            <p>💡 <strong>Job Growth:</strong> Cybersecurity is one of the fastest-growing career fields in tech today!</p>
+          </div>
+          <div className="fact-card">
+            <p>💡 <strong>Phishing Alert:</strong> Over 90% of cyberattacks start with a phishing email.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Tips Section */}
+      <section className="lesson-section">
+        <h2>Tips for Success</h2>
+        <button className={`toggle-button ${showTips ? "active" : ""}`} onClick={() => setShowTips(!showTips)}>
           {showTips ? 'Hide Tips' : 'Show Tips'}
         </button>
-        {showTips && (
-          <div className="tips">
-            <h3>Quick Tips:</h3>
-            <ul>
-              <li>Think before clicking on unknown links.</li>
-              <li>Keep software updated to patch vulnerabilities.</li>
-              <li>Use unique, strong passwords for each account.</li>
-            </ul>
+        <div className={`tips-container ${showTips ? "visible" : "hidden"}`}>
+          <div className="tip-card">
+            <h3>🔄 Stay Curious</h3>
+            <p>Ask questions, explore beyond the lesson, and connect the dots between concepts.</p>
           </div>
-        )}
-      </section>
-
-      <section className="lesson-section">
-        <h2>Common Cyber Threats</h2>
-        <div className="interactive-box">
-          <p>Hover over a threat to learn more:</p>
-          <div className="threat-grid">
-            <div className="threat-card">
-              <span className="tooltip">Phishing: Deceptive emails to steal data.</span>
-              🐟 Phishing
-            </div>
-            <div className="threat-card">
-              <span className="tooltip">Ransomware: Encrypts data for ransom.</span>
-              💸 Ransomware
-            </div>
-            <div className="threat-card">
-              <span className="tooltip">Malware: Malicious software harming systems.</span>
-              🛡️ Malware
-            </div>
-            <div className="threat-card">
-              <span className="tooltip">DoS: Overloading systems to disrupt service.</span>
-              🌐 DoS Attack
-            </div>
+          <div className="tip-card">
+            <h3>📝 Take Notes</h3>
+            <p>Jot down key points and terms so you can review and remember them later.</p>
+          </div>
+          <div className="tip-card">
+            <h3>🎯 Practice Makes Perfect</h3>
+            <p>Engage with our interactive quiz at the end to test your understanding and learn from any mistakes.</p>
           </div>
         </div>
       </section>
 
-      <section className="lesson-section">
-        <h2>Best Practices</h2>
-        <ol className="animated-list">
-          <li>Use multi-factor authentication to secure accounts.</li>
-          <li>Enable automatic updates for your software.</li>
-          <li>Avoid connecting to public Wi-Fi without a VPN.</li>
-          <li>Perform regular backups of important data.</li>
-        </ol>
-      </section>
-
-      <section className="lesson-section">
-        <h2>Enter the World of Cybersecurity</h2>
-        <div className="door-container">
+      {/* Door Interaction */}
+      <section className="lesson-section door-section">
+        <h2>Step into the World of Cybersecurity</h2>
+        <div className="door-container" onClick={() => navigate('/cybersecurity-intro-L1')}>
           <img
             src="/images/door.png"
-            alt="Door to Cybersecurity"
+            alt="Door to Cybersecurity Lesson"
             className="door-image"
-            onClick={() => window.location.href = '/cybersecurity-intro'}
           />
-          <br/>
-          <p>Click on the door to begin your journey.</p>
+          <p className="door-text">Click the door to begin your lesson and unlock the secrets of cybersecurity!</p>
         </div>
       </section>
-
-      <h2>Quiz</h2>
-      <Quiz
-        question="What is cybersecurity?"
-        options={['Protecting data from threats', 'Creating viruses', 'Programming']}
-        correctAnswer="Protecting data from threats"
-      />
-      <Quiz
-        question="What is the purpose of cybersecurity?"
-        options={['To secure digital assets', 'To sell personal data', 'To encourage hacking']}
-        correctAnswer="To secure digital assets"
-      />
     </div>
   );
 }
 
-export default Lesson1;
+export default IntroLesson1;

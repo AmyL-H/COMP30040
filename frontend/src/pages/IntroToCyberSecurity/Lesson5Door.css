@@ -1,0 +1,109 @@
+/* Lesson 5 Door Page Styling */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .article-page {
+    padding: 30px 20px;
+    margin: 40px auto;
+    max-width: 900px;
+    color: #d1d5db;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .content-card {
+    background-color: rgba(30, 30, 47, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+  }
+  
+  .content-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  h1, h2 {
+    color: #008CFF;
+    text-shadow: 0px 0px 8px rgba(0, 140, 255, 0.8);
+  }
+  
+  ul {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .quiz-card {
+    border: 2px solid #008CFF;
+  }
+  
+  .quiz-question {
+    margin-bottom: 20px;
+  }
+  
+  .quiz-question-text {
+    font-weight: 600;
+  }
+  
+  .quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .quiz-option {
+    background-color: #008CFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .quiz-option:hover {
+    background-color: #339DFF;
+    transform: scale(1.05);
+  }
+  
+  .quiz-option.selected {
+    background-color: #00ff63;
+  }
+  
+  .submit-button {
+    background: #FF5733;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .submit-button:hover {
+    background: #ff7b5f;
+    transform: scale(1.05);
+  }
+  
+  .navigation-button button {
+    background-color: #008CFF;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .navigation-button button:hover {
+    background-color: #339DFF;
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  

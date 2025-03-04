@@ -1,19 +1,146 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Lesson1Door.css';
 
 const Lesson1Door = () => {
+  const navigate = useNavigate();
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [showResults, setShowResults] = useState(false);
+  
+  const quizQuestions = [
+    {
+      question: "What is the primary goal of cybersecurity?",
+      options: ["Protecting digital assets", "Hacking into systems", "Slowing down the internet", "Deleting data"],
+      correctAnswer: "Protecting digital assets"
+    },
+    {
+      question: "Which decade saw the introduction of firewalls and antivirus software?",
+      options: ["1970s", "1980s", "1990s", "2000s"],
+      correctAnswer: "1980s"
+    },
+    {
+      question: "What technology is used in modern cybersecurity to detect threats?",
+      options: ["Artificial Intelligence", "Typewriters", "Fax Machines", "Walkie-Talkies"],
+      correctAnswer: "Artificial Intelligence"
+    }
+  ];
+
+  const handleAnswerSelection = (questionIndex, answer) => {
+    setSelectedAnswers(prev => ({ ...prev, [questionIndex]: answer }));
+  };
+
+  const checkAnswers = () => {
+    setShowResults(true);
+  };
+
   return (
     <div className="article-page">
-      <h1>Introduction to Cybersecurity</h1>
-      <p>
-        Cybersecurity involves protecting systems, networks, and data from digital threats.
-        These threats aim to compromise sensitive information, disrupt operations, or extort
-        money. In our digital age, cybersecurity is more important than ever.
-      </p>
-      <p>
-        Whether you're safeguarding personal data or securing corporate networks, understanding
-        the basics of cybersecurity is essential.
-      </p>
+      <div className="content-card">
+        <h1>Lesson 1: What is Cybersecurity?</h1>
+        <p>
+          Cybersecurity is the practice of protecting digital systems, networks, and data from cyber threats.
+          These threats include malware, phishing, hacking attempts, and data breaches that can compromise personal,
+          corporate, and governmental information.
+        </p>
+      </div>
+
+      <div className="content-card">
+        <h2>Why is Cybersecurity Important?</h2>
+        <p>
+          In today's interconnected world, cybersecurity is essential for protecting sensitive data, preventing financial losses,
+          and maintaining trust in digital systems. Cyberattacks can target individuals, businesses, and governments, leading to
+          identity theft, economic damage, and national security risks.
+        </p>
+      </div>
+
+      <div className="content-card">
+        <h2>Types of Cyber Threats</h2>
+        <ul>
+          <li><strong>Malware:</strong> Malicious software such as viruses, worms, and ransomware designed to harm or exploit systems.</li>
+          <li><strong>Phishing:</strong> Fraudulent attempts to obtain sensitive information by impersonating a trustworthy entity.</li>
+          <li><strong>Denial-of-Service (DoS) Attacks:</strong> Overloading a system to make it unavailable to legitimate users.</li>
+          <li><strong>Man-in-the-Middle Attacks:</strong> Intercepting communications between two parties to steal or manipulate data.</li>
+        </ul>
+      </div>
+
+      <div className="content-card">
+        <h2>Key Principles of Cybersecurity</h2>
+        <p>The CIA Triad is a foundational model in cybersecurity, consisting of: <br/></p>
+        <div className="image-text-container">
+          <img src="/images/CIA.png" alt="CIA Triad" className="lesson-image" />
+          <ul className="styled-list">
+            <li><strong>Availability:</strong> Ensuring systems are available when needed.</li>
+            <li><strong>Integrity:</strong> Protecting data from unauthorized changes.</li>
+            <li><strong>Confidentiality:</strong> Ensuring data is accessible only to authorized users.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="content-card">
+        <h2>The Evolution of Cybersecurity</h2>
+        <section className="infographic-section">
+          <div className="timeline-container">
+            {[
+              { year: "1970s", text: "Early computer security focused on physical access control and password protection." },
+              { year: "1980s", text: "Introduction of antivirus software and basic firewalls to combat emerging threats." },
+              { year: "1990s", text: "The rise of the internet led to increased security protocols and encryption methods." },
+              { year: "2000s", text: "Comprehensive cybersecurity frameworks were developed as cyber threats became more sophisticated." },
+              { year: "2010s", text: "Advanced threat detection, multi-factor authentication, and AI-driven security emerged." },
+              { year: "2020s", text: "Cybersecurity now integrates automation, zero-trust models, and quantum-resistant encryption." }
+            ].map((item, index) => (
+              <div key={index} className="timeline-item">
+                <span className="timeline-year">{item.year}</span>
+                <span className="timeline-text">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <div className="content-card">
+        <h2>Cybersecurity Best Practices</h2>
+        <ul>
+          <li>Use strong, unique passwords and enable multi-factor authentication.</li>
+          <li>Keep software and systems updated to patch vulnerabilities.</li>
+          <li>Be cautious with email attachments and links to avoid phishing scams.</li>
+          <li>Use firewalls and antivirus software for added protection.</li>
+          <li>Regularly back up important data to prevent data loss.</li>
+        </ul>
+      </div>
+
+      <div className="content-card quiz-card">
+        <h2>Cybersecurity Knowledge Quiz</h2>
+        {quizQuestions.map((q, index) => (
+          <div key={index} className="quiz-question">
+            <p className="quiz-question-text">{q.question}</p>
+            <div className="quiz-options">
+              {q.options.map(option => (
+                <button 
+                  key={option} 
+                  className={`quiz-option ${selectedAnswers[index] === option ? "selected" : ""}`} 
+                  onClick={() => handleAnswerSelection(index, option)}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+        <button className="submit-button" onClick={checkAnswers}>Submit Answers</button>
+        {showResults && (
+          <div className="quiz-results">
+            {quizQuestions.map((q, index) => (
+              <p key={index} className={selectedAnswers[index] === q.correctAnswer ? "correct" : "incorrect"}>
+                {selectedAnswers[index] === q.correctAnswer ? "✅ Correct!" : `❌ Incorrect! The correct answer was: ${q.correctAnswer}`}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz1')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 };

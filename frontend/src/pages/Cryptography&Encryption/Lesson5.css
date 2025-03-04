@@ -1,0 +1,93 @@
+/* cryptoLesson5.css - Updated styling for Cryptography Lesson 5 */
+
+.lessonpage-container {
+  padding: 30px;
+  text-align: center;
+  background-color: #1e1e2f;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.title {
+  color: #008CFF;
+  text-shadow: 0px 0px 8px rgba(0, 140, 255, 0.8);
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.lesson-section {
+  margin-bottom: 30px;
+  background-color: #1e1e2f;
+  padding: 20px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.lesson-section h2 {
+  color: #008CFF;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.lesson-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: white;
+}
+
+.challenge-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px dashed #00ff63;
+  border-radius: 8px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.challenge-container button {
+  background: #008CFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.challenge-container button:hover {
+  background: #339DFF;
+}
+
+.door-section {
+  text-align: center;
+}
+
+.door-container {
+  margin-top: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.door-image {
+  width: 150px;
+  height: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.door-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 255, 100, 0.5);
+}
+
+.door-text {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: white;
+  text-align: center;
+}

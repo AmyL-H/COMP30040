@@ -1,23 +1,230 @@
+/* Overall Page Styling */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .article-page {
-    padding: 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .article-page h1 {
-    font-size: 2rem;
-    color: #2c3e50;
-  }
-  
-  .article-page p {
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.6;
-    text-align: justify;
-  }
-  
+  padding: 30px 20px;
+  margin: 40px auto;
+  max-width: 900px;
+  color: #d1d5db;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Card Container for Content Sections */
+.content-card {
+  background-color: rgba(30, 30, 47, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image & Text Alignment */
+.image-text-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lesson-image {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* List Styling */
+.styled-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.styled-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.list-image {
+  width: 40px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Headings */
+.content-card h1 {
+  font-size: 2.5rem;
+  color: #008CFF;
+  text-shadow: 0px 0px 8px rgba(0, 140, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.content-card h2 {
+  font-size: 1.8rem;
+  color: #00ffea;
+  margin-bottom: 15px;
+}
+
+/* Paragraphs and Lists */
+.content-card p,
+.content-card ul {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.content-card ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Infographic / Timeline Styling */
+.infographic-section {
+  margin: 20px 0;
+}
+
+.timeline-container {
+  border-left: 3px solid #008CFF;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  opacity: 0;
+  animation: slideIn 0.5s forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+.timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+.timeline-year {
+  font-weight: bold;
+  color: #008CFF;
+  min-width: 70px;
+}
+
+.timeline-text {
+  color: #d1d5db;
+  font-size: 1rem;
+}
+
+/* Quiz Card */
+.quiz-card {
+  border: 2px solid #008CFF;
+}
+
+/* Quiz Section */
+.quiz-question {
+  margin-bottom: 20px;
+}
+
+.quiz-question-text {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.quiz-option {
+  background-color: #008CFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.quiz-option:hover {
+  background-color: #339DFF;
+  transform: scale(1.05);
+}
+
+.quiz-option.selected {
+  background-color: #00ff63;
+}
+
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #FF5733;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+  background: #ff7b5f;
+  transform: scale(1.05);
+}
+
+.quiz-results p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.quiz-results .correct {
+  color: #00ff63;
+}
+
+.quiz-results .incorrect {
+  color: #ff4444;
+}
+
+/* Navigation Button */
+.navigation-button {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.navigation-button button {
+  background-color: #008CFF;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.navigation-button button:hover {
+  background-color: #339DFF;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
