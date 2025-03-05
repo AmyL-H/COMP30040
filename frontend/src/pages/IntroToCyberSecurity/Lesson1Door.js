@@ -107,36 +107,6 @@ const Lesson1Door = () => {
           <li>Regularly back up important data to prevent data loss.</li>
         </ul>
       </div>
-
-      <div className="content-card quiz-card">
-        <h2>Cybersecurity Knowledge Quiz</h2>
-        {quizQuestions.map((q, index) => (
-          <div key={index} className="quiz-question">
-            <p className="quiz-question-text">{q.question}</p>
-            <div className="quiz-options">
-              {q.options.map(option => (
-                <button 
-                  key={option} 
-                  className={`quiz-option ${selectedAnswers[index] === option ? "selected" : ""}`} 
-                  onClick={() => handleAnswerSelection(index, option)}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-        <button className="submit-button" onClick={checkAnswers}>Submit Answers</button>
-        {showResults && (
-          <div className="quiz-results">
-            {quizQuestions.map((q, index) => (
-              <p key={index} className={selectedAnswers[index] === q.correctAnswer ? "correct" : "incorrect"}>
-                {selectedAnswers[index] === q.correctAnswer ? "✅ Correct!" : `❌ Incorrect! The correct answer was: ${q.correctAnswer}`}
-              </p>
-            ))}
-          </div>
-        )}
-      </div>
       
       <div className="navigation-button">
         <button onClick={() => navigate('/lesson/quiz1')}>Proceed to Quiz</button>

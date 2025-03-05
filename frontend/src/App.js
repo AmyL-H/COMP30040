@@ -12,6 +12,7 @@ import Lesson2Door from './pages/IntroToCyberSecurity/Lesson2Door';
 import Lesson3Door from './pages/IntroToCyberSecurity/Lesson3Door';
 import Lesson4Door from './pages/IntroToCyberSecurity/Lesson4Door';
 import Lesson5Door from './pages/IntroToCyberSecurity/Lesson5Door';
+import Quiz1 from './pages/IntroToCyberSecurity/Quiz1';
 import './App.css';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/cybersecurity-intro-L3" element={<Lesson3Door />} />
           <Route path="/cybersecurity-intro-L4" element={<Lesson4Door />} />
           <Route path="/cybersecurity-intro-L5" element={<Lesson5Door />} />
+          <Route path="/lesson/quiz1" element={<Quiz1 />} />
         </Routes>
       </div>
     </Router>
