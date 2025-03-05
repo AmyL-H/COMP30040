@@ -8,31 +8,58 @@ import IntroLesson3 from '../pages/IntroToCyberSecurity/Lesson3';
 import IntroLesson4 from '../pages/IntroToCyberSecurity/Lesson4';
 import IntroLesson5 from '../pages/IntroToCyberSecurity/Lesson5';
 
-// Cryptography Lessons
+// Cryptography & Encryption Lessons
 import CryptoLesson1 from '../pages/Cryptography&Encryption/Lesson1';
 import CryptoLesson2 from '../pages/Cryptography&Encryption/Lesson2';
 import CryptoLesson3 from '../pages/Cryptography&Encryption/Lesson3';
 import CryptoLesson4 from '../pages/Cryptography&Encryption/Lesson4';
 import CryptoLesson5 from '../pages/Cryptography&Encryption/Lesson5';
 
+// Network Security Lessons
+import NetworkLesson1 from '../pages/NetworkSecurity/Lesson1';
+import NetworkLesson2 from '../pages/NetworkSecurity/Lesson2';
+import NetworkLesson3 from '../pages/NetworkSecurity/Lesson3';
+import NetworkLesson4 from '../pages/NetworkSecurity/Lesson4';
+import NetworkLesson5 from '../pages/NetworkSecurity/Lesson5';
+
+// Network Security Lessons
+import EthicalLesson1 from '../pages/EthicalHacking&PenetrationTesting/Lesson1';
+import EthicalLesson2 from '../pages/EthicalHacking&PenetrationTesting/Lesson2';
+import EthicalLesson3 from '../pages/EthicalHacking&PenetrationTesting/Lesson3';
+import EthicalLesson4 from '../pages/EthicalHacking&PenetrationTesting/Lesson4';
+import EthicalLesson5 from '../pages/EthicalHacking&PenetrationTesting/Lesson5';
+
 const LessonHandler = () => {
   const { lessonId, courseId } = useParams();
 
   const lessonMap = {
-    cybersecurity: {
+    "cybersecurity": {
       lesson1: <IntroLesson1 />,
       lesson2: <IntroLesson2 />,
       lesson3: <IntroLesson3 />,
       lesson4: <IntroLesson4 />,
       lesson5: <IntroLesson5 />,
     },
-    cryptography: {
+    "cryptography": {
       lesson1: <CryptoLesson1 />,
       lesson2: <CryptoLesson2 />,
       lesson3: <CryptoLesson3 />,
       lesson4: <CryptoLesson4 />,
       lesson5: <CryptoLesson5 />,
     },
+    "network-security": {
+      lesson1: <NetworkLesson1 />,
+      lesson2: <NetworkLesson2 />,
+      lesson3: <NetworkLesson3 />,
+      lesson4: <NetworkLesson4 />,
+      lesson5: <NetworkLesson5 />,
+    },"ethical-hacking": {
+      lesson1: <EthicalLesson1 />,
+      lesson2: <EthicalLesson2 />,
+      lesson3: <EthicalLesson3 />,
+      lesson4: <EthicalLesson4 />,
+      lesson5: <EthicalLesson5 />,
+    }
   };
 
   return lessonMap[courseId]?.[lessonId] || <h2>Lesson Not Found</h2>;
