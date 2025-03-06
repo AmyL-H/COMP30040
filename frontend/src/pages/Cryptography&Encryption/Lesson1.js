@@ -3,69 +3,62 @@ import { useNavigate } from 'react-router-dom';
 import './Lesson1.css';
 
 function CryptoLesson1() {
-  const [showTips, setShowTips] = useState(false);
   const navigate = useNavigate();
+  const [showQuestions, setShowQuestions] = useState(false);
 
   return (
     <div className="lessonpage-container">
-      <h1 className="title">Welcome to Lesson 1: Introduction to Cryptography</h1>
-
-      {/* Explanation Section */}
-      <section className="lesson-section">
+      <h1 className="title">Lesson 1: Introduction to Cryptography</h1>
+      
+      <div className="lesson-section">
         <p className="lesson-text">
-          In this lesson, you'll explore the fundamentals of cryptography—the art and science of secure communication.
-          Discover how ancient techniques evolved into modern encryption methods that protect data in today’s digital age.
+          Cryptography is the art and science of converting information into a secure format so that only intended recipients can decode and understand it. 
+          Its origins can be traced back to ancient civilizations, where simple substitution ciphers were used to protect messages. Over time, as communication technologies evolved,
+          cryptography advanced from basic ciphers to complex algorithms that form the foundation of digital security today.
         </p>
-      </section>
-
-      {/* What is Cryptography */}
-      <section className="lesson-section">
-        <h2>What is Cryptography?</h2>
         <p className="lesson-text">
-          Cryptography involves converting information into a secure format through processes such as encryption and decryption,
-          using keys and ciphers to safeguard data from unauthorized access.
+          In modern security, cryptography is not only used for protecting confidential data but also for ensuring the integrity and authenticity of information.
+          The fundamental concepts include <strong>encryption</strong> (the process of converting plaintext into ciphertext),
+          <strong>decryption</strong> (reversing the process), <strong>keys</strong> (the secret values used in encryption algorithms), and <strong>ciphers</strong> (the algorithms that transform the data).
         </p>
-      </section>
-
-      {/* Animated Flowchart */}
-      <section className="lesson-section">
+      </div>
+      
+      <div className="lesson-section">
         <h2>Animated Flowchart</h2>
         <p className="lesson-text">
-          [Interactive Flowchart Placeholder: Visualize the process of encryption and decryption]
+          [Interactive Flowchart Placeholder: Follow a visual representation of the encryption and decryption process.
+          Notice how each step – from key generation to cipher execution – builds on the previous one to ensure security.]
         </p>
-      </section>
-
-      {/* Guided Questions */}
-      <section className="lesson-section">
-        <h2>Guided Questions</h2>
-        <ul className="lesson-text">
-          <li>How did ancient cryptography techniques influence modern encryption?</li>
-          <li>What role do keys play in securing information?</li>
-          <li>Why is cryptography essential in today’s digital world?</li>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Guided Reflective Questions</h2>
+        <p className="lesson-text">
+          Reflect on the following:
+        </p>
+        <ul className="styled-list">
+          <li>How did ancient ciphers pave the way for modern encryption techniques?</li>
+          <li>Why are keys considered the cornerstone of cryptographic security?</li>
+          <li>In what ways does cryptography protect both data confidentiality and integrity?</li>
         </ul>
-      </section>
-
-      {/* Tips Section */}
-      <section className="lesson-section">
-        <h2>Tips for Success</h2>
-        <button className={`toggle-button ${showTips ? "active" : ""}`} onClick={() => setShowTips(!showTips)}>
-          {showTips ? 'Hide Tips' : 'Show Tips'}
+        <button className="toggle-button" onClick={() => setShowQuestions(!showQuestions)}>
+          {showQuestions ? "Hide Additional Insights" : "Show Additional Insights"}
         </button>
-        <div className={`tips-container ${showTips ? "visible" : "hidden"}`}>
-          <div className="tip-card">
-            <h3>🔍 Explore Concepts</h3>
-            <p>Look up additional encryption examples to see real-world applications.</p>
+        {showQuestions && (
+          <div className="tips-container">
+            <div className="tip-card">
+              <p>Consider how the limitations of ancient ciphers led to the development of more secure, mathematically based algorithms.</p>
+            </div>
+            <div className="tip-card">
+              <p>Reflect on real-world examples such as online banking and secure messaging where cryptography is vital.</p>
+            </div>
           </div>
-          <div className="tip-card">
-            <h3>📝 Take Notes</h3>
-            <p>Jot down key terms and ideas as you learn them for future reference.</p>
-          </div>
-          <div className="tip-card">
-            <h3>💡 Stay Curious</h3>
-            <p>Consider how cryptography impacts everyday technology, from emails to online banking.</p>
-          </div>
-        </div>
-      </section>
+        )}
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz1')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 }

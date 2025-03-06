@@ -1,0 +1,170 @@
+/* CyberQuiz4.css - Styling for the Lesson 4 Security Frameworks Quiz Page */
+
+.quiz-page {
+    padding: 30px;
+    text-align: center;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  .quiz-title {
+    color: #008CFF;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0,140,255,0.8);
+  }
+  
+  .quiz-questions {
+    margin-bottom: 30px;
+  }
+  
+  .quiz-question {
+    background-color: #1e1e2f;
+    padding: 20px;
+    text-align: left;
+    margin: 20px auto;
+    max-width: 800px;
+    border-bottom: 1px solid #444466;
+  }
+  
+  .question-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .option-button {
+    background-color: #008CFF;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .option-button:hover {
+    background-color: #339DFF;
+  }
+  
+  .option-button.selected {
+    background-color: #00ff63;
+  }
+  
+  .drag-drop-container {
+    margin: 15px 0;
+  }
+  
+  .drop-zone {
+    background-color: #2a2a4c;
+    border: 2px dashed #008CFF;
+    padding: 15px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    min-height: 40px;
+  }
+  
+  .draggable-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .draggable-option {
+    background-color: #008CFF;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: grab;
+    color: white;
+  }
+  
+  .matching-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .matching-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .matching-item select {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    background-color: #00ff63;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #33ff80;
+  }
+  
+  .result-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .score-animation {
+    font-size: 2rem;
+    color: #00ff63;
+    animation: popIn 1s ease-in-out;
+  }
+  
+  @keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .feedback {
+    margin-top: 10px;
+  }
+  
+  .correct-feedback {
+    color: #00ff63;
+    font-weight: bold;
+  }
+  
+  .incorrect-feedback {
+    color: #ff4747;
+    font-weight: bold;
+  }
+  
+  .result-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .result-actions button {
+    background-color: #008CFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: white;
+  }
+  
+  .result-actions button:hover {
+    background-color: #339DFF;
+  }
+  

@@ -2,55 +2,63 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Lesson1.css';
 
-function NetworkLesson1() {
-  const [showQuestions, setShowQuestions] = useState(false);
+function NetworkSecurityLesson1() {
   const navigate = useNavigate();
+  const [showQuestions, setShowQuestions] = useState(false);
 
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 1: Introduction to Network Security</h1>
       
-      {/* Text Explanation */}
-      <section className="lesson-section">
+      <div className="lesson-section">
         <p className="lesson-text">
-          In this lesson, you'll learn the fundamentals of network security. Understand key concepts, protocols, and models that ensure secure data transmission across networks.
+          Network security is the practice of protecting data during transmission and at rest, ensuring that the integrity, confidentiality, and availability of information is maintained. 
+          It encompasses a wide range of practices, protocols, and tools designed to prevent unauthorized access, misuse, or theft of digital data.
         </p>
-      </section>
-      
-      {/* Animated Flowchart */}
-      <section className="lesson-section">
-        <h2>Animated Flowchart</h2>
         <p className="lesson-text">
-          [Interactive Flowchart Placeholder: See how data flows securely through a network]
+          At its core, network security involves understanding how data moves across networks—whether local area networks (LANs), wide area networks (WANs), or the Internet—and applying security measures at every level.
+          Essential concepts include firewalls, encryption, access control, and intrusion detection systems (IDS/IPS). Protocols such as SSL/TLS, IPSec, and VPNs ensure that data flows securely from one point to another.
         </p>
-      </section>
+      </div>
       
-      {/* Guided Questions */}
-      <section className="lesson-section">
-        <h2>Guided Questions</h2>
-        <button
-          className={`toggle-button ${showQuestions ? "active" : ""}`}
-          onClick={() => setShowQuestions(!showQuestions)}
-        >
-          {showQuestions ? 'Hide Questions' : 'Show Questions'}
+      <div className="lesson-section">
+        <h2>Animated Flowchart of Secure Data Flow</h2>
+        <p className="lesson-text">
+          [Animated Flowchart Placeholder: This interactive diagram visually breaks down how data is transmitted securely through networks.
+          Notice how encryption, tunneling, and authentication work together to protect information in transit.]
+        </p>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Guided Reflective Questions</h2>
+        <p className="lesson-text">
+          Reflect on these questions to deepen your understanding:
+        </p>
+        <ul className="styled-list">
+          <li>How do network protocols contribute to data security?</li>
+          <li>What are the most critical components of a secure network architecture?</li>
+          <li>How can an organization balance accessibility with strict security controls?</li>
+        </ul>
+        <button className="toggle-button" onClick={() => setShowQuestions(!showQuestions)}>
+          {showQuestions ? "Hide Additional Insights" : "Show Additional Insights"}
         </button>
-        <div className={`tips-container ${showQuestions ? "visible" : "hidden"}`}>
-          <div className="tip-card">
-            <h3>❓ Question 1</h3>
-            <p>How do secure protocols protect data transmission?</p>
+        {showQuestions && (
+          <div className="tips-container">
+            <div className="tip-card">
+              <p>Consider how layering multiple security measures (defense in depth) can reduce overall risk.</p>
+            </div>
+            <div className="tip-card">
+              <p>Think about real-world scenarios like online banking or remote work and the protocols that secure these communications.</p>
+            </div>
           </div>
-          <div className="tip-card">
-            <h3>❓ Question 2</h3>
-            <p>What are the main components of a secure network architecture?</p>
-          </div>
-          <div className="tip-card">
-            <h3>❓ Question 3</h3>
-            <p>How can vulnerabilities in network protocols be mitigated?</p>
-          </div>
-        </div>
-      </section>  
+        )}
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz1')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 }
 
-export default NetworkLesson1;
+export default NetworkSecurityLesson1;

@@ -2,69 +2,73 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Lesson3.css';
 
-function EthicalLesson3() {
+function EthicalHackingLesson3() {
   const navigate = useNavigate();
-  const [toolDetails, setToolDetails] = useState({
-    metasploit: false,
-    nmap: false,
-    wireshark: false,
-  });
+  const [showToolDetails, setShowToolDetails] = useState({});
 
-  const toggleTool = (tool) => {
-    setToolDetails((prevState) => ({ ...prevState, [tool]: !prevState[tool] }));
+  const toggleToolDetails = (tool) => {
+    setShowToolDetails(prev => ({ ...prev, [tool]: !prev[tool] }));
   };
 
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 3: Ethical Hacking Tools and Techniques</h1>
       
-      {/* Text Explanation */}
-      <section className="lesson-section">
+      <div className="lesson-section">
         <p className="lesson-text">
-          Learn about the key tools used in ethical hacking such as Metasploit, Nmap, and Wireshark. These tools are essential for assessing security and uncovering vulnerabilities.
+          Ethical hacking relies on a range of powerful tools to identify vulnerabilities and test defenses. In this lesson, we will examine popular tools such as <strong>Metasploit</strong> (for exploitation), <strong>Nmap</strong> (for network scanning), and <strong>Wireshark</strong> (for packet analysis). Each tool plays a critical role in different phases of penetration testing.
         </p>
-      </section>
+        <p className="lesson-text">
+          Understanding how and when to use these tools is essential for effective security testing.
+        </p>
+      </div>
       
-      {/* Interactive Tool Cards */}
-      <section className="lesson-section">
+      <div className="lesson-section">
         <h2>Interactive Tool Cards</h2>
+        <p className="lesson-text">
+          [Interactive Tool Cards Placeholder: Click each card to reveal detailed information about how the tool works and its role in the testing process.]
+        </p>
         <div className="tool-cards">
-          <div className="tool-card" onClick={() => toggleTool('metasploit')}>
+          <div className="tool-card" onClick={() => toggleToolDetails("Metasploit")}>
             <h3>Metasploit</h3>
-            {toolDetails.metasploit && (
+            {showToolDetails["Metasploit"] && (
               <p className="lesson-text">
-                Metasploit is a powerful framework for developing and executing exploit code against target systems.
+                Metasploit is a comprehensive framework that provides a suite of tools for developing and executing exploit code against a target system. It is essential for testing vulnerabilities in real-world scenarios.
               </p>
             )}
           </div>
-          <div className="tool-card" onClick={() => toggleTool('nmap')}>
+          <div className="tool-card" onClick={() => toggleToolDetails("Nmap")}>
             <h3>Nmap</h3>
-            {toolDetails.nmap && (
+            {showToolDetails["Nmap"] && (
               <p className="lesson-text">
-                Nmap is a network scanning tool used to discover hosts and services on a computer network.
+                Nmap is a powerful network scanning tool that discovers hosts and services on a network, helping to identify potential vulnerabilities.
               </p>
             )}
           </div>
-          <div className="tool-card" onClick={() => toggleTool('wireshark')}>
+          <div className="tool-card" onClick={() => toggleToolDetails("Wireshark")}>
             <h3>Wireshark</h3>
-            {toolDetails.wireshark && (
+            {showToolDetails["Wireshark"] && (
               <p className="lesson-text">
-                Wireshark is a network protocol analyzer that captures and interactively analyzes network traffic.
+                Wireshark is a network protocol analyzer that captures and analyzes packets in real-time, allowing ethical hackers to inspect traffic and detect anomalies.
               </p>
             )}
           </div>
         </div>
-      </section>
+      </div>
       
-      {/* Interactive Quiz & Hands-On Lab */}
-      <section className="lesson-section">
+      <div className="lesson-section">
         <h2>Interactive Quiz & Hands-On Lab</h2>
         <p className="lesson-text">
-          [Quiz and Hands-On Lab Placeholder: Test your knowledge and practice basic penetration testing techniques in a simulated environment]
+          Test your knowledge through a short interactive quiz and try a browser-based simulation lab where you can experiment with basic penetration testing techniques.
+          These activities help bridge the gap between theory and practice.
         </p>
-      </section>
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz3')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 }
 
-export default EthicalLesson3;
+export default EthicalHackingLesson3;

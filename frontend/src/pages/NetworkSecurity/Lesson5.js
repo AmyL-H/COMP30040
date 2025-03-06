@@ -2,37 +2,58 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Lesson5.css';
 
-function NetworkLesson5() {
+function NetworkSecurityLesson5() {
   const navigate = useNavigate();
 
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 5: Network Vulnerability Assessments</h1>
       
-      {/* Text Explanation & Case Studies */}
-      <section className="lesson-section">
+      <div className="lesson-section">
         <p className="lesson-text">
-          This lesson introduces vulnerability assessments and penetration testing. Learn about scanning tools like Nmap and Nessus, review case studies of network breaches, and explore best practices for managing and remediating vulnerabilities.
+          Vulnerability assessments and penetration testing are essential for identifying and mitigating weaknesses within a network. 
+          These assessments use a variety of tools, such as Nmap for scanning and Nessus for vulnerability detection, to uncover security gaps before attackers can exploit them.
         </p>
-      </section>
+      </div>
       
-      {/* Interactive Lab */}
-      <section className="lesson-section">
-        <h2>Interactive Lab</h2>
+      <div className="lesson-section">
+        <h2>Vulnerability Scanning Tools</h2>
         <p className="lesson-text">
-          [Interactive Lab Placeholder: Use a simulated vulnerability scanning tool to identify network weaknesses]
+          Tools such as <strong>Nmap</strong> and <strong>Nessus</strong> are commonly used to scan networks for open ports, misconfigurations, and software vulnerabilities.
+          These tools help security professionals proactively manage risks by identifying areas that need remediation.
         </p>
-      </section>
+      </div>
       
-      {/* Collaborative Discussion */}
-      <section className="lesson-section">
-        <h2>Collaborative Discussion</h2>
+      <div className="lesson-section">
+        <h2>Best Practices for Vulnerability Management</h2>
         <p className="lesson-text">
-          [Discussion Placeholder: Engage with peers to analyze case studies and discuss ethical considerations]
+          Effective vulnerability management includes regular scans, timely patching, and continuous monitoring.
+          A comprehensive approach also involves prioritizing vulnerabilities based on risk, and implementing remediation measures to mitigate potential impacts.
         </p>
-      </section>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Ethical Considerations</h2>
+        <p className="lesson-text">
+          Conducting vulnerability assessments comes with ethical and legal responsibilities. It is crucial to obtain proper authorization before testing,
+          and to report findings in a manner that supports remediation without exposing sensitive information to unnecessary risk.
+        </p>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Interactive Lab & Group Discussion</h2>
+        <p className="lesson-text">
+          [Interactive Lab Placeholder: Use a simulated vulnerability scanning tool to identify weaknesses in a virtual network environment.]
+          <br/><br/>
+          Engage in group discussions to analyze real-world breach case studies and debate the most effective vulnerability management strategies.
+        </p>
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz5')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 }
 
-export default NetworkLesson5;
+export default NetworkSecurityLesson5;

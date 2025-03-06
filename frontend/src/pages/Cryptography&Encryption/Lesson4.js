@@ -3,51 +3,48 @@ import { useNavigate } from 'react-router-dom';
 import './Lesson4.css';
 
 function CryptoLesson4() {
-  const [diagramNodes] = useState({
-    node1: { top: 20, left: 20 },
-    node2: { top: 50, left: 150 },
-    node3: { top: 100, left: 80 },
-  });
   const navigate = useNavigate();
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 4: Public Key Infrastructure (PKI)</h1>
       
-      {/* Understanding PKI */}
-      <section className="lesson-section">
-        <h2>Understanding PKI</h2>
+      <div className="lesson-section">
         <p className="lesson-text">
-          PKI manages digital certificates and key pairs to secure communications, ensuring authenticity through trusted certificate authorities (CAs).
+          Public Key Infrastructure (PKI) is the system that underpins secure communications on the internet. It uses digital certificates issued by trusted Certificate Authorities (CAs) 
+          and key pairs (public and private keys) to verify identities and secure data transmission. PKI not only enables secure email and website encryption but also plays a vital role in digital signatures.
         </p>
-      </section>
-
-      {/* Digital Signatures */}
-      <section className="lesson-section">
-        <h2>Digital Signatures & Authentication</h2>
         <p className="lesson-text">
-          Digital signatures use a private key to sign data and a public key to verify its authenticity, safeguarding data integrity.
+          By establishing a chain of trust, PKI ensures that entities communicating online are who they claim to be. This framework is fundamental in securing protocols like SSL/TLS.
         </p>
-      </section>
-
-      {/* Interactive PKI Diagram */}
-      <section className="lesson-section">
-        <h2>Interactive PKI Diagram</h2>
-        <div className="diagram-container">
-          <div className="node" id="node1" style={{ top: `${diagramNodes.node1.top}px`, left: `${diagramNodes.node1.left}px` }}>
-            Certificate Authority
-          </div>
-          <div className="node" id="node2" style={{ top: `${diagramNodes.node2.top}px`, left: `${diagramNodes.node2.left}px` }}>
-            Public Key
-          </div>
-          <div className="node" id="node3" style={{ top: `${diagramNodes.node3.top}px`, left: `${diagramNodes.node3.left}px` }}>
-            Private Key
-          </div>
-        </div>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Step-by-Step Explanation</h2>
         <p className="lesson-text">
-          [Drag-and-Drop Activity Placeholder: Match PKI components with their functions]
+          PKI involves several key components:
+          <br/><br/>
+          1. <strong>Digital Certificates:</strong> Issued by CAs, these certificates bind a public key to an entity’s identity.
+          <br/>
+          2. <strong>Certificate Authorities (CAs):</strong> Trusted organizations that verify identities and issue digital certificates.
+          <br/>
+          3. <strong>Key Pairs:</strong> The public key is shared openly, while the private key is kept secure.
+          <br/><br/>
+          This systematic approach ensures that data encrypted with a public key can only be decrypted by the corresponding private key.
         </p>
-      </section>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Interactive Diagram & Drag-and-Drop Activity</h2>
+        <p className="lesson-text">
+          [Interactive Diagram Placeholder: Explore a labeled diagram of the PKI structure. Use the drag-and-drop activity to match components such as "Certificate Authority," "Public Key," and "Private Key" with their respective functions.]
+        </p>
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz4')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 }

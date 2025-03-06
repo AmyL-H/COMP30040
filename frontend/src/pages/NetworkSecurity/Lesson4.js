@@ -2,37 +2,48 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Lesson4.css';
 
-function NetworkLesson4() {
+function NetworkSecurityLesson4() {
   const navigate = useNavigate();
 
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 4: Wireless Network Security</h1>
       
-      {/* Text Explanation */}
-      <section className="lesson-section">
+      <div className="lesson-section">
         <p className="lesson-text">
-          This lesson covers wireless network security, including standards like WEP, WPA, WPA2, and WPA3. Learn about threats such as rogue access points and eavesdropping, and discover techniques to secure wireless networks.
+          Wireless networks are ubiquitous, yet they present unique security challenges. Unlike wired networks, wireless networks are more susceptible to eavesdropping,
+          rogue access points, and unauthorized access. Understanding wireless standards such as WEP, WPA, WPA2, and WPA3 is key to deploying robust defenses.
         </p>
-      </section>
+      </div>
       
-      {/* Animated Diagram */}
-      <section className="lesson-section">
-        <h2>Animated Diagram</h2>
+      <div className="lesson-section">
+        <h2>Wireless Security Protocols</h2>
         <p className="lesson-text">
-          [Animated Diagram Placeholder: Visualize secure wireless network architecture and how data is protected]
+          <strong>WEP:</strong> An outdated and insecure protocol. <br/>
+          <strong>WPA/WPA2:</strong> Improved protocols with better encryption, though WPA2 may be vulnerable to some attacks. <br/>
+          <strong>WPA3:</strong> The latest standard providing enhanced protection, especially against brute-force attacks.
         </p>
-      </section>
+      </div>
       
-      {/* Hands-On Activity */}
-      <section className="lesson-section">
-        <h2>Hands-On Activity</h2>
+      <div className="lesson-section">
+        <h2>Interactive Wireless Diagram</h2>
         <p className="lesson-text">
-          [Simulation Placeholder: Configure wireless security settings and choose appropriate protocols]
+          [Interactive Diagram Placeholder: Explore a visual representation of a secure wireless network architecture, highlighting encryption methods and authentication processes.]
         </p>
-      </section>
+      </div>
+      
+      <div className="lesson-section">
+        <h2>Hands-On Wireless Configuration Activity</h2>
+        <p className="lesson-text">
+          [Simulation Placeholder: Configure wireless security settings in a simulated environment. Choose appropriate protocols and authentication measures to secure a network.]
+        </p>
+      </div>
+      
+      <div className="navigation-button">
+        <button onClick={() => navigate('/lesson/quiz4')}>Proceed to Quiz</button>
+      </div>
     </div>
   );
 }
 
-export default NetworkLesson4;
+export default NetworkSecurityLesson4;
