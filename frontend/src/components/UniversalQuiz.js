@@ -8,7 +8,7 @@ const UniversalQuiz = ({ questions, backRoute, title }) => {
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
 
-  // This useEffect scrolls to the top by referencing the element with id 'top'
+  // Scroll to top when submitted changes
   useEffect(() => {
     const topElement = document.getElementById('top');
     if (topElement) {
@@ -52,9 +52,9 @@ const UniversalQuiz = ({ questions, backRoute, title }) => {
     setSubmitted(true);
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100); // Adjust the delay if needed
+    }, 100);
   };
-  
+
   const handleRetake = () => {
     setAnswers({});
     setSubmitted(false);
@@ -66,9 +66,7 @@ const UniversalQuiz = ({ questions, backRoute, title }) => {
 
   return (
     <div className="quiz-page">
-      {/* Dummy element to serve as the scroll target */}
       <div id="top"></div>
-      
       <h1 className="quiz-title">{title}</h1>
       <div className="quiz-questions">
         {questions.map(q => (

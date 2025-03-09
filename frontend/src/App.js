@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/TopPage';
 import HomePage from './pages/HomePage';
-import Register from './components/Register';
+import Register from './pages/Register';
+import Login from './pages/Login';
 import DarkModeToggle from './components/DarkModeToggle';
 import Navbar from './components/Navbar'; 
 import CoursePage from './pages/CoursePage';
@@ -20,8 +20,6 @@ import CyberQuiz3 from './pages/IntroToCyberSecurity/Quiz3';
 import CyberQuiz4 from './pages/IntroToCyberSecurity/Quiz4';
 import CyberQuiz5 from './pages/IntroToCyberSecurity/Quiz5';
 import './App.css';
-
-
 
 function App() {
 
@@ -46,7 +44,8 @@ function App() {
         <DarkModeToggle toggleDarkMode={toggleDarkMode} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<Register />} />
           <Route path="/coursepage" element={<CoursePage />} />
           <Route path="/course/:courseId" element={<CourseInfo />} />
           <Route path="/course/:courseId/lesson/:lessonId" element={<LessonHandler />} />

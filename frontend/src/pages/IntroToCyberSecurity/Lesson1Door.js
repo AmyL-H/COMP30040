@@ -1,37 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Lesson1Door.css';
 
 const Lesson1Door = () => {
   const navigate = useNavigate();
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [showResults, setShowResults] = useState(false);
-  
-  const quizQuestions = [
-    {
-      question: "What is the primary goal of cybersecurity?",
-      options: ["Protecting digital assets", "Hacking into systems", "Slowing down the internet", "Deleting data"],
-      correctAnswer: "Protecting digital assets"
-    },
-    {
-      question: "Which decade saw the introduction of firewalls and antivirus software?",
-      options: ["1970s", "1980s", "1990s", "2000s"],
-      correctAnswer: "1980s"
-    },
-    {
-      question: "What technology is used in modern cybersecurity to detect threats?",
-      options: ["Artificial Intelligence", "Typewriters", "Fax Machines", "Walkie-Talkies"],
-      correctAnswer: "Artificial Intelligence"
-    }
-  ];
-
-  const handleAnswerSelection = (questionIndex, answer) => {
-    setSelectedAnswers(prev => ({ ...prev, [questionIndex]: answer }));
-  };
-
-  const checkAnswers = () => {
-    setShowResults(true);
-  };
 
   return (
     <div className="article-page">

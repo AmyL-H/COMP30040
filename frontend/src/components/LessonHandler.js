@@ -2,11 +2,11 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 // Intro to Cybersecurity Lessons
-import IntroLesson1 from '../pages/IntroToCyberSecurity/Lesson1';
-import IntroLesson2 from '../pages/IntroToCyberSecurity/Lesson2';
-import IntroLesson3 from '../pages/IntroToCyberSecurity/Lesson3';
-import IntroLesson4 from '../pages/IntroToCyberSecurity/Lesson4';
-import IntroLesson5 from '../pages/IntroToCyberSecurity/Lesson5';
+import IntroLesson1 from '../pages/IntroToCyberSecurity/Lesson1Door';
+import IntroLesson2 from '../pages/IntroToCyberSecurity/Lesson2Door';
+import IntroLesson3 from '../pages/IntroToCyberSecurity/Lesson3Door';
+import IntroLesson4 from '../pages/IntroToCyberSecurity/Lesson4Door';
+import IntroLesson5 from '../pages/IntroToCyberSecurity/Lesson5Door';
 
 // Cryptography & Encryption Lessons
 import CryptoLesson1 from '../pages/Cryptography&Encryption/Lesson1';
@@ -22,7 +22,7 @@ import NetworkLesson3 from '../pages/NetworkSecurity/Lesson3';
 import NetworkLesson4 from '../pages/NetworkSecurity/Lesson4';
 import NetworkLesson5 from '../pages/NetworkSecurity/Lesson5';
 
-// Network Security Lessons
+// Ethical Hacking & Penetration Testing Lessons
 import EthicalLesson1 from '../pages/EthicalHacking&PenetrationTesting/Lesson1';
 import EthicalLesson2 from '../pages/EthicalHacking&PenetrationTesting/Lesson2';
 import EthicalLesson3 from '../pages/EthicalHacking&PenetrationTesting/Lesson3';
@@ -53,7 +53,8 @@ const LessonHandler = () => {
       lesson3: <NetworkLesson3 />,
       lesson4: <NetworkLesson4 />,
       lesson5: <NetworkLesson5 />,
-    },"ethical-hacking": {
+    },
+    "ethical-hacking": {
       lesson1: <EthicalLesson1 />,
       lesson2: <EthicalLesson2 />,
       lesson3: <EthicalLesson3 />,
