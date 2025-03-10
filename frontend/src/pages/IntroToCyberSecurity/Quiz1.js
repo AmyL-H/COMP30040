@@ -101,8 +101,10 @@ function CyberQuiz1() {
       questions={quizQuestions}
       backRoute="/cybersecurity-intro-L1"
       title="Cybersecurity Knowledge Quiz"
-      currentLessonId="lesson1"       // Current lesson ID for progress tracking
-      nextLessonId="lesson2"          // Next lesson ID to unlock if passing score is achieved
+      currentLessonId="lesson1"     
+      nextLessonId="lesson2"
+      retakeRoute="/lesson/quiz1"     
+      nextRoute="/cybersecurity-intro-L2"       
     />
   );
 }

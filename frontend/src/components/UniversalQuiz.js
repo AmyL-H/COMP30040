@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './UniversalQuiz.css';
 
-const UniversalQuiz = ({ questions, backRoute, title }) => {
+const UniversalQuiz = ({ 
+  questions, 
+  backRoute, 
+  title, 
+  currentLessonId, 
+  nextLessonId, 
+  retakeRoute, 
+  nextRoute 
+}) => {
   const navigate = useNavigate();
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Scroll to top when submitted changes
+  // Scroll to top when quiz is submitted
   useEffect(() => {
     const topElement = document.getElementById('top');
     if (topElement) {
@@ -53,6 +62,65 @@ const UniversalQuiz = ({ questions, backRoute, title }) => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
+
+    // Calculate percentage and XP earned (5 XP per correct answer)
+    const percentage = (sc / questions.length) * 100;
+    const xpEarned = sc * 5;
+
+    // Update XP on backend
+    axios.put('http://localhost:5000/api/progress/updateXP', { xpEarned }, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    })
+    .then(res => {
+      console.log('XP updated', res.data);
+      // Update localStorage user object with new XP
+      let currentUser = JSON.parse(localStorage.getItem('user')) || {};
+      currentUser.xp = (currentUser.xp || 0) + xpEarned;
+      localStorage.setItem('user', JSON.stringify(currentUser));
+    })
+    .catch(err => {
+      console.error('Failed to update XP', err.response ? err.response.data : err);
+    });
+
+    // Update lesson progress on backend if passed (percentage >= 50%)
+    if (percentage >= 50) {
+      axios.put('http://localhost:5000/api/progress/update', {
+        lessonId: currentLessonId,
+        score: percentage,
+        nextLessonId: nextLessonId
+      }, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
+      .then(res => {
+        console.log('Progress updated', res.data);
+        let currentUser = JSON.parse(localStorage.getItem('user')) || {};
+        currentUser.progress = currentUser.progress || {};
+        currentUser.progress[currentLessonId] = percentage;
+        if (nextLessonId && currentUser.progress[nextLessonId] === undefined) {
+          currentUser.progress[nextLessonId] = 0;
+        }
+        localStorage.setItem('user', JSON.stringify(currentUser));
+        window.dispatchEvent(new Event('progressUpdated'));
+      })
+      .catch(err => {
+        console.error('Failed to update progress', err.response ? err.response.data : err);
+      });
+    }
+
+    // Navigate to Quiz Summary page with all summary data
+    navigate('/quiz-summary', {
+      state: {
+        score: sc,
+        total: questions.length,
+        percentage,
+        xpEarned,
+        questions,
+        answers,
+        backRoute,
+        retakeRoute,
+        nextRoute
+      }
+    });
   };
 
   const handleRetake = () => {
@@ -66,7 +134,9 @@ const UniversalQuiz = ({ questions, backRoute, title }) => {
 
   return (
     <div className="quiz-page">
+      {/* Dummy element for scroll target */}
       <div id="top"></div>
+      
       <h1 className="quiz-title">{title}</h1>
       <div className="quiz-questions">
         {questions.map(q => (
@@ -140,43 +210,12 @@ const UniversalQuiz = ({ questions, backRoute, title }) => {
                 ))}
               </div>
             )}
-            {submitted && (
-              <div className="feedback">
-                {q.type !== 'matching' ? (
-                  (answers[q.id] || "").trim().toLowerCase() === q.correctAnswer.toLowerCase() ? (
-                    <p className="correct-feedback">✅ Correct! {q.explanation[answers[q.id]]}</p>
-                  ) : (
-                    <p className="incorrect-feedback">❌ Incorrect. {q.explanation[answers[q.id]] || "Review the lesson and try again."}</p>
-                  )
-                ) : (
-                  (() => {
-                    let correct = true;
-                    q.terms.forEach(term => {
-                      if ((answers[q.id] && answers[q.id][term]) !== q.correctAnswer[term]) {
-                        correct = false;
-                      }
-                    });
-                    return correct ? <p className="correct-feedback">✅ Correct match!</p> : <p className="incorrect-feedback">❌ Incorrect match. Review the lesson and try again.</p>;
-                  })()
-                )}
-              </div>
-            )}
           </div>
         ))}
       </div>
       
-      {!submitted ? (
+      {!submitted && (
         <button className="submit-button" onClick={handleSubmit}>Submit Answers</button>
-      ) : (
-        <div className="result-container">
-          <div className="score-animation">
-            <p>Your Score: {score} / {questions.length}</p>
-          </div>
-          <div className="result-actions">
-            <button onClick={handleRetake}>Retake Quiz</button>
-            <button onClick={() => navigate(backRoute)}>Back to Lesson</button>
-          </div>
-        </div>
       )}
     </div>
   );

@@ -20,13 +20,14 @@ function Navbar() {
     }
   };
 
+  // Update user state from localStorage
   const updateUser = () => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       try {
         setUser(JSON.parse(storedUser));
       } catch (err) {
-        console.error("Error parsing user:", err);
+        console.error("Error parsing user data:", err);
         setUser(null);
       }
     } else {
@@ -37,11 +38,11 @@ function Navbar() {
   useEffect(() => {
     showButton();
     window.addEventListener('resize', showButton);
-    updateUser(); // initial load
-    window.addEventListener('userLoggedIn', updateUser);
+    updateUser();
+    window.addEventListener('progressUpdated', updateUser);
     return () => {
       window.removeEventListener('resize', showButton);
-      window.removeEventListener('userLoggedIn', updateUser);
+      window.removeEventListener('progressUpdated', updateUser);
     };
   }, []);
 
@@ -96,7 +97,9 @@ function Navbar() {
             <div className="nav-buttons">
               {user ? (
                 <div className="nav-profile">
-                  <span className="profile-info">Logged in as {user.name}</span>
+                  <span className="profile-info">
+                    Logged in as {user.name} (XP: {user.xp || 0})
+                  </span>
                   <button onClick={handleLogout} className="logout-button">Logout</button>
                 </div>
               ) : (

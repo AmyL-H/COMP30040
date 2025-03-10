@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import DarkModeToggle from './components/DarkModeToggle';
-import Navbar from './components/Navbar'; 
+import Navbar from './components/Navbar';
 import CoursePage from './pages/CoursePage';
 import CourseInfo from './pages/CourseInfo';
 import LessonHandler from './components/LessonHandler';
@@ -19,10 +19,10 @@ import CyberQuiz2 from './pages/IntroToCyberSecurity/Quiz2';
 import CyberQuiz3 from './pages/IntroToCyberSecurity/Quiz3';
 import CyberQuiz4 from './pages/IntroToCyberSecurity/Quiz4';
 import CyberQuiz5 from './pages/IntroToCyberSecurity/Quiz5';
+import QuizSummary from './components/QuizSummary';
 import './App.css';
 
 function App() {
-
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="App">
-        <Navbar /> 
+        <Navbar />
         <DarkModeToggle toggleDarkMode={toggleDarkMode} />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -59,6 +59,7 @@ function App() {
           <Route path="/lesson/quiz3" element={<CyberQuiz3 />} />
           <Route path="/lesson/quiz4" element={<CyberQuiz4 />} />
           <Route path="/lesson/quiz5" element={<CyberQuiz5 />} />
+          <Route path="/quiz-summary" element={<QuizSummary />} />
         </Routes>
       </div>
     </Router>

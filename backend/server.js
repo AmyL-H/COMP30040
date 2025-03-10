@@ -1,32 +1,26 @@
-require('dotenv').config(); // Load environment variables at the very top
+require('dotenv').config(); // Load environment variables
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const userRoutes = require('./routes/userRoutes'); // Adjust path if needed
+const userRoutes = require('./routes/userRoutes');
+const progressRoutes = require('./routes/progressRoutes'); // Ensure you have this if you update progress
 
-const app = express(); // Initialize the Express app
+const app = express();
 
 // Middleware
-app.use(express.json()); // For parsing application/json
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+app.use(express.json()); // Parse JSON request bodies
+app.use(cors());         // Enable Cross-Origin Resource Sharing
 
 // Mount routes
-app.use('/api/users', userRoutes); // User authentication routes
+app.use('/api/users', userRoutes);
+app.use('/api/progress', progressRoutes);
 
-// Connect to MongoDB
-console.log("MongoDB URI:", process.env.MONGO_URI); // Debug: print the URI
+console.log("MongoDB URI:", process.env.MONGO_URI);
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected');
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-// Start the server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
