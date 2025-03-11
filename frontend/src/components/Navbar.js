@@ -26,8 +26,8 @@ function Navbar() {
     if (storedUser) {
       try {
         setUser(JSON.parse(storedUser));
-      } catch (err) {
-        console.error("Error parsing user data:", err);
+      } catch (error) {
+        console.error('Error parsing user from localStorage', error);
         setUser(null);
       }
     } else {
@@ -38,11 +38,16 @@ function Navbar() {
   useEffect(() => {
     showButton();
     window.addEventListener('resize', showButton);
-    updateUser();
+    updateUser(); // initial load
+
+    // Listen for the custom "progressUpdated" event (or "userLoggedIn")
     window.addEventListener('progressUpdated', updateUser);
+    window.addEventListener('userLoggedIn', updateUser);
+
     return () => {
       window.removeEventListener('resize', showButton);
       window.removeEventListener('progressUpdated', updateUser);
+      window.removeEventListener('userLoggedIn', updateUser);
     };
   }, []);
 
@@ -97,10 +102,10 @@ function Navbar() {
             <div className="nav-buttons">
               {user ? (
                 <div className="nav-profile">
-                  <span className="profile-info">
-                    Logged in as {user.name} (XP: {user.xp || 0})
-                  </span>
-                  <button onClick={handleLogout} className="logout-button">Logout</button>
+                  <span className="profile-info">Logged in as {user.name} (XP: {user.xp || 0})</span>
+                  <button onClick={handleLogout} className="logout-button">
+                    Logout
+                  </button>
                 </div>
               ) : (
                 <Link to="/sign-up">

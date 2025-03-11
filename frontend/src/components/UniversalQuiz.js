@@ -1,3 +1,4 @@
+// src/components/UniversalQuiz.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -63,20 +64,33 @@ const UniversalQuiz = ({
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
 
-    // Calculate percentage and XP earned (5 XP per correct answer)
+    // Calculate percentage and maximum possible XP for this quiz
     const percentage = (sc / questions.length) * 100;
-    const xpEarned = sc * 5;
+    const maxXPForQuiz = questions.length * 5;
+    const currentQuizXP = sc * 5; // XP for current attempt
 
-    // Update XP on backend
-    axios.put('http://localhost:5000/api/progress/updateXP', { xpEarned }, {
+    // Retrieve the user from localStorage and check previously awarded XP for this lesson
+    let currentUser = JSON.parse(localStorage.getItem('user')) || {};
+    if (!currentUser.quizXP) {
+      currentUser.quizXP = {};
+    }
+    // XP already awarded for this quiz (if any)
+    const alreadyAwardedXP = currentUser.quizXP[currentLessonId] || 0;
+    // Calculate additional XP to award (only if current attempt is higher)
+    const additionalXP = Math.max(0, currentQuizXP - alreadyAwardedXP);
+
+    // Update the user object with the best XP for this quiz
+    currentUser.quizXP[currentLessonId] = Math.max(alreadyAwardedXP, currentQuizXP);
+    // Also update the user's overall XP (only add additionalXP)
+    currentUser.xp = (currentUser.xp || 0) + additionalXP;
+    localStorage.setItem('user', JSON.stringify(currentUser));
+
+    // Update XP on the backend
+    axios.put('http://localhost:5000/api/progress/updateXP', { xpEarned: additionalXP }, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
     .then(res => {
       console.log('XP updated', res.data);
-      // Update localStorage user object with new XP
-      let currentUser = JSON.parse(localStorage.getItem('user')) || {};
-      currentUser.xp = (currentUser.xp || 0) + xpEarned;
-      localStorage.setItem('user', JSON.stringify(currentUser));
     })
     .catch(err => {
       console.error('Failed to update XP', err.response ? err.response.data : err);
@@ -93,13 +107,14 @@ const UniversalQuiz = ({
       })
       .then(res => {
         console.log('Progress updated', res.data);
-        let currentUser = JSON.parse(localStorage.getItem('user')) || {};
-        currentUser.progress = currentUser.progress || {};
-        currentUser.progress[currentLessonId] = percentage;
-        if (nextLessonId && currentUser.progress[nextLessonId] === undefined) {
-          currentUser.progress[nextLessonId] = 0;
+        // Update localStorage user progress
+        let updatedUser = JSON.parse(localStorage.getItem('user')) || {};
+        updatedUser.progress = updatedUser.progress || {};
+        updatedUser.progress[currentLessonId] = percentage;
+        if (nextLessonId && updatedUser.progress[nextLessonId] === undefined) {
+          updatedUser.progress[nextLessonId] = 0;
         }
-        localStorage.setItem('user', JSON.stringify(currentUser));
+        localStorage.setItem('user', JSON.stringify(updatedUser));
         window.dispatchEvent(new Event('progressUpdated'));
       })
       .catch(err => {
@@ -107,13 +122,13 @@ const UniversalQuiz = ({
       });
     }
 
-    // Navigate to Quiz Summary page with all summary data
+    // Navigate to the Quiz Summary page with summary data
     navigate('/quiz-summary', {
       state: {
         score: sc,
         total: questions.length,
         percentage,
-        xpEarned,
+        xpEarned: additionalXP,
         questions,
         answers,
         backRoute,
@@ -136,7 +151,6 @@ const UniversalQuiz = ({
     <div className="quiz-page">
       {/* Dummy element for scroll target */}
       <div id="top"></div>
-      
       <h1 className="quiz-title">{title}</h1>
       <div className="quiz-questions">
         {questions.map(q => (

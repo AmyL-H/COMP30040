@@ -38,6 +38,7 @@ p {
   box-shadow: 0 4px 6px rgba(0, 140, 255, 0.3);
   transition: transform 0.3s;
   text-align: left;
+  position: relative; /* Needed for overlay positioning */
 }
 
 .lesson-card:hover {
@@ -49,6 +50,25 @@ p {
   font-size: 1.5rem;
   color: #008CFF; /* Neon Dark Blue */
   margin-bottom: 10px;
+}
+
+/* Locked Lesson Overlay */
+.lesson-card.locked {
+  opacity: 0.6;
+}
+
+.lesson-card.locked::after {
+  content: "Locked";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #ff4747;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 2;
 }
 
 /* Task List */
@@ -89,6 +109,12 @@ p {
 .card-buttons button:hover {
   background-color: #339DFF;
   box-shadow: 0px 0px 10px rgba(0, 140, 255, 0.7);
+}
+
+/* Locked Button (if needed) */
+.locked-button {
+  background-color: #666;
+  cursor: not-allowed;
 }
 
 /* Progress Bar */

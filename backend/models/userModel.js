@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // Map to store progress: keys such as "lesson1", "lesson2", etc.
+  // Map to store progress for lessons (e.g., lesson1: score, lesson2: 0 if unlocked)
   progress: { type: Map, of: Number, default: {} },
   // XP field (initialize to 0)
   xp: { type: Number, default: 0 }

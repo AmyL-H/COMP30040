@@ -1,4 +1,3 @@
-// QuizSummary.js
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './QuizSummary.css';
@@ -7,6 +6,7 @@ const QuizSummary = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Destructure state passed from UniversalQuiz
   const {
     score,
     total,
@@ -35,7 +35,7 @@ const QuizSummary = () => {
   };
 
   const handleNext = () => {
-    if (nextRoute && percentage >= 50) {
+    if (nextRoute) {
       navigate(nextRoute);
     }
   };
@@ -57,9 +57,12 @@ const QuizSummary = () => {
       <div className="summary-header">
         <h1>Quiz Summary</h1>
         <div className="summary-progress">
-          <div className="progress-stats">
-            <span className="progress-percentage">{percentage ? percentage.toFixed(0) : 0}%</span>
-            <p>Progress</p>
+          <div className="progress-ring">
+            <svg className="progress-svg" viewBox="0 0 36 36">
+              <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path className="circle" strokeDasharray={`${percentage}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text x="18" y="20.35" className="percentage-text">{percentage ? percentage.toFixed(0) : 0}%</text>
+            </svg>
           </div>
           <div className="score-stats">
             <p>{correctCount} correct / {incorrectCount} incorrect</p>
@@ -72,15 +75,7 @@ const QuizSummary = () => {
       <div className="summary-buttons">
         <button onClick={handleRetake} className="btn retake">Retake Quiz</button>
         <button onClick={handleBack} className="btn back">Back to Lesson</button>
-        {nextRoute ? (
-          percentage >= 50 ? (
-            <button onClick={handleNext} className="btn next">Continue to Next Lesson</button>
-          ) : (
-            <button className="btn next" disabled>
-              Continue to Next Lesson (Min 50% required)
-            </button>
-          )
-        ) : null}
+        {nextRoute && <button onClick={handleNext} className="btn next">Continue to Next Lesson</button>}
       </div>
       <div className="question-review-section">
         <h2>Review Your Answers</h2>

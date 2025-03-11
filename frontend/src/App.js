@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import DarkModeToggle from './components/DarkModeToggle';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar'; 
 import CoursePage from './pages/CoursePage';
 import CourseInfo from './pages/CourseInfo';
 import LessonHandler from './components/LessonHandler';

@@ -1,8 +1,8 @@
 const User = require('../models/userModel');
 
-// Update lesson progress (unlock next lesson if score ≥ 50%)
+// Update lesson progress (unlock next lesson if score >= 50%)
 exports.updateProgress = async (req, res) => {
-  const { lessonId, score, nextLessonId } = req.body; // score is a percentage (e.g. 70 for 70%)
+  const { lessonId, score, nextLessonId } = req.body; // Expecting current lesson ID, score (percentage), and next lesson ID
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -11,7 +11,7 @@ exports.updateProgress = async (req, res) => {
     // Only update progress if score is at least 50%
     if (score >= 50) {
       user.progress.set(lessonId, score);
-      // Unlock next lesson if not already unlocked
+      // Unlock the next lesson if not already unlocked
       if (nextLessonId && !user.progress.has(nextLessonId)) {
         user.progress.set(nextLessonId, 0);
       }

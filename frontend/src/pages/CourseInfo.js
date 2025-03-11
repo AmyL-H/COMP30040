@@ -62,10 +62,12 @@ const CourseInfo = () => {
   const navigate = useNavigate();
   const course = courseContent[courseId];
 
-  // Read last accessed lesson from localStorage
   const [lastAccessed, setLastAccessed] = useState(() => {
     return JSON.parse(localStorage.getItem(`${courseId}-lastAccessed`)) || null;
   });
+
+  // Get the current user (including progress) from localStorage
+  const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {};
 
   useEffect(() => {
     if (lastAccessed) {
@@ -77,6 +79,14 @@ const CourseInfo = () => {
     return <h2 className="error-message">Course not found</h2>;
   }
 
+  // Function to determine if a lesson is unlocked.
+  const isUnlocked = (moduleId) => {
+    if (moduleId === 'lesson1') return true;
+    const lessonNumber = parseInt(moduleId.replace('lesson', ''));
+    const previousLessonId = `lesson${lessonNumber - 1}`;
+    return user.progress && user.progress[previousLessonId] >= 50;
+  };
+
   return (
     <div className="course-info">
       <h1>{course.title}</h1>
@@ -86,26 +96,36 @@ const CourseInfo = () => {
       </p>
 
       <div className="lesson-cards">
-        {course.modules.map((module) => (
-          <div key={module.id} className={`lesson-card ${lastAccessed === module.id ? "last-accessed" : ""}`}>
-            <h2>{module.title}</h2>
-            <ul className="task-list">
-              <li className={module.status === "Completed" ? "completed" : ""}>Read the article</li>
-              <li className={module.status === "Completed" ? "completed" : ""}>Complete the quiz</li>
-              <li className={module.status === "Completed" ? "completed" : ""}>Take the final exam</li>
-            </ul>
-            <div className="card-buttons">
-              <button
-                onClick={() => {
-                  setLastAccessed(module.id); // Update last accessed lesson
-                  navigate(`/course/${courseId}/lesson/${module.id}`);
-                }}
-              >
-                {module.status === "Completed" ? "Review" : "Resume Lesson"}
-              </button>
+        {course.modules.map((module) => {
+          const unlocked = isUnlocked(module.id);
+          return (
+            <div 
+              key={module.id} 
+              className={`lesson-card ${!unlocked ? "locked" : ""} ${lastAccessed === module.id ? "last-accessed" : ""}`}
+            >
+              <h2>{module.title}</h2>
+              <ul className="task-list">
+                <li className={module.status === "Completed" ? "completed" : ""}>Read the article</li>
+                <li className={module.status === "Completed" ? "completed" : ""}>Complete the quiz</li>
+                <li className={module.status === "Completed" ? "completed" : ""}>Take the final exam</li>
+              </ul>
+              <div className="card-buttons">
+                <button
+                  onClick={() => {
+                    if (unlocked) {
+                      setLastAccessed(module.id);
+                      navigate(`/course/${courseId}/lesson/${module.id}`);
+                    }
+                  }}
+                  disabled={!unlocked}
+                  className={!unlocked ? "locked-button" : ""}
+                >
+                  {module.status === "Completed" ? "Review" : "Resume Lesson"}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
