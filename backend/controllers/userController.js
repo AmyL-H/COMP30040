@@ -6,17 +6,18 @@ const jwt = require('jsonwebtoken');
 exports.registerUser = async (req, res) => {
   const { name, email, password } = req.body;
   try {
-    // Check if the user already exists
+    // Check if user already exists
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ msg: 'User already exists' });
     }
-    // Create a new user instance
+    // Create new user instance
     user = new User({ name, email, password });
     await user.save();
-
-    // Create a JWT token (expires in 1 hour)
+    
+    // Sign token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    
     return res.status(201).json({
       msg: 'User created successfully',
       token,
@@ -24,7 +25,8 @@ exports.registerUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        progress: user.progress
+        progress: user.progress,
+        xp: user.xp
       }
     });
   } catch (err) {
@@ -42,15 +44,14 @@ exports.loginUser = async (req, res) => {
     if (!user) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
-
-    // Compare provided password with hashed password
+    // Compare provided password with stored hash
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
-
-    // Sign JWT token
+    // Sign token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    
     return res.status(200).json({
       msg: 'Logged in successfully',
       token,
@@ -58,7 +59,8 @@ exports.loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        progress: user.progress
+        progress: user.progress,
+        xp: user.xp
       }
     });
   } catch (err) {

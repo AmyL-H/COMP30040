@@ -44,6 +44,7 @@ const UniversalQuiz = ({
   const handleSubmit = () => {
     let sc = 0;
     questions.forEach(q => {
+      // For MC, fill-in, drag-and-drop types, compare trimmed lowercase string answers
       if (q.type === 'multipleChoice' || q.type === 'fillInTheGap' || q.type === 'dragAndDrop') {
         if ((answers[q.id] || "").trim().toLowerCase() === q.correctAnswer.toLowerCase()) {
           sc += 1;
@@ -60,28 +61,26 @@ const UniversalQuiz = ({
     });
     setScore(sc);
     setSubmitted(true);
+
+    // Wait a moment for UI update and scroll to top
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
 
-    // Calculate percentage and maximum possible XP for this quiz
+    // Calculate percentage and XP earned (5 XP per correct answer)
     const percentage = (sc / questions.length) * 100;
-    const maxXPForQuiz = questions.length * 5;
-    const currentQuizXP = sc * 5; // XP for current attempt
+    const currentQuizXP = sc * 5;
 
-    // Retrieve the user from localStorage and check previously awarded XP for this lesson
+    // Retrieve the user from localStorage and update quiz XP only once per lesson
     let currentUser = JSON.parse(localStorage.getItem('user')) || {};
     if (!currentUser.quizXP) {
       currentUser.quizXP = {};
     }
-    // XP already awarded for this quiz (if any)
     const alreadyAwardedXP = currentUser.quizXP[currentLessonId] || 0;
-    // Calculate additional XP to award (only if current attempt is higher)
     const additionalXP = Math.max(0, currentQuizXP - alreadyAwardedXP);
-
-    // Update the user object with the best XP for this quiz
+    // Save the best XP for this quiz
     currentUser.quizXP[currentLessonId] = Math.max(alreadyAwardedXP, currentQuizXP);
-    // Also update the user's overall XP (only add additionalXP)
+    // Add additional XP only if it's higher than before
     currentUser.xp = (currentUser.xp || 0) + additionalXP;
     localStorage.setItem('user', JSON.stringify(currentUser));
 
@@ -96,7 +95,7 @@ const UniversalQuiz = ({
       console.error('Failed to update XP', err.response ? err.response.data : err);
     });
 
-    // Update lesson progress on backend if passed (percentage >= 50%)
+    // Update lesson progress on the backend if percentage >= 50%
     if (percentage >= 50) {
       axios.put('http://localhost:5000/api/progress/update', {
         lessonId: currentLessonId,
@@ -107,7 +106,7 @@ const UniversalQuiz = ({
       })
       .then(res => {
         console.log('Progress updated', res.data);
-        // Update localStorage user progress
+        // Also update localStorage user progress
         let updatedUser = JSON.parse(localStorage.getItem('user')) || {};
         updatedUser.progress = updatedUser.progress || {};
         updatedUser.progress[currentLessonId] = percentage;
@@ -122,7 +121,7 @@ const UniversalQuiz = ({
       });
     }
 
-    // Navigate to the Quiz Summary page with summary data
+    // Navigate to the Quiz Summary page with all summary data
     navigate('/quiz-summary', {
       state: {
         score: sc,
@@ -151,6 +150,7 @@ const UniversalQuiz = ({
     <div className="quiz-page">
       {/* Dummy element for scroll target */}
       <div id="top"></div>
+      
       <h1 className="quiz-title">{title}</h1>
       <div className="quiz-questions">
         {questions.map(q => (

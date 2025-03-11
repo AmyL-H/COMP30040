@@ -1,16 +1,16 @@
-require('dotenv').config(); // Load environment variables
+require('dotenv').config(); // Load environment variables at the very top
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
-const progressRoutes = require('./routes/progressRoutes'); // Ensure you have this if you update progress
+const progressRoutes = require('./routes/progressRoutes'); // Make sure you have this file in /routes
 
 const app = express();
 
 // Middleware
-app.use(express.json()); // Parse JSON request bodies
-app.use(cors());         // Enable Cross-Origin Resource Sharing
+app.use(express.json());
+app.use(cors());
 
 // Mount routes
 app.use('/api/users', userRoutes);

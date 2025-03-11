@@ -1,3 +1,4 @@
+// src/components/QuizSummary.js
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './QuizSummary.css';
@@ -6,15 +7,15 @@ const QuizSummary = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Destructure state passed from UniversalQuiz
+  // Destructure state passed from UniversalQuiz; supply default values if undefined
   const {
-    score,
-    total,
-    percentage,
-    xpEarned,
-    questions,
-    answers,
-    backRoute,
+    score = 0,
+    total = 0,
+    percentage = 0,
+    xpEarned = 0,
+    questions = [],
+    answers = {},
+    backRoute = '/',
     retakeRoute,
     nextRoute
   } = location.state || {};
@@ -59,16 +60,34 @@ const QuizSummary = () => {
         <div className="summary-progress">
           <div className="progress-ring">
             <svg className="progress-svg" viewBox="0 0 36 36">
-              <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path className="circle" strokeDasharray={`${percentage}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <text x="18" y="20.35" className="percentage-text">{percentage ? percentage.toFixed(0) : 0}%</text>
+              <path
+                className="circle-bg"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                className="circle"
+                strokeDasharray={`${percentage}, 100`}
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 
+                   a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <text 
+                x="18" 
+                y="18" 
+                className="percentage-text"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                transform="rotate(90, 18, 18)"
+              >
+                {percentage.toFixed(0)}%
+              </text>
             </svg>
           </div>
           <div className="score-stats">
             <p>{correctCount} correct / {incorrectCount} incorrect</p>
           </div>
           <div className="xp-stats">
-            <p>XP Earned: {xpEarned || 0}</p>
+            <p>XP Earned: {xpEarned}</p>
           </div>
         </div>
       </div>
@@ -79,12 +98,12 @@ const QuizSummary = () => {
       </div>
       <div className="question-review-section">
         <h2>Review Your Answers</h2>
-        {questions && questions.map(q => (
+        {questions.map(q => (
           <div key={q.id} className="review-card">
             <h3 className="question">{q.question}</h3>
             <p className="user-answer">
               <strong>Your Answer: </strong>
-              {answers && answers[q.id]
+              {answers[q.id]
                 ? (typeof answers[q.id] === 'string'
                     ? answers[q.id]
                     : JSON.stringify(answers[q.id]))

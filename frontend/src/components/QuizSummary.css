@@ -21,45 +21,48 @@
 .summary-progress {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
   align-items: center;
+  margin-bottom: 20px;
 }
 
+/* Progress ring styling */
 .progress-ring {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
+  position: relative;
 }
 
 .progress-svg {
   width: 100%;
   height: 100%;
+  transform: rotate(-90deg);
 }
 
 .circle-bg {
   fill: none;
-  stroke: #444;
-  stroke-width: 3.8;
+  stroke: #444466;
+  stroke-width: 3;
 }
 
 .circle {
   fill: none;
-  stroke: #00ff63;
-  stroke-width: 3.8;
+  stroke: #008CFF;
+  stroke-width: 3;
   stroke-linecap: round;
-  transition: stroke-dasharray 0.3s ease;
+  transition: stroke-dasharray 0.6s ease;
 }
 
 .percentage-text {
   font-size: 0.5em;
-  text-anchor: middle;
-  fill: #fff;
+  fill: white;
+  /* No rotation here, since we want the text upright */
 }
 
-.score-stats,
-.xp-stats {
+.score-stats, .xp-stats {
   text-align: center;
 }
 
+/* Buttons */
 .summary-buttons {
   text-align: center;
   margin-bottom: 30px;
@@ -80,6 +83,7 @@
   background-color: #339dff;
 }
 
+/* Question review section */
 .question-review-section {
   margin-top: 20px;
 }
@@ -94,6 +98,7 @@
   padding: 15px;
   border-radius: 5px;
   margin-bottom: 15px;
+  text-align: left;
 }
 
 .review-card .question {
