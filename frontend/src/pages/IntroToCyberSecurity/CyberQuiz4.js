@@ -1,6 +1,6 @@
 import React from 'react';
 import UniversalQuiz from '../../components/UniversalQuiz';
-import './Quiz4.css';
+import './CyberQuiz4.css';
 
 const quizQuestions = [
   {
@@ -100,10 +100,10 @@ function CyberQuiz4() {
     <UniversalQuiz 
       questions={quizQuestions}
       backRoute="/cybersecurity-intro-L4"
-      title="Cybersecurity Knowledge Quiz 4"
+      title="Cybersecurity Intro Quiz 4"
       currentLessonId="lesson4"
       nextLessonId="lesson5"
-      retakeRoute="/lesson/quiz4"
+      retakeRoute="/lesson/cyberquiz4"
       nextRoute="/cybersecurity-intro-L5"
     />
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import UniversalQuiz from '../../components/UniversalQuiz';
-import './Quiz2.css';
+import './CyberQuiz2.css';
 
 const quizQuestions = [
   {
@@ -99,10 +99,10 @@ function CyberQuiz2() {
     <UniversalQuiz 
       questions={quizQuestions}
       backRoute="/cybersecurity-intro-L2"
-      title="Cybersecurity Knowledge Quiz 2"
+      title="Cybersecurity s Quiz 2"
       currentLessonId="lesson2"          // Current lesson identifier for progress tracking
       nextLessonId="lesson3"             // Next lesson to unlock if passing score is achieved
-      retakeRoute="/lesson/quiz2"        // Route to retake this quiz
+      retakeRoute="/lesson/cyberquiz2"        // Route to retake this quiz
       nextRoute="/cybersecurity-intro-L3"// Route for the next lesson
     />
   );

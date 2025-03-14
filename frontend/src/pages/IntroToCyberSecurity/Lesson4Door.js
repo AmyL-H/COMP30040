@@ -95,7 +95,7 @@ const Lesson4Door = () => {
 
       {/* Navigation Button */}
       <div className="navigation-button">
-        <button onClick={() => navigate('/lesson/quiz4')}>Proceed to Quiz</button>
+        <button onClick={() => navigate('/lesson/cyberquiz4')}>Proceed to Quiz</button>
       </div>
     </div>
   );

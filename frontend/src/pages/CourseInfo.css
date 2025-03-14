@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1e1e2f; /* Dark background to match CoursePage */
+  background-color: #1e1e2f;
   color: white;
   font-family: 'Poppins', sans-serif;
 }
@@ -30,7 +30,7 @@ p {
 }
 
 .lesson-card {
-  background-color: #2a2a4c; /* Dark blue gradient */
+  background-color: #2a2a4c;
   border: 1px solid #444466;
   border-radius: 10px;
   padding: 20px;
@@ -38,7 +38,7 @@ p {
   box-shadow: 0 4px 6px rgba(0, 140, 255, 0.3);
   transition: transform 0.3s;
   text-align: left;
-  position: relative; /* Needed for overlay positioning */
+  position: relative; /* Ensure pseudo-element is positioned relative to this card */
 }
 
 .lesson-card:hover {
@@ -46,15 +46,15 @@ p {
   box-shadow: 0 8px 16px rgba(0, 140, 255, 0.5);
 }
 
+.lesson-card.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .lesson-card h2 {
   font-size: 1.5rem;
   color: #008CFF; /* Neon Dark Blue */
   margin-bottom: 10px;
-}
-
-/* Locked Lesson Overlay */
-.lesson-card.locked {
-  opacity: 0.6;
 }
 
 .lesson-card.locked::after {

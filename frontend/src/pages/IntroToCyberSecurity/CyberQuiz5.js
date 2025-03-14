@@ -1,6 +1,6 @@
 import React from 'react';
 import UniversalQuiz from '../../components/UniversalQuiz';
-import './Quiz5.css';
+import './CyberQuiz5.css';
 
 const quizQuestions = [
   {
@@ -100,10 +100,10 @@ function CyberQuiz5() {
     <UniversalQuiz 
       questions={quizQuestions}
       backRoute="/cybersecurity-intro-L5"
-      title="Cybersecurity Knowledge Quiz 5"
+      title="Cybersecurity Intro Quiz 5"
       currentLessonId="lesson5"
       nextLessonId={null}            // If no next lesson, pass null or omit nextRoute
-      retakeRoute="/lesson/quiz5"
+      retakeRoute="/lesson/cyberquiz5"
       nextRoute={null}               // No next lesson route if this is the final lesson in the module
     />
   );

@@ -81,7 +81,7 @@ const Lesson1Door = () => {
       </div>
       
       <div className="navigation-button">
-        <button onClick={() => navigate('/lesson/quiz1')}>Proceed to Quiz</button>
+        <button onClick={() => navigate('/lesson/cyberquiz1')}>Proceed to Quiz</button>
       </div>
     </div>
   );

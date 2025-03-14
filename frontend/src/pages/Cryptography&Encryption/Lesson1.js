@@ -57,7 +57,7 @@ function CryptoLesson1() {
       </div>
       
       <div className="navigation-button">
-        <button onClick={() => navigate('/lesson/quiz1')}>Proceed to Quiz</button>
+        <button onClick={() => navigate('/lesson/cryptoquiz1')}>Proceed to Quiz</button>
       </div>
     </div>
   );
