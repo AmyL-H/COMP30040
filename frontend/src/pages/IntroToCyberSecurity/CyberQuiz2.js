@@ -99,7 +99,7 @@ function CyberQuiz2() {
     <UniversalQuiz 
       questions={quizQuestions}
       backRoute="/cybersecurity-intro-L2"
-      title="Cybersecurity s Quiz 2"
+      title="Cybersecurity Quiz 2"
       currentLessonId="lesson2"          // Current lesson identifier for progress tracking
       nextLessonId="lesson3"             // Next lesson to unlock if passing score is achieved
       retakeRoute="/lesson/cyberquiz2"        // Route to retake this quiz

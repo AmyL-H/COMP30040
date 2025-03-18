@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Lesson4.css';
+import './NetworkLesson4.css';
 
 function NetworkSecurityLesson4() {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function NetworkSecurityLesson4() {
       </div>
       
       <div className="navigation-button">
-        <button onClick={() => navigate('/lesson/quiz4')}>Proceed to Quiz</button>
+        <button onClick={() => navigate('/lesson/networkquiz4')}>Proceed to Quiz</button>
       </div>
     </div>
   );

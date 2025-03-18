@@ -26,7 +26,11 @@ const CoursePage = () => {
 
   // Function to navigate to course details page
   const goToCourseInfo = (courseId) => {
-    navigate(`/course/${courseId}`);
+    if (courseId === "cybersecurity") {
+      navigate("/course/cybersecurity-intro");  // ✅ Now directs to the Intro Module Page
+    } else {
+      navigate(`/course/${courseId}`);
+    }
   };
 
   return (

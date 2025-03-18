@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Lesson3.css';
+import './EthicalLesson3.css';
 
 function EthicalHackingLesson3() {
   const navigate = useNavigate();

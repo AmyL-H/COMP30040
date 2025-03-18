@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Lesson2.css';
+import './CryptoLesson2.css';
 
 function CryptoLesson2() {
   const navigate = useNavigate();

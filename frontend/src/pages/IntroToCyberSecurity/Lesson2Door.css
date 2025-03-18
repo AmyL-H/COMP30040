@@ -1,59 +1,98 @@
-/* Lesson2Door.css - Styling for Lesson 2 content page */
+/* Page Styling */
 .article-page {
   padding: 30px;
   text-align: center;
   background-color: #1e1e2f;
-  color: #ffffff;
+  color: white;
   font-family: 'Poppins', sans-serif;
   max-width: 1200px;
   margin: 40px auto;
 }
 
+/* Content Cards */
 .content-card {
-  background-color: #1e1e2f;
+  background-color: #2a2a4c;
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;
   text-align: left;
+  border-radius: 10px;
   border-bottom: 1px solid #444466;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.content-card h1,
-.content-card h2,
-.content-card h3 {
-  color: #008CFF;
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 15px rgba(0, 140, 255, 0.5);
 }
 
+/* Lists */
+.impact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.impact-list li {
+  padding: 10px;
+  background: rgba(0, 140, 255, 0.2);
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+/* Case Studies */
 .case-study-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.case-study-cards.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .case-card {
   background: linear-gradient(145deg, #444466, #2a2a4c);
   padding: 15px;
   border-radius: 10px;
-  flex: 1;
-  min-width: 250px;
   color: white;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.navigation-button {
-  text-align: center;
-  margin-top: 30px;
+.case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 15px rgba(0, 255, 100, 0.5);
 }
 
-.navigation-button button {
+/* Toggle Buttons */
+.toggle-button {
+  background: #008CFF;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.toggle-button:hover {
+  background: #339DFF;
+}
+
+/* Quiz Button */
+.quiz-button {
   background-color: #00ff63;
-  padding: 15px 25px;
+  padding: 12px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-.navigation-button button:hover {
+.quiz-button:hover {
   background-color: #33ff80;
 }

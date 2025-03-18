@@ -1,0 +1,108 @@
+/* General Module Styling */
+.module-container {
+  padding: 30px;
+  text-align: center;
+  background-color: #1e1e2f;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  max-width: 900px;
+  margin: 40px auto;
+  border-radius: 10px;
+}
+
+/* Title */
+h1.title {
+  font-size: 2.8rem;
+  color: #00ccff;
+  text-shadow: 0px 0px 8px rgba(0, 204, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.8rem;
+  color: #00ccff;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.lesson-button, .quiz-button, .assignment-button {
+  background-color: #00ccff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin: 5px;
+}
+
+.lesson-button:hover, .quiz-button:hover, .assignment-button:hover {
+  background-color: #339DFF;
+  transform: scale(1.05);
+}
+
+/* Fun Facts Section */
+.fun-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fact-card {
+  background: #2a2a4c;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Objectives Card */
+.objectives-card {
+  background: #2a2a4c;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* 🚪 Door Section */
+.door-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* 🔓 Door Container (Clickable Area) */
+.door-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fix the door image display */
+.door-image {
+  width: 200px; /* Ensure proper size */
+  height: auto;
+  display: block;
+  cursor: pointer; /* Ensure it's clickable */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Add hover effect only around the door */
+.door-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.8);
+}
+
+/* 🔹 Door Text */
+.door-text {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ccff;
+  cursor: pointer; /* Ensure the text is also clickable */
+}

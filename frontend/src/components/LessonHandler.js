@@ -9,23 +9,23 @@ import IntroLesson3 from '../pages/IntroToCyberSecurity/Lesson3Door';
 import IntroLesson4 from '../pages/IntroToCyberSecurity/Lesson4Door';
 import IntroLesson5 from '../pages/IntroToCyberSecurity/Lesson5Door';
 
-import CryptoLesson1 from '../pages/Cryptography&Encryption/Lesson1';
-import CryptoLesson2 from '../pages/Cryptography&Encryption/Lesson2';
-import CryptoLesson3 from '../pages/Cryptography&Encryption/Lesson3';
-import CryptoLesson4 from '../pages/Cryptography&Encryption/Lesson4';
-import CryptoLesson5 from '../pages/Cryptography&Encryption/Lesson5';
+import CryptoLesson1 from '../pages/Cryptography&Encryption/CryptoLesson1';
+import CryptoLesson2 from '../pages/Cryptography&Encryption/CryptoLesson2';
+import CryptoLesson3 from '../pages/Cryptography&Encryption/CryptoLesson3';
+import CryptoLesson4 from '../pages/Cryptography&Encryption/CryptoLesson4';
+import CryptoLesson5 from '../pages/Cryptography&Encryption/CryptoLesson5';
 
-import NetworkLesson1 from '../pages/NetworkSecurity/Lesson1';
-import NetworkLesson2 from '../pages/NetworkSecurity/Lesson2';
-import NetworkLesson3 from '../pages/NetworkSecurity/Lesson3';
-import NetworkLesson4 from '../pages/NetworkSecurity/Lesson4';
-import NetworkLesson5 from '../pages/NetworkSecurity/Lesson5';
+import NetworkLesson1 from '../pages/NetworkSecurity/NetworkLesson1';
+import NetworkLesson2 from '../pages/NetworkSecurity/NetworkLesson2';
+import NetworkLesson3 from '../pages/NetworkSecurity/NetworkLesson3';
+import NetworkLesson4 from '../pages/NetworkSecurity/NetworkLesson4';
+import NetworkLesson5 from '../pages/NetworkSecurity/NetworkLesson5';
 
-import EthicalLesson1 from '../pages/EthicalHacking&PenetrationTesting/Lesson1';
-import EthicalLesson2 from '../pages/EthicalHacking&PenetrationTesting/Lesson2';
-import EthicalLesson3 from '../pages/EthicalHacking&PenetrationTesting/Lesson3';
-import EthicalLesson4 from '../pages/EthicalHacking&PenetrationTesting/Lesson4';
-import EthicalLesson5 from '../pages/EthicalHacking&PenetrationTesting/Lesson5';
+import EthicalLesson1 from '../pages/EthicalHacking&PenetrationTesting/EthicalLesson1';
+import EthicalLesson2 from '../pages/EthicalHacking&PenetrationTesting/EthicalLesson2';
+import EthicalLesson3 from '../pages/EthicalHacking&PenetrationTesting/EthicalLesson3';
+import EthicalLesson4 from '../pages/EthicalHacking&PenetrationTesting/EthicalLesson4';
+import EthicalLesson5 from '../pages/EthicalHacking&PenetrationTesting/EthicalLesson5';
 
 const LessonHandler = () => {
   const { lessonId, courseId } = useParams();

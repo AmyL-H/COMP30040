@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Lesson1.css';
+import './CyberLesson1.css';
 
 function IntroLesson1() {
   const [showTips, setShowTips] = useState(false);
