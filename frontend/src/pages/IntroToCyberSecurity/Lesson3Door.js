@@ -28,12 +28,10 @@ const Lesson3Door = () => {
       {/* Gamified Learning: Examples of Threats */}
       <div className="content-card">
         <h2>Examples of Cyber Threats</h2>
-        <p>
-          Consider the following common threats:
-        </p>
+        <p>Consider the following common threats:</p>
         <ul>
           <li>
-            <strong>Phishing:</strong> Fraudulent attempts to obtain sensitive information. 
+            <strong>Phishing:</strong> Fraudulent attempts to obtain sensitive information.
             Engage in the "Spot the Phishing Email" challenge to practice recognizing deceptive cues.
           </li>
           <li>
@@ -66,6 +64,30 @@ const Lesson3Door = () => {
           With <strong>concept mapping</strong>, you can create interactive diagrams that show the pathway from initial breach to full compromise.
           Try building your own attack map to better understand the flow of a cyberattack.
         </p>
+      </div>
+
+      {/* New Diagram: Attack Lifecycle Diagram with enlarged container */}
+      <div className="content-card diagram-card">
+        <h2>Attack Lifecycle Diagram</h2>
+        <p>
+          Explore the full lifecycle of a cyberattack—from initial reconnaissance to data exfiltration. 
+          This diagram illustrates how attackers exploit vulnerabilities at each stage and highlights where defensive measures can intervene.
+        </p>
+        <div className="diagram-container">
+          <img src="/images/cyberattack_lifecycle.jpeg" alt="Attack Lifecycle Diagram" />
+        </div>
+      </div>
+
+      {/* New Diagram: Interactive Vulnerability Map */}
+      <div className="content-card">
+        <h2>Interactive Vulnerability Map</h2>
+        <p>
+          Discover common vulnerabilities and their interconnections using this interactive map.
+          Hover over different components to reveal potential risks and understand defensive strategies.
+        </p>
+        <div className="diagram-container">
+          <img src="/images/vulnerability-map.svg" alt="Interactive Vulnerability Map" />
+        </div>
       </div>
 
       {/* Self-Directed Learning Assignment */}

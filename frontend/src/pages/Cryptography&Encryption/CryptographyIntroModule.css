@@ -1,0 +1,172 @@
+/* Use the same CSS structure as in CybersecurityIntroModule.css */
+.module-container {
+    padding: 30px;
+    text-align: center;
+    background-color: #1e1e2f;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  .module-header {
+    margin-bottom: 30px;
+  }
+  .title {
+    font-size: 2.8rem;
+    color: #00ccff;
+    text-shadow: 0 0 8px rgba(0, 204, 255, 0.8);
+    margin-bottom: 20px;
+  }
+  .module-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ddd;
+  }
+  .objectives-toggle {
+    margin-bottom: 20px;
+  }
+  .toggle-button {
+    background: #00ccff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .toggle-button:hover {
+    background: #339DFF;
+    transform: scale(1.03);
+  }
+  .toggle-button.active {
+    background: #ff4747;
+  }
+  .objectives-card {
+    background: #2a2a4c;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  .objectives-card h2 {
+    color: #00ccff;
+    margin-bottom: 10px;
+  }
+  .objectives-card ul {
+    list-style: disc;
+    margin-left: 20px;
+  }
+  .objectives-card li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #ddd;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    color: #00ccff;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .lesson-list {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .lesson-item {
+    font-size: 1.2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .completed-indicator {
+    color: #00ccff;
+    font-size: 1.2rem;
+  }
+  .module-section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #1e1e2f;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .fun-facts,
+  .tips-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .fact-card,
+  .tip-card {
+    background: #2a2a4c;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: white;
+  }
+  .quiz-list,
+  .assignment-list {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .quiz-item,
+  .assignment-item {
+    background-color: #2a2a4c;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: white;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  .door-section {
+    margin-top: 40px;
+    text-align: center;
+  }
+  .door-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 20px auto;
+  }
+  .door-image {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  .door-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.8);
+  }
+  .door-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ccff;
+    cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    .toggle-button,
+    .quiz-item,
+    .assignment-item,
+    .lesson-item {
+      font-size: 1rem;
+      padding: 10px 16px;
+    }
+    .title {
+      font-size: 2.2rem;
+    }
+  }
+  

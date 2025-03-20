@@ -1,35 +1,101 @@
-/* Leaderboard.css */
-.leaderboard {
-  margin: 20px auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 500px;
-  background-color: #334155;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #f1f5f9;
+.leaderboard-container {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #2a2a4c, #1e1e2f);
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in-out;
 }
 
-.leaderboard h2 {
+.leaderboard-container h2 {
+  margin-bottom: 20px;
+  color: #00ccff;
+  text-align: center;
   font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #38bdf8;
 }
 
-.leaderboard ul {
+.leaderboard-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.leaderboard li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+/* Shared styling for all leaderboard items */
+.leaderboard-item {
   display: flex;
   justify-content: space-between;
-  color: black;
+  align-items: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: slideInUp 0.5s ease-in-out;
+}
+
+/* Add background color to all ranks */
+.regular-rank {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Style for top 3 users */
+.top-rank {
+  background: linear-gradient(135deg, #00ccff, #008cff);
+  font-weight: bold;
+  color: white;
+}
+
+/* Hover effects for all ranks */
+.leaderboard-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Rank text styling */
+.rank {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Username styling */
+.username {
+  flex: 1;
+  text-align: left;
+}
+
+/* XP styling */
+.xp {
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+/* Slide-in animation */
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade-in effect for leaderboard */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

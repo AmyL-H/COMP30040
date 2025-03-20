@@ -87,7 +87,7 @@
   text-align: center;
 }
 
-/* Static Lesson List */
+/* Lesson List (Static) */
 .lesson-list {
   margin: 20px 0;
   display: flex;
@@ -117,17 +117,15 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Fun Facts & Tips Sections */
-.fun-facts,
-.tips-container {
+/* Fun Facts Section */
+.fun-facts {
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-top: 15px;
 }
 
-.fact-card,
-.tip-card {
+.fact-card {
   background: #2a2a4c;
   padding: 12px;
   border-radius: 5px;
@@ -135,7 +133,7 @@
   color: white;
 }
 
-/* Static Quiz & Assignment Items */
+/* Quizzes & Assignments (Static) */
 .quiz-list,
 .assignment-list {
   margin: 20px 0;

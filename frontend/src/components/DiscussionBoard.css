@@ -1,0 +1,89 @@
+.discussion-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #2a2a4c;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  h2 {
+    color: #00ccff;
+  }
+  
+  .post-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .post-box textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background: #1e1e2f;
+    color: white;
+    resize: none;
+  }
+  
+  .post-box button {
+    margin-top: 10px;
+    padding: 10px;
+    background: #00ccff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .post-box button:hover {
+    background: #008cff;
+  }
+  
+  .login-message {
+    color: #ff4747;
+  }
+  
+  .posts-list {
+    margin-top: 20px;
+  }
+  
+  .post-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: left;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .post-content {
+    font-size: 1.1rem;
+    color: white;
+  }
+  
+  .post-meta {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #00ccff;
+  }
+  
+  /* Fade-in effect */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

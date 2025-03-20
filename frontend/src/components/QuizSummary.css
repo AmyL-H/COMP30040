@@ -25,7 +25,6 @@
   margin-bottom: 20px;
 }
 
-/* Progress ring styling */
 .progress-ring {
   width: 100px;
   height: 100px;
@@ -55,10 +54,10 @@
 .percentage-text {
   font-size: 0.5em;
   fill: white;
-  /* No rotation here, since we want the text upright */
 }
 
-.score-stats, .xp-stats {
+.score-stats,
+.xp-stats {
   text-align: center;
 }
 
@@ -83,7 +82,26 @@
   background-color: #339dff;
 }
 
-/* Question review section */
+.summary-buttons .btn.course-info {
+  background-color: #00ccff;
+}
+
+.summary-buttons .btn.course-info:hover {
+  background-color: #339dff;
+}
+
+/* Warning Message */
+.warning-message {
+  background-color: #ff4747;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* Question Review Section */
 .question-review-section {
   margin-top: 20px;
 }

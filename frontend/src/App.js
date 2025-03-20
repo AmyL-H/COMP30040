@@ -12,6 +12,10 @@ import LessonHandler from './components/LessonHandler';
 
 // Import Cybersecurity Intro Module Page
 import CybersecurityIntroModule from './pages/IntroToCyberSecurity/CybersecurityIntroModule';
+import CryptographyIntroModule from './pages/Cryptography&Encryption/CryptographyIntroModule';
+import NetworkSecurityIntroModule from './pages/NetworkSecurity/NetworkSecurityIntroModule';
+import EthicalHackingIntroModule from './pages/EthicalHacking&PenetrationTesting/EthicalHackingIntroModule';
+
 
 // Intro to Cybersecurity Module
 import Lesson1Door from './pages/IntroToCyberSecurity/Lesson1Door';
@@ -80,8 +84,11 @@ function App() {
           <Route path="/course/:courseId" element={<CourseInfo />} />
           <Route path="/course/:courseId/lesson/:lessonId" element={<LessonHandler />} />
 
-          {/* Cybersecurity Intro Module Page */}
+          {/* Intro Module Pages */}
           <Route path="/course/cybersecurity-intro" element={<CybersecurityIntroModule />} />
+          <Route path="/course/cryptography-intro" element={<CryptographyIntroModule />} />
+          <Route path="/course/network-security-intro" element={<NetworkSecurityIntroModule />} />
+          <Route path="/course/ethical-hacking-intro" element={<EthicalHackingIntroModule />} />
           
           {/* Intro to Cybersecurity Module */}
           <Route path="/cybersecurity-intro-L1" element={<Lesson1Door />} />

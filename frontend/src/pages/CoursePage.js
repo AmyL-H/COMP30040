@@ -1,4 +1,3 @@
-// CoursePage.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CyberCityMap from '../components/CyberCityMap';
@@ -15,22 +14,9 @@ const CoursePage = () => {
     { id: "ethical-hacking", title: "Ethical Hacking and Penetration Testing", description: "Gain hands-on hacking experience ethically.", progress: 0, locked: false },
   ];
 
-  // Dummy data for leaderboard
-  const leaderboardData = [
-    { username: "User123", xp: 1200 },
-    { username: "CyberGuru", xp: 1100 },
-    { username: "SecurityStar", xp: 1050 },
-    { username: "HackerPro", xp: 950 },
-    { username: "DataDefender", xp: 900 },
-  ];
-
-  // Function to navigate to course details page
+  // Function to navigate to the module intro page
   const goToCourseInfo = (courseId) => {
-    if (courseId === "cybersecurity") {
-      navigate("/course/cybersecurity-intro");  // ✅ Now directs to the Intro Module Page
-    } else {
-      navigate(`/course/${courseId}`);
-    }
+    navigate(`/course/${courseId}-intro`);
   };
 
   return (
@@ -38,14 +24,14 @@ const CoursePage = () => {
       <h1>Your Cybersecurity Journey</h1>
       <p>Progress through each stage to become a cybersecurity expert!</p>
       <br />
-      {/* CyberCityMap */}
+      {/* Render the module overview map */}
       <CyberCityMap 
         sections={courseSections} 
         onModuleClick={goToCourseInfo} 
       />
       <br />
-      {/* Leaderboard */}
-      <Leaderboard data={leaderboardData} />
+      {/* Render the leaderboard fetched from the backend */}
+      <Leaderboard />
     </div>
   );
 };

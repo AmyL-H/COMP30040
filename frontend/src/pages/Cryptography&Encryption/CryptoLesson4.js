@@ -4,7 +4,6 @@ import './CryptoLesson4.css';
 
 function CryptoLesson4() {
   const navigate = useNavigate();
-  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div className="lessonpage-container">

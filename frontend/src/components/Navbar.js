@@ -71,8 +71,13 @@ function Navbar() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Home
+              {/* Dashboard link: goes to /course if logged in, else to /sign-up */}
+              <Link
+                to={user ? "/coursepage" : "/sign-up"}
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Dashboard
               </Link>
             </li>
             <li className="nav-item">
@@ -102,7 +107,9 @@ function Navbar() {
             <div className="nav-buttons">
               {user ? (
                 <div className="nav-profile">
-                  <span className="profile-info">Logged in as {user.name} (XP: {user.xp || 0})</span>
+                  <span className="profile-info">
+                    Logged in as {user.name} (XP: {user.xp || 0})
+                  </span>
                   <button onClick={handleLogout} className="logout-button">
                     Logout
                   </button>

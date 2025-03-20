@@ -1,4 +1,3 @@
-// src/components/UniversalQuiz.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,14 +10,14 @@ const UniversalQuiz = ({
   currentLessonId, 
   nextLessonId, 
   retakeRoute, 
-  nextRoute 
+  nextRoute, 
+  courseId 
 }) => {
   const navigate = useNavigate();
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Scroll to top when quiz is submitted
   useEffect(() => {
     const topElement = document.getElementById('top');
     if (topElement) {
@@ -44,7 +43,6 @@ const UniversalQuiz = ({
   const handleSubmit = () => {
     let sc = 0;
     questions.forEach(q => {
-      // For MC, fill-in, drag-and-drop types, compare trimmed lowercase string answers
       if (q.type === 'multipleChoice' || q.type === 'fillInTheGap' || q.type === 'dragAndDrop') {
         if ((answers[q.id] || "").trim().toLowerCase() === q.correctAnswer.toLowerCase()) {
           sc += 1;
@@ -59,32 +57,27 @@ const UniversalQuiz = ({
         if (correct) sc += 1;
       }
     });
+
     setScore(sc);
     setSubmitted(true);
 
-    // Wait a moment for UI update and scroll to top
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
 
-    // Calculate percentage and XP earned (5 XP per correct answer)
     const percentage = (sc / questions.length) * 100;
     const currentQuizXP = sc * 5;
 
-    // Retrieve the user from localStorage and update quiz XP only once per lesson
     let currentUser = JSON.parse(localStorage.getItem('user')) || {};
     if (!currentUser.quizXP) {
       currentUser.quizXP = {};
     }
     const alreadyAwardedXP = currentUser.quizXP[currentLessonId] || 0;
     const additionalXP = Math.max(0, currentQuizXP - alreadyAwardedXP);
-    // Save the best XP for this quiz
     currentUser.quizXP[currentLessonId] = Math.max(alreadyAwardedXP, currentQuizXP);
-    // Add additional XP only if it's higher than before
     currentUser.xp = (currentUser.xp || 0) + additionalXP;
     localStorage.setItem('user', JSON.stringify(currentUser));
 
-    // Update XP on the backend
     axios.put('http://localhost:5000/api/progress/updateXP', { xpEarned: additionalXP }, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
@@ -95,7 +88,8 @@ const UniversalQuiz = ({
       console.error('Failed to update XP', err.response ? err.response.data : err);
     });
 
-    // Update lesson progress on the backend if percentage >= 50%
+    // Only update lesson progress if the user scores 50% or higher.
+    // We do not alert; we simply omit the nextRoute so that the summary page won't show the "Continue" button.
     if (percentage >= 50) {
       axios.put('http://localhost:5000/api/progress/update', {
         lessonId: currentLessonId,
@@ -106,7 +100,6 @@ const UniversalQuiz = ({
       })
       .then(res => {
         console.log('Progress updated', res.data);
-        // Also update localStorage user progress
         let updatedUser = JSON.parse(localStorage.getItem('user')) || {};
         updatedUser.progress = updatedUser.progress || {};
         updatedUser.progress[currentLessonId] = percentage;
@@ -121,7 +114,6 @@ const UniversalQuiz = ({
       });
     }
 
-    // Navigate to the Quiz Summary page with all summary data
     navigate('/quiz-summary', {
       state: {
         score: sc,
@@ -132,25 +124,15 @@ const UniversalQuiz = ({
         answers,
         backRoute,
         retakeRoute,
-        nextRoute
+        nextRoute: percentage >= 50 ? nextRoute : undefined,
+        courseId: courseId || null  // Explicitly pass courseId with null fallback
       }
     });
   };
 
-  const handleRetake = () => {
-    setAnswers({});
-    setSubmitted(false);
-    setScore(0);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
-  };
-
   return (
     <div className="quiz-page">
-      {/* Dummy element for scroll target */}
       <div id="top"></div>
-      
       <h1 className="quiz-title">{title}</h1>
       <div className="quiz-questions">
         {questions.map(q => (

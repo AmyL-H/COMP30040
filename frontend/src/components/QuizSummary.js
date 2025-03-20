@@ -1,4 +1,3 @@
-// src/components/QuizSummary.js
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './QuizSummary.css';
@@ -7,7 +6,7 @@ const QuizSummary = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Destructure state passed from UniversalQuiz; supply default values if undefined
+  // Destructure state passed from the quiz page; courseId is passed dynamically.
   const {
     score = 0,
     total = 0,
@@ -17,7 +16,8 @@ const QuizSummary = () => {
     answers = {},
     backRoute = '/',
     retakeRoute,
-    nextRoute
+    nextRoute,
+    courseId 
   } = location.state || {};
 
   const correctCount = score;
@@ -41,7 +41,7 @@ const QuizSummary = () => {
     }
   };
 
-  // Helper function to safely get explanation text
+  // Helper function to safely get explanation text for a question
   const getExplanation = (q) => {
     if (!q.explanation) return "Review the lesson for more details.";
     let key;
@@ -91,11 +91,20 @@ const QuizSummary = () => {
           </div>
         </div>
       </div>
+
       <div className="summary-buttons">
         <button onClick={handleRetake} className="btn retake">Retake Quiz</button>
         <button onClick={handleBack} className="btn back">Back to Lesson</button>
         {nextRoute && <button onClick={handleNext} className="btn next">Continue to Next Lesson</button>}
       </div>
+
+      {/* Show warning message if the user did not score at least 50% */}
+      {!nextRoute && (
+        <div className="warning-message">
+          <p>You did not score at least 50%. Please review the lesson content and retake the quiz to proceed to the next lesson.</p>
+        </div>
+      )}
+
       <div className="question-review-section">
         <h2>Review Your Answers</h2>
         {questions.map(q => (

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './CybersecurityIntroModule.css';
+import './NetworkSecurityIntroModule.css';
 
-const CybersecurityIntroModule = () => {
+const NetworkSecurityIntroModule = () => {
   const navigate = useNavigate();
   const [showObjectives, setShowObjectives] = useState(false);
   const [showTips, setShowTips] = useState(false);
@@ -19,22 +19,23 @@ const CybersecurityIntroModule = () => {
     quiz3: false,
   });
 
-  // Listen for progress updates from lesson pages
   useEffect(() => {
     const updateProgress = () => {
       const user = JSON.parse(localStorage.getItem('user')) || {};
       const progress = user.progress || {};
       setCompletedLessons({
-        lesson1: progress['lesson1'] >= 50,
-        lesson2: progress['lesson2'] >= 50,
-        lesson3: progress['lesson3'] >= 50,
-        lesson4: progress['lesson4'] >= 50,
-        lesson5: progress['lesson5'] >= 50,
+        lesson1: progress['network-security-lesson1'] >= 50,
+        lesson2: progress['network-security-lesson2'] >= 50,
+        lesson3: progress['network-security-lesson3'] >= 50,
+        lesson4: progress['network-security-lesson4'] >= 50,
+        lesson5: progress['network-security-lesson5'] >= 50,
       });
       setCompletedQuizzes({
-        quiz1: progress['quiz1'] >= 50,
-        quiz2: progress['quiz2'] >= 50,
-        quiz3: progress['quiz3'] >= 50,
+        quiz1: progress['network-security-quiz1'] >= 50,
+        quiz2: progress['network-security-quiz2'] >= 50,
+        quiz3: progress['network-security-quiz3'] >= 50,
+        quiz4: progress['network-security-quiz4'] >= 50,
+        quiz5: progress['network-security-quiz5'] >= 50,
       });
     };
     window.addEventListener('progressUpdated', updateProgress);
@@ -42,10 +43,8 @@ const CybersecurityIntroModule = () => {
     return () => window.removeEventListener('progressUpdated', updateProgress);
   }, []);
 
-  // Course ID for this module
-  const courseId = "cybersecurity";
+  const courseId = "network-security";
 
-  // Navigate to the course info page for the module
   const handleDoorClick = () => {
     navigate(`/course/${courseId}`);
   };
@@ -54,9 +53,10 @@ const CybersecurityIntroModule = () => {
     <div className="module-container">
       {/* Module Title & Introduction */}
       <header className="module-header">
-        <h1 className="title">🚀 Introduction to Cybersecurity</h1>
+        <h1 className="title">🌐 Network Security</h1>
         <p className="module-description">
-          Welcome to the <strong>Introduction to Cybersecurity</strong> module! In this course, you'll learn the fundamentals of cybersecurity—including key principles, common threats, major incidents, and essential protection techniques. Engage with interactive quizzes, real-world case studies, and hands-on assignments to solidify your understanding.
+          Explore how to secure networks from various threats. This module covers the fundamentals of network security,
+          common security tools, methods for securing networks, wireless network security, and vulnerability assessments.
         </p>
       </header>
 
@@ -73,44 +73,44 @@ const CybersecurityIntroModule = () => {
         <div className="objectives-card">
           <h2>🎯 Learning Objectives</h2>
           <ul>
-            <li>Understand what cybersecurity is and its importance.</li>
-            <li>Analyze major cyber threats and real-world attacks.</li>
-            <li>Learn how to protect systems, networks, and personal data.</li>
-            <li>Engage with interactive case studies and discussion questions.</li>
-            <li>Apply your knowledge through quizzes & hands-on assignments.</li>
+            <li>Understand the fundamentals of network security.</li>
+            <li>Learn about common network security tools.</li>
+            <li>Discover strategies for securing networks.</li>
+            <li>Examine wireless network security challenges.</li>
+            <li>Understand network vulnerability assessments.</li>
           </ul>
         </div>
       )}
 
-      {/* Lesson Overview (Static List) */}
+      {/* Lessons Overview */}
       <section className="module-section">
         <h2 className="section-title">📚 Lessons Overview</h2>
         <p>Below are the lessons in this module. A checkmark (✅) indicates that you have completed the associated quiz.</p>
         <div className="lesson-list">
           <div className="lesson-item">
-            <span>Lesson 1: What is Cybersecurity?</span>
+            <span>Lesson 1: Introduction to Network Security</span>
             {completedLessons.lesson1 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="lesson-item">
-            <span>Lesson 2: Importance of Cybersecurity</span>
+            <span>Lesson 2: Common Network Security Tools</span>
             {completedLessons.lesson2 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="lesson-item">
-            <span>Lesson 3: Common Threats & Vulnerabilities</span>
+            <span>Lesson 3: Securing Networks</span>
             {completedLessons.lesson3 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="lesson-item">
-            <span>Lesson 4: Security Frameworks & Strategies</span>
+            <span>Lesson 4: Wireless Network Security</span>
             {completedLessons.lesson4 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="lesson-item">
-            <span>Lesson 5: Future Trends in Cybersecurity</span>
+            <span>Lesson 5: Network Vulnerability Assessments</span>
             {completedLessons.lesson5 && <span className="completed-indicator">✅</span>}
           </div>
         </div>
       </section>
 
-      {/* Quizzes & Assignments (Static Display) */}
+      {/* Quizzes & Assignments */}
       <section className="module-section">
         <h2 className="section-title">📝 Quizzes & Assignments</h2>
         <p className="module-description">
@@ -118,46 +118,45 @@ const CybersecurityIntroModule = () => {
         </p>
         <div className="quiz-list">
           <div className="quiz-item">
-            <span>Quiz 1: Cybersecurity Basics</span>
+            <span>Quiz 1: Network Security Basics</span>
             {completedQuizzes.quiz1 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="quiz-item">
-            <span>Quiz 2: Cybersecurity Importance</span>
+            <span>Quiz 2: Network Security Tools</span>
             {completedQuizzes.quiz2 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="quiz-item">
-            <span>Quiz 3: Cyber Threats</span>
+            <span>Quiz 3: Securing Networks</span>
             {completedQuizzes.quiz3 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="quiz-item">
-            <span>Quiz 4: Security Frameworks</span>
+            <span>Quiz 4: Wireless Network Security</span>
             {completedQuizzes.quiz3 && <span className="completed-indicator">✅</span>}
           </div>
           <div className="quiz-item">
-            <span>Quiz 5: Cyber Trends</span>
+            <span>Quiz 5: Network Vulnerability</span>
             {completedQuizzes.quiz3 && <span className="completed-indicator">✅</span>}
           </div>
-
         </div>
         <div className="assignment-list">
           <div className="assignment-item">
-            <span>Assignment 1: Research a Cybersecurity Incident</span>
+            <span>Assignment 1: Perform a Network Vulnerability Assessment</span>
           </div>
         </div>
       </section>
 
-      {/* Fun Facts Section */}
+      {/* New Fun Facts Section */}
       <section className="module-section">
-        <h2 className="section-title">Fun Facts About Cybersecurity</h2>
+        <h2 className="section-title">Fun Facts About Network Security</h2>
         <div className="fun-facts">
           <div className="fact-card">
-            <p><strong>Cyber Term Origin:</strong> The word "cyberspace" was coined by writer William Gibson in his 1982 novel "Neuromancer".</p>
+            <p><strong>ARPANET Origins:</strong> Early network security challenges on ARPANET paved the way for modern security protocols.</p>
           </div>
           <div className="fact-card">
-            <p><strong>Job Growth:</strong> Cybersecurity is one of the fastest-growing career fields in tech today!</p>
+            <p><strong>Firewall Evolution:</strong> The term "firewall" originally referred to physical firebreaks used to prevent the spread of fire, and now it’s a cornerstone of network security.</p>
           </div>
           <div className="fact-card">
-            <p><strong>Phishing Alert:</strong> Over 90% of cyberattacks start with a phishing email.</p>
+            <p><strong>IoT Impact:</strong> The rise of IoT devices has significantly increased the importance of robust network security measures.</p>
           </div>
         </div>
       </section>
@@ -184,15 +183,11 @@ const CybersecurityIntroModule = () => {
         </div>
       </section>
 
-      {/* Interactive Door Section */}
+      {/* Door Section */}
       <section className="door-section">
-        <h2 className="section-title">Step Into your First Module!</h2>
+        <h2 className="section-title">Step Into your Third Module!</h2>
         <div className="door-container" onClick={handleDoorClick}>
-          <img
-            src="/images/door.png"
-            alt="Enter Cybersecurity Course"
-            className="door-image"
-          />
+          <img src="/images/door.png" alt="Enter Network Security Course" className="door-image" />
           <p className="door-text">Click the door to begin...</p>
         </div>
       </section>
@@ -200,4 +195,4 @@ const CybersecurityIntroModule = () => {
   );
 };
 
-export default CybersecurityIntroModule;
+export default NetworkSecurityIntroModule;

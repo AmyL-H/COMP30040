@@ -29,7 +29,6 @@ import EthicalLesson5 from '../pages/EthicalHacking&PenetrationTesting/EthicalLe
 
 const LessonHandler = () => {
   const { lessonId, courseId } = useParams();
-  const navigate = useNavigate();
   // Retrieve user progress from localStorage
   const storedUser = localStorage.getItem('user');
   const [user, setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
