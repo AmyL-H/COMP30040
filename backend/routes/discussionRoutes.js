@@ -2,54 +2,43 @@ const express = require('express');
 const router = express.Router();
 const Discussion = require('../models/discussionModel');
 
-// Fetch all discussion posts
-router.get('/', async (req, res) => {
+// Get posts by room
+router.get('/:room', async (req, res) => {
   try {
-    const discussions = await Discussion.find().sort({ createdAt: -1 });
-    res.status(200).json(discussions);
+    const posts = await Discussion.find({ room: req.params.room });
+    res.json(posts);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching discussions' });
+    res.status(500).json({ message: 'Failed to fetch discussions.' });
   }
 });
 
-// Create a new discussion post
-router.post('/', async (req, res) => {
+// Post a new message to a room
+router.post('/:room', async (req, res) => {
+  const { username, message } = req.body;
+  const room = req.params.room;
+
   try {
-    const { username, message } = req.body;
-    if (!username || !message) {
-      return res.status(400).json({ message: 'Username and message are required' });
-    }
-
-    const newDiscussion = new Discussion({ username, message });
-    await newDiscussion.save();
-
-    res.status(201).json(newDiscussion);
+    const post = new Discussion({ username, message, room });
+    const savedPost = await post.save();
+    res.status(201).json(savedPost);
   } catch (error) {
-    res.status(500).json({ message: 'Error creating discussion post' });
+    res.status(500).json({ message: 'Failed to save post.' });
   }
 });
 
-// Add a reply to a discussion post
-router.post('/:id/reply', async (req, res) => {
+// Add a reply to a post
+router.post('/:room/:id/reply', async (req, res) => {
+  const { username, message } = req.body;
+
   try {
-    const { username, message } = req.body;
-    const discussion = await Discussion.findById(req.params.id);
-    if (!discussion) {
-      return res.status(404).json({ message: 'Post not found' });
-    }
+    const post = await Discussion.findById(req.params.id);
+    if (!post) return res.status(404).json({ message: 'Post not found.' });
 
-    const newReply = {
-      username,
-      message,
-      createdAt: new Date()
-    };
-
-    discussion.replies.push(newReply);
-    await discussion.save();
-
-    res.status(201).json(discussion);
+    post.replies.push({ username, message });
+    await post.save();
+    res.status(201).json(post);
   } catch (error) {
-    res.status(500).json({ message: 'Error adding reply' });
+    res.status(500).json({ message: 'Failed to save reply.' });
   }
 });
 

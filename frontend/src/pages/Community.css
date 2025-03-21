@@ -1,22 +1,59 @@
 .community-container {
-    max-width: 900px;
-    margin: 20px auto;
-    background: #2a2a4c;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-  }
-  
-  .community-title {
-    color: #00ccff;
-    margin-bottom: 20px;
-  }
-  
-  .no-posts {
-    color: #ff4747;
-    font-style: italic;
-  }
-  
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #1e1e2f;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.community-title {
+  font-size: 2.8rem;
+  color: #00ccff;
+  margin-bottom: 10px;
+}
+
+.community-intro {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.chatroom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* General room styling: full width */
+.chatroom-card:first-child {
+  grid-column: 1 / -1;
+  padding: 40px 25px;
+  background: linear-gradient(145deg, #324372, #1b1b2c);
+}
+
+.chatroom-card {
+  background: linear-gradient(145deg, #2a2a4c, #1b1b2c);
+  padding: 30px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 10px rgba(0, 204, 255, 0.1);
+  text-align: center;
+}
+
+.chatroom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 204, 255, 0.4);
+}
+
+.chatroom-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.chatroom-name {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
