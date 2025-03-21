@@ -29,4 +29,28 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Add a reply to a discussion post
+router.post('/:id/reply', async (req, res) => {
+  try {
+    const { username, message } = req.body;
+    const discussion = await Discussion.findById(req.params.id);
+    if (!discussion) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    const newReply = {
+      username,
+      message,
+      createdAt: new Date()
+    };
+
+    discussion.replies.push(newReply);
+    await discussion.save();
+
+    res.status(201).json(discussion);
+  } catch (error) {
+    res.status(500).json({ message: 'Error adding reply' });
+  }
+});
+
 module.exports = router;

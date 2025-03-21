@@ -231,6 +231,61 @@
   color: #bbbbbb;
 }
 
+.reply-toggle {
+  margin-top: 10px;
+  background: transparent;
+  color: #00ccff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.reply-form {
+  margin-top: 15px;
+  padding: 10px;
+  background: #1e1e2f;
+  border-radius: 8px;
+}
+
+.reply-form input,
+.reply-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2a2a4c;
+  color: white;
+}
+
+.reply-form button {
+  background: #00ccff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reply-form button:hover {
+  background: #008cff;
+}
+
+.reply-list {
+  margin-top: 15px;
+  padding-left: 15px;
+  border-left: 2px solid #00ccff;
+}
+
+.reply-item {
+  background: #3a3a5c;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
 /* Fade-in Animation */
 @keyframes fadeIn {
   from {

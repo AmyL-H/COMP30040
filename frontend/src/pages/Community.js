@@ -5,7 +5,7 @@ import './Community.css';
 const Community = () => {
   return (
     <div className="community-container">
-      <h1 className="community-title">Welcome to the Community</h1>
+      <h1 className="community-title">Welcome to the Community!</h1>
       <DiscussionBoard />
     </div>
   );
