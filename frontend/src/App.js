@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import ScrollToTop from './components/TopPage';
 import HomePage from './pages/HomePage';
 import Register from './pages/Register';
@@ -66,6 +67,24 @@ function App() {
       window.history.scrollRestoration = 'manual';
     }
   }, []);
+
+  // STREAK TRACKING 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      axios.post('http://localhost:5000/api/user/streak/check', { userId: user._id })
+        .then(res => {
+          if (res.data.streak) {
+            user.streak = res.data.streak;
+            user.xp = res.data.xp;
+            localStorage.setItem('user', JSON.stringify(user));
+            // Optional: toast notification or animation
+          }
+        })
+        .catch(err => console.error('Streak check failed', err));
+    }
+  }, []);
+  
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);

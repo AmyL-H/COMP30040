@@ -44,10 +44,13 @@ function Navbar() {
     window.addEventListener('progressUpdated', updateUser);
     window.addEventListener('userLoggedIn', updateUser);
 
+    window.addEventListener('streakUpdated', updateUser);
+
     return () => {
       window.removeEventListener('resize', showButton);
       window.removeEventListener('progressUpdated', updateUser);
       window.removeEventListener('userLoggedIn', updateUser);
+      window.removeEventListener('streakUpdated', updateUser);
     };
   }, []);
 
@@ -108,7 +111,8 @@ function Navbar() {
               {user ? (
                 <div className="nav-profile">
                   <span className="profile-info">
-                    Logged in as {user.name} (XP: {user.xp || 0})
+                    {user.name} <br />
+                    <span className="xp">🔥 {user.streak || 0}-day streak | ⭐ {user.xp || 0} XP</span>
                   </span>
                   <button onClick={handleLogout} className="logout-button">
                     Logout

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CyberCityMap from '../components/CyberCityMap';
 import Leaderboard from '../components/Leaderboard';
+import UserProgressDashboard from '../components/UserProgressDashboard';
 import './CoursePage.css';
 
 const CoursePage = () => {
@@ -23,6 +24,10 @@ const CoursePage = () => {
     <div className='coursepage-container'>
       <h1>Your Cybersecurity Journey</h1>
       <p>Progress through each stage to become a cybersecurity expert!</p>
+
+      {/* 🧠 Add Progress Summary */}
+      <UserProgressDashboard />
+
       <br />
       {/* Render the module overview map */}
       <CyberCityMap 

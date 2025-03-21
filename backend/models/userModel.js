@@ -8,7 +8,15 @@ const userSchema = new mongoose.Schema({
   // Use a Map to store progress for lessons (e.g., "lesson1": 75)
   progress: { type: Map, of: Number, default: {} },
   // XP field (initialize to 0)
-  xp: { type: Number, default: 0 }
+  xp: { type: Number, default: 0 },
+  streakCount: { type: Number, default: 0 },
+  lastVisitDate: { type: Date, default: null },
+  streakCalendar: [
+    {
+      date: String,
+      active: Boolean,
+    }
+  ],
 }, { timestamps: true });
 
 // Pre-save middleware for password hashing
