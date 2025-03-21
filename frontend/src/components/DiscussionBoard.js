@@ -4,67 +4,87 @@ import './DiscussionBoard.css';
 
 const DiscussionBoard = () => {
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState('');
-  const [user, setUser] = useState(null);
+  const [newPost, setNewPost] = useState({ username: '', message: '' });
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    // Fetch discussion posts
-    axios.get('http://localhost:5000/api/discussion')
-      .then(response => setPosts(response.data))
-      .catch(error => console.error('Error fetching posts:', error));
-
-    // Get user data from localStorage
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) setUser(storedUser);
+    fetchPosts();
   }, []);
 
-  const handlePostSubmit = () => {
-    if (!user) {
-      alert('You must be logged in to post.');
-      return;
+  // Fetch all posts from backend
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/discussions');
+      setPosts(response.data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      setError('Failed to load discussion posts.');
     }
-    
-    if (!newPost.trim()) {
-      alert('Post cannot be empty.');
+  };
+
+  // Handle input change
+  const handleChange = (e) => {
+    setNewPost({ ...newPost, [e.target.name]: e.target.value });
+  };
+
+  // Submit new post
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!newPost.username || !newPost.message) {
+      setError('Please fill out all fields.');
       return;
     }
 
-    const postData = { userId: user._id, content: newPost };
-    
-    axios.post('http://localhost:5000/api/discussion', postData, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    })
-      .then(response => {
-        setPosts([response.data, ...posts]);
-        setNewPost('');
-      })
-      .catch(error => console.error('Error creating post:', error));
+    try {
+      const response = await axios.post('http://localhost:5000/api/discussions', newPost);
+      setPosts([...posts, response.data]);
+      setNewPost({ username: '', message: '' }); // Clear input fields
+      setError('');
+    } catch (error) {
+      console.error('Error posting message:', error);
+      setError('Failed to post message.');
+    }
   };
 
   return (
     <div className="discussion-container">
-      <h2>Community Discussion Board</h2>
-      
-      {user ? (
-        <div className="post-box">
-          <textarea
-            value={newPost}
-            onChange={(e) => setNewPost(e.target.value)}
-            placeholder="Share your thoughts..."
-          />
-          <button onClick={handlePostSubmit}>Post</button>
-        </div>
-      ) : (
-        <p className="login-message">Log in to participate in the discussion.</p>
-      )}
+      <h1>Community Discussion Board</h1>
 
+      {/* New Post Form */}
+      <form onSubmit={handleSubmit} className="post-form">
+        <input
+          type="text"
+          name="username"
+          placeholder="Your Name"
+          value={newPost.username}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Write your message..."
+          value={newPost.message}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Post Message</button>
+      </form>
+
+      {error && <p className="error-message">{error}</p>}
+
+      {/* Display Posts */}
       <div className="posts-list">
-        {posts.map(post => (
-          <div key={post._id} className="post-item">
-            <p className="post-content">{post.content}</p>
-            <span className="post-meta">Posted on {new Date(post.createdAt).toLocaleString()}</span>
-          </div>
-        ))}
+        {posts.length > 0 ? (
+          posts.map((post, index) => (
+            <div key={index} className="post-item">
+              <strong>{post.username}</strong>
+              <p>{post.message}</p>
+              <small>Posted at: {new Date(post.createdAt).toLocaleString()}</small>
+            </div>
+          ))
+        ) : (
+          <p>No posts yet. Be the first to start a discussion!</p>
+        )}
       </div>
     </div>
   );

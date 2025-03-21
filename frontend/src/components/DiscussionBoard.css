@@ -1,89 +1,244 @@
+/* Discussion Container */
 .discussion-container {
-    max-width: 800px;
-    margin: 20px auto;
-    background: #2a2a4c;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  max-width: 900px;
+  margin: 40px auto;
+  background: linear-gradient(145deg, #1e1e2f, #2a2a4c);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Title */
+.discussion-container h1 {
+  font-size: 2.5rem;
+  color: #00ccff;
+  margin-bottom: 20px;
+}
+
+/* Post Form */
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.post-form input,
+.post-form textarea {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e2f;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.post-form input::placeholder,
+.post-form textarea::placeholder {
+  color: #aaa;
+}
+
+.post-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.post-form button {
+  align-self: center;
+  padding: 12px 30px;
+  background: #00ccff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.post-form button:hover {
+  background: #008cff;
+  transform: scale(1.05);
+}
+
+/* Error Message */
+.error-message {
+  color: #ff6363;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Posts List */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Post */
+.post-item {
+  background: #333355;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 204, 255, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.post-item strong {
+  font-size: 1.2rem;
+  color: #00ccff;
+}
+
+.post-item p {
+  margin-top: 8px;
+  font-size: 1.05rem;
+  color: white;
+}
+
+.post-item small {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #bbbbbb;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
-  
-  h2 {
-    color: #00ccff;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .post-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+}
+/* Discussion Container */
+.discussion-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: linear-gradient(145deg, #1e1e2f, #2a2a4c);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Title */
+.discussion-container h1 {
+  font-size: 2.5rem;
+  color: #00ccff;
+  margin-bottom: 20px;
+}
+
+/* Post Form */
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.post-form input,
+.post-form textarea {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e1e2f;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.post-form input::placeholder,
+.post-form textarea::placeholder {
+  color: #aaa;
+}
+
+.post-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.post-form button {
+  align-self: center;
+  padding: 12px 30px;
+  background: #00ccff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.post-form button:hover {
+  background: #008cff;
+  transform: scale(1.05);
+}
+
+/* Error Message */
+.error-message {
+  color: #ff6363;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Posts List */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Post */
+.post-item {
+  background: #333355;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 204, 255, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.post-item strong {
+  font-size: 1.2rem;
+  color: #00ccff;
+}
+
+.post-item p {
+  margin-top: 8px;
+  font-size: 1.05rem;
+  color: white;
+}
+
+.post-item small {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #bbbbbb;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
-  
-  .post-box textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 1rem;
-    background: #1e1e2f;
-    color: white;
-    resize: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .post-box button {
-    margin-top: 10px;
-    padding: 10px;
-    background: #00ccff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .post-box button:hover {
-    background: #008cff;
-  }
-  
-  .login-message {
-    color: #ff4747;
-  }
-  
-  .posts-list {
-    margin-top: 20px;
-  }
-  
-  .post-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    text-align: left;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  .post-content {
-    font-size: 1.1rem;
-    color: white;
-  }
-  
-  .post-meta {
-    display: block;
-    margin-top: 5px;
-    font-size: 0.8rem;
-    color: #00ccff;
-  }
-  
-  /* Fade-in effect */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
+}
