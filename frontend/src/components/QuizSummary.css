@@ -131,3 +131,8 @@
 .review-card strong {
   font-weight: bold;
 }
+
+.no-answer {
+  color: #ff4d4d;
+  font-style: italic;
+}

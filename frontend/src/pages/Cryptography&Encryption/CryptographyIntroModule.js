@@ -74,7 +74,7 @@ const CryptographyIntroModule = () => {
             <li>Differentiate between symmetric and asymmetric encryption.</li>
             <li>Explore real-world cryptographic applications.</li>
             <li>Learn about Public Key Infrastructure (PKI).</li>
-            <li>Recognize challenges in breaking and defending cryptographic systems.</li>
+            <li>Recognise challenges in breaking and defending cryptographic systems.</li>
           </ul>
         </div>
       )}

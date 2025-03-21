@@ -58,8 +58,6 @@
   margin: 0 auto;
 }
 
-
-
 .diagram-container img:hover {
   transform: scale(1.05);
 }
@@ -88,4 +86,16 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+.large-diagram {
+  max-width: 110%;
+  width: 100%;
+  height: auto;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.large-diagram:hover {
+  transform: scale(1.08);
 }

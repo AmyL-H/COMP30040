@@ -82,3 +82,54 @@
   color: white;
   text-align: center;
 }
+
+.diagram-section {
+  margin-top: 20px;
+  background-color: #27293d;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.diagram-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.diagram-box {
+  background: #33334f;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,140,255,0.3);
+  font-weight: 500;
+}
+
+.diagram-arrow {
+  align-self: center;
+  font-size: 1.5rem;
+  color: #00ffcc;
+}
+
+.diagram-note {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #cccccc;
+  font-style: italic;
+  text-align: center;
+}
+
+.matching-activity {
+  margin-top: 15px;
+  background: #2a2a4c;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+}
+
+.matching-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}

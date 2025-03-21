@@ -1,0 +1,81 @@
+/* src/pages/NetworkSecurity/NetworkQuiz5.css */
+
+.quiz-page {
+    padding: 30px;
+    text-align: center;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  .quiz-title {
+    color: #008CFF;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0, 140, 255, 0.8);
+  }
+  
+  .quiz-questions {
+    margin-bottom: 30px;
+  }
+  
+  .quiz-question {
+    background-color: #1e1e2f;
+    padding: 20px;
+    text-align: left;
+    margin: 20px auto;
+    max-width: 800px;
+    border-bottom: 1px solid #444466;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 140, 255, 0.1);
+  }
+  
+  .question-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .option-button {
+    background-color: #008CFF;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .option-button:hover {
+    background-color: #339DFF;
+  }
+  
+  .option-button.selected {
+    background-color: #00ff63;
+    color: #1e1e2f;
+    font-weight: bold;
+  }
+  
+  .submit-button {
+    background-color: #00ff63;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 30px;
+  }
+  
+  .submit-button:hover {
+    background-color: #33ff80;
+  }
+  

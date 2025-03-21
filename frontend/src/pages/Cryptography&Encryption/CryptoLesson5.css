@@ -1,5 +1,3 @@
-/* cryptoLesson5.css - Updated styling for Cryptography Lesson 5 */
-
 .lessonpage-container {
   padding: 30px;
   text-align: center;
@@ -19,23 +17,40 @@
 
 .lesson-section {
   margin-bottom: 30px;
-  background-color: #1e1e2f;
+  background-color: #2a2a3d; /* subtle contrast for content areas */
   padding: 20px;
   text-align: left;
   max-width: 800px;
   margin: 0 auto 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 140, 255, 0.2);
 }
 
 .lesson-section h2 {
-  color: #008CFF;
+  color: #00b7ff;
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
 
-.lesson-text {
+.lesson-text,
+.lesson-section p,
+.lesson-section li,
+.lesson-section em,
+.lesson-section strong {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: white;
+  color: #ffffff;
+}
+
+/* Case Study or nested paragraph fixes */
+.lesson-section em {
+  color: #ccc;
+  font-style: italic;
+}
+
+.lesson-section strong {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .challenge-container {
@@ -45,6 +60,8 @@
   border-radius: 8px;
   max-width: 600px;
   text-align: center;
+  background-color: #1c1c2e;
+  color: #ffffff;
 }
 
 .challenge-container button {
@@ -62,6 +79,18 @@
   background: #339DFF;
 }
 
+/* Optional: Improve visibility of list items */
+.lesson-section ul {
+  margin-left: 20px;
+  padding-left: 10px;
+  color: white;
+}
+
+.lesson-section li {
+  margin-bottom: 8px;
+}
+
+/* Door Section (reuse if present) */
 .door-section {
   text-align: center;
 }

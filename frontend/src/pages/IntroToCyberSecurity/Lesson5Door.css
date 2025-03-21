@@ -52,3 +52,42 @@
 .navigation-button button:hover {
   background-color: #33ff80;
 }
+
+.toggle-button {
+  background-color: #00ccff;
+  border: none;
+  padding: 10px 18px;
+  margin: 12px 0;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.toggle-button:hover {
+  background-color: #339dff;
+}
+
+.discussion-activity,
+.mini-game,
+.self-directed-box {
+  margin-top: 15px;
+  background-color: #2a2a4c;
+  padding: 15px;
+  border-left: 4px solid #00ccff;
+  border-radius: 8px;
+}
+
+.download-button {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #008cff;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background-color: #339dff;
+}
+

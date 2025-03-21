@@ -86,8 +86,13 @@ const Lesson3Door = () => {
           Hover over different components to reveal potential risks and understand defensive strategies.
         </p>
         <div className="diagram-container">
-          <img src="/images/vulnerability-map.svg" alt="Interactive Vulnerability Map" />
+          <img
+            src="/images/threats.jpg"
+            alt="Interactive Vulnerability Map"
+            className="large-diagram"
+          />
         </div>
+
       </div>
 
       {/* Self-Directed Learning Assignment */}

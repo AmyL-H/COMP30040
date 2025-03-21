@@ -74,7 +74,7 @@ const CybersecurityIntroModule = () => {
           <h2>🎯 Learning Objectives</h2>
           <ul>
             <li>Understand what cybersecurity is and its importance.</li>
-            <li>Analyze major cyber threats and real-world attacks.</li>
+            <li>Analyse major cyber threats and real-world attacks.</li>
             <li>Learn how to protect systems, networks, and personal data.</li>
             <li>Engage with interactive case studies and discussion questions.</li>
             <li>Apply your knowledge through quizzes & hands-on assignments.</li>
@@ -85,7 +85,7 @@ const CybersecurityIntroModule = () => {
       {/* Lesson Overview (Static List) */}
       <section className="module-section">
         <h2 className="section-title">📚 Lessons Overview</h2>
-        <p>Below are the lessons in this module. A checkmark (✅) indicates that you have completed the associated quiz.</p>
+        <p>Below are the lessons in this module. A checkmark (✅) indicates that you have completed the associated quiz. To complete a lesson please proceed to the next page!</p>
         <div className="lesson-list">
           <div className="lesson-item">
             <span>Lesson 1: What is Cybersecurity?</span>
@@ -114,7 +114,7 @@ const CybersecurityIntroModule = () => {
       <section className="module-section">
         <h2 className="section-title">📝 Quizzes & Assignments</h2>
         <p className="module-description">
-          Below are the quizzes and assignments for this module. To complete a quiz and mark the lesson as complete, please visit the dedicated lesson page.
+          Below are the quizzes and assignments for this module. Upon completing your associated tasks you can unlock more lessons and gain XP!
         </p>
         <div className="quiz-list">
           <div className="quiz-item">

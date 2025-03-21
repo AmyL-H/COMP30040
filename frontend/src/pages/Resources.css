@@ -1,0 +1,91 @@
+.resources-container {
+    background-color: #121829;
+    color: #ffffff;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .resources-title {
+    font-size: 3rem;
+    text-align: center;
+    color: #00bfff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
+  }
+  
+  .resources-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+  
+  .resource-section {
+    margin-bottom: 40px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #00ff99;
+    border-bottom: 2px solid #00ff99;
+    padding-bottom: 5px;
+  }
+  
+  .resource-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .resource-card {
+    background: linear-gradient(145deg, #1e1e2f, #29293f);
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 360px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid transparent;
+  }
+  
+  .resource-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 255, 153, 0.3);
+    border-color: #00ff99;
+  }
+  
+  .resource-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #00ffcc;
+  }
+  
+  .resource-card p {
+    font-size: 0.95rem;
+    color: #d1d1d1;
+  }
+  
+  .navigation-button {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .navigation-button button {
+    background: #00bfff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .navigation-button button:hover {
+    background: #33ccff;
+  }
+  

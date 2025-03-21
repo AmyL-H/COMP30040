@@ -1,74 +1,139 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CryptoLesson2.css';
 
 function CryptoLesson2() {
   const navigate = useNavigate();
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 2: Symmetric vs. Asymmetric Encryption</h1>
-      
+
+      {/* Introduction */}
       <div className="lesson-section">
         <p className="lesson-text">
           Encryption is the process of converting plaintext into ciphertext using an algorithm and a key.
           There are two primary types of encryption: <strong>symmetric</strong> and <strong>asymmetric</strong>.
-          In symmetric encryption, the same key is used for both encrypting and decrypting data. This method is fast and efficient, making it ideal for large volumes of data.
-          Asymmetric encryption, on the other hand, uses a pair of keys – a public key for encryption and a private key for decryption – which helps solve the key distribution problem.
         </p>
         <p className="lesson-text">
-          While symmetric encryption offers speed, asymmetric encryption offers enhanced security through digital signatures and secure key exchange protocols.
-          Many systems actually use a hybrid approach where asymmetric encryption is used to securely exchange a symmetric key.
+          In <strong>symmetric encryption</strong>, the same key is used for both encrypting and decrypting data. It's fast and efficient—ideal for large datasets.
+          <br />
+          In <strong>asymmetric encryption</strong>, a public key encrypts and a private key decrypts. This allows for secure communication without pre-shared secrets.
         </p>
       </div>
-      
+
+      {/* Comparison Table */}
       <div className="lesson-section">
-        <h2>Side-by-Side Comparison</h2>
-        <p className="lesson-text">
-          Compare the strengths and weaknesses:
-        </p>
+        <h2>🆚 Side-by-Side Comparison</h2>
+        <p className="lesson-text">Compare their key differences:</p>
         <table>
           <thead>
             <tr>
               <th>Aspect</th>
-              <th>Symmetric Encryption (e.g., AES)</th>
-              <th>Asymmetric Encryption (e.g., RSA)</th>
+              <th>Symmetric (e.g., AES)</th>
+              <th>Asymmetric (e.g., RSA)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Key Usage</td>
-              <td>Same key for both encryption and decryption</td>
-              <td>Different keys (public & private)</td>
+              <td>Same key for encryption and decryption</td>
+              <td>Public key to encrypt, private key to decrypt</td>
             </tr>
             <tr>
               <td>Speed</td>
-              <td>Fast, efficient for large data sets</td>
-              <td>Slower, computationally intensive</td>
+              <td>Fast, ideal for bulk data</td>
+              <td>Slower, best for small data or key exchange</td>
             </tr>
             <tr>
-              <td>Security</td>
-              <td>Requires secure key exchange</td>
-              <td>Provides secure key distribution; enables digital signatures</td>
+              <td>Use Case</td>
+              <td>File encryption, VPNs</td>
+              <td>Email security, digital signatures</td>
             </tr>
           </tbody>
         </table>
       </div>
-      
-      <div className="lesson-section">
-        <h2>Animated Transitions</h2>
+
+
+      <div className="lesson-section animated-diagram-section">
+        <h2>Visual Encryption Workflow</h2>
         <p className="lesson-text">
-          [Animated Transition Placeholder: Watch a visual demonstration of how symmetric and asymmetric encryption work, highlighting the process of key exchange and encryption/decryption cycles.]
+          Explore the step-by-step flow of symmetric and asymmetric encryption. Use this to understand how secure data transmission happens.
         </p>
+
+        <div className="diagram-card">
+          <h3>🔐 Symmetric Encryption</h3>
+          <div className="diagram-flow">
+            <div className="diagram-box">Sender</div>
+            <div className="diagram-arrow">🔑 Same Key</div>
+            <div className="diagram-box">Encrypts Data</div>
+            <div className="diagram-arrow">➡️</div>
+            <div className="diagram-box">Ciphertext</div>
+            <div className="diagram-arrow">➡️</div>
+            <div className="diagram-box">Receiver</div>
+            <div className="diagram-arrow">🔑 Same Key</div>
+            <div className="diagram-box">Decrypts Data</div>
+          </div>
+          <p className="diagram-note">⚠️ Key must be shared securely beforehand.</p>
+        </div>
+
+        <div className="diagram-card">
+          <h3>🔑 Asymmetric Encryption</h3>
+          <div className="diagram-flow">
+            <div className="diagram-box">Sender</div>
+            <div className="diagram-arrow">🔓 Public Key</div>
+            <div className="diagram-box">Encrypts Message</div>
+            <div className="diagram-arrow">➡️</div>
+            <div className="diagram-box">Ciphertext</div>
+            <div className="diagram-arrow">➡️</div>
+            <div className="diagram-box">Receiver</div>
+            <div className="diagram-arrow">🔒 Private Key</div>
+            <div className="diagram-box">Decrypts Message</div>
+          </div>
+          <p className="diagram-note">✅ No prior key exchange needed. Great for secure email & web traffic (HTTPS).</p>
+        </div>
       </div>
-      
+
+
+      {/* Active Exploration Section */}
       <div className="lesson-section">
-        <h2>Concept Check</h2>
+        <h2>🧠 Active Learning: Use Case Matching</h2>
         <p className="lesson-text">
-          Reflect on which method would be best suited for securing a large database versus establishing secure email communication.
+          Think about these situations:
         </p>
+        <ul className="styled-list">
+          <li><strong>Scenario A:</strong> Encrypting hundreds of files for backup.</li>
+          <li><strong>Scenario B:</strong> Sending a secure message to someone you've never met.</li>
+        </ul>
+        <p className="lesson-text">
+          Which would you choose—symmetric or asymmetric encryption? Why?
+        </p>
+        <button className="toggle-button" onClick={() => setShowMoreInfo(!showMoreInfo)}>
+          {showMoreInfo ? "Hide Explanation" : "Show Suggested Answer"}
+        </button>
+        {showMoreInfo && (
+          <div className="tip-card">
+            <p><strong>Scenario A:</strong> Use symmetric (AES) – it's fast and suitable for local bulk encryption.</p>
+            <p><strong>Scenario B:</strong> Use asymmetric (RSA) – it solves the problem of secure key sharing.</p>
+          </div>
+        )}
       </div>
-      
+
+      {/* Retrieval & Reflection */}
+      <div className="lesson-section">
+        <h2>💡 Retrieval Practice</h2>
+        <p className="lesson-text">
+          Without scrolling up, try to answer:
+        </p>
+        <ul className="styled-list">
+          <li>What's the key difference in how symmetric and asymmetric encryption use keys?</li>
+          <li>Which encryption is better for bulk data? Why?</li>
+          <li>How does asymmetric encryption support digital signatures?</li>
+        </ul>
+      </div>
+
+      {/* CTA */}
       <div className="navigation-button">
         <button onClick={() => navigate('/lesson/cryptoquiz2')}>Proceed to Quiz</button>
       </div>

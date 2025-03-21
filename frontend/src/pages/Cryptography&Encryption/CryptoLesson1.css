@@ -6,55 +6,83 @@
   font-family: 'Poppins', sans-serif;
   max-width: 1000px;
   margin: 40px auto;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 .title {
-  color: #008CFF;
-  text-shadow: 0px 0px 8px rgba(0, 140, 255, 0.8);
-  font-size: 2.8rem;
-  margin-bottom: 20px;
+  color: #00ccff;
+  text-shadow: 0 0 10px rgba(0, 204, 255, 0.8);
+  font-size: 3rem;
+  margin-bottom: 30px;
 }
 
 .lesson-section {
-  margin-bottom: 30px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: left;
-  max-width: 800px;
+  background: #ffffff;
+  color: #1e1e2f;
+  padding: 25px 30px;
+  border-radius: 12px;
   margin: 0 auto 30px auto;
+  max-width: 850px;
+  box-shadow: 0 4px 20px rgba(0, 204, 255, 0.1);
+  transition: transform 0.2s ease;
 }
 
-.lesson-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: black;
+.lesson-section:hover {
+  transform: translateY(-2px);
 }
 
 .lesson-section h2 {
   color: #008CFF;
   margin-bottom: 15px;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  border-bottom: 2px solid #00ccff;
+  padding-bottom: 8px;
+}
+
+.lesson-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.small-note {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.styled-list {
+  text-align: left;
+  color: white;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.styled-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
 .toggle-button {
   display: block;
   width: 100%;
-  max-width: 200px;
-  margin: 15px auto;
-  padding: 12px;
-  background: #008CFF;
+  max-width: 220px;
+  margin: 20px auto;
+  padding: 12px 20px;
+  background: linear-gradient(145deg, #00ccff, #008CFF);
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 140, 255, 0.3);
 }
 
 .toggle-button:hover {
-  background: #339DFF;
+  background: linear-gradient(145deg, #008CFF, #00ccff);
   transform: scale(1.05);
 }
 
@@ -62,51 +90,58 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-top: 10px;
-}
-
-.tips-container.hidden {
-  display: none;
-}
-
-.tips-container.visible {
-  display: block;
+  margin-top: 15px;
 }
 
 .tip-card {
   background: linear-gradient(145deg, #444466, #2a2a4c);
   border-radius: 10px;
-  padding: 15px;
+  padding: 18px;
   font-size: 1rem;
-  color: white;
+  color: #ffffff;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
 }
 
-.door-section {
+.flowchart-placeholder {
+  background: #1e1e2f;
+  color: #00ccff;
+  font-style: italic;
+  padding: 20px;
+  border: 2px dashed #00ccff;
+  border-radius: 10px;
+  margin: 15px auto 5px auto;
+}
+
+.navigation-button {
   text-align: center;
+  margin-top: 40px;
 }
 
-.door-container {
-  margin-top: 20px;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.door-image {
-  width: 150px;
-  height: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: block;
-  margin: 0 auto;
-}
-
-.door-image:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 15px rgba(0, 255, 100, 0.5);
-}
-
-.door-text {
-  margin-top: 15px;
+.navigation-button button {
+  padding: 14px 28px;
+  background-color: #00ccff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
   font-size: 1.1rem;
-  color: white;
-  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 204, 255, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.navigation-button button:hover {
+  background-color: #0099dd;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

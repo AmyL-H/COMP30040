@@ -40,23 +40,40 @@ const QuizSummary = () => {
   const correctCount = score;
   const incorrectCount = total - score;
 
-  const handleRetake = () => {
-    navigate(retakeRoute || -1);
-  };
-
-  const handleBack = () => {
-    navigate(backRoute);
-  };
-
-  const handleNext = () => {
-    if (nextRoute) navigate(nextRoute);
-  };
+  const handleRetake = () => navigate(retakeRoute || -1);
+  const handleBack = () => navigate(backRoute);
+  const handleNext = () => nextRoute && navigate(nextRoute);
 
   const getExplanation = (q) => {
-    if (!q.explanation) return "Review the lesson for more details.";
-    let key = typeof answers[q.id] === 'string' ? answers[q.id] : q.correctAnswer;
-    return q.explanation[key] || q.explanation[q.correctAnswer] || "Review the lesson for more details.";
+    const userAnswer = answers[q.id];
+
+    if (
+      userAnswer === undefined ||
+      (typeof userAnswer === 'string' && userAnswer.trim() === '') ||
+      (typeof userAnswer === 'object' && Object.values(userAnswer).every(v => !v))
+    ) {
+      return "You did not provide an answer. Review the lesson and try again.";
+    }
+
+    if (typeof q.correctAnswer === 'object' && typeof userAnswer === 'object') {
+      const isCorrect = Object.entries(q.correctAnswer).every(
+        ([key, val]) => userAnswer[key] === val
+      );
+      return isCorrect
+        ? q.explanation?.[q.correctAnswer] || "Correct!"
+        : "Review the lesson for more details.";
+    }
+
+    const isCorrect =
+      typeof userAnswer === 'string' &&
+      userAnswer.trim().toLowerCase() === q.correctAnswer.toLowerCase();
+
+    return q.explanation?.[userAnswer] ||
+           (isCorrect ? q.explanation?.[q.correctAnswer] : "Review the lesson for more details.");
   };
+
+  const formatObjectAnswer = (obj) =>
+    Object.entries(obj).map(([term, value]) => `${term} → ${value}`).join(', ');
 
   return (
     <div className="quiz-summary-container">
@@ -80,10 +97,15 @@ const QuizSummary = () => {
       <div className="summary-buttons">
         <button onClick={handleRetake} className="btn retake">Retake Quiz</button>
         <button onClick={handleBack} className="btn back">Back to Lesson</button>
-        {nextRoute && <button onClick={handleNext} className="btn next">Continue to Next Lesson</button>}
+        {nextRoute ? (
+          <button onClick={handleNext} className="btn next">Continue to Next Lesson</button>
+        ) : (
+          <button onClick={() => navigate('/coursepage')} className="btn next">Return to Dashboard</button>
+        )}
       </div>
 
-      {!nextRoute && (
+
+      {percentage < 50 && (
         <div className="warning-message">
           <p>You did not score at least 50%. Please review the lesson content and retake the quiz to proceed to the next lesson.</p>
         </div>
@@ -94,10 +116,21 @@ const QuizSummary = () => {
         {questions.map(q => (
           <div key={q.id} className="review-card">
             <h3 className="question">{q.question}</h3>
-            <p className="user-answer"><strong>Your Answer: </strong>{answers[q.id] ?? 'No answer'}</p>
-            {typeof answers[q.id] === 'string' && answers[q.id].trim().toLowerCase() !== q.correctAnswer.toLowerCase() && (
-              <p className="correct-answer"><strong>Correct Answer: </strong>{q.correctAnswer}</p>
-            )}
+            <p className={`user-answer ${typeof answers[q.id] === 'string' && answers[q.id].trim() === '' ? 'no-answer' : ''}`}>
+              <strong>Your Answer: </strong>
+              {typeof answers[q.id] === 'object'
+                ? formatObjectAnswer(answers[q.id])
+                : answers[q.id]?.trim() || 'No answer provided'}
+            </p>
+            {(typeof answers[q.id] === 'string' && answers[q.id].trim().toLowerCase() !== q.correctAnswer.toLowerCase()) ||
+             (typeof answers[q.id] === 'object' && JSON.stringify(answers[q.id]) !== JSON.stringify(q.correctAnswer)) ? (
+              <p className="correct-answer">
+                <strong>Correct Answer: </strong>
+                {typeof q.correctAnswer === 'object'
+                  ? formatObjectAnswer(q.correctAnswer)
+                  : q.correctAnswer}
+              </p>
+            ) : null}
             <p className="explanation"><strong>Explanation: </strong>{getExplanation(q)}</p>
           </div>
         ))}

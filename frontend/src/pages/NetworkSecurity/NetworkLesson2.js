@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './NetworkLesson2.css';
 
-function NetworkSecurityLesson2() {
+function NetworkLesson2() {
   const navigate = useNavigate();
   const [toolDetails, setToolDetails] = useState({});
 
@@ -13,62 +13,84 @@ function NetworkSecurityLesson2() {
   return (
     <div className="lessonpage-container">
       <h1 className="title">Lesson 2: Common Network Security Tools</h1>
-      
+
+      {/* Overview Section */}
       <div className="lesson-section">
         <p className="lesson-text">
-          Network security tools are the first line of defense in protecting digital assets. These tools include firewalls, which block unauthorized access;
-          intrusion detection and prevention systems (IDS/IPS), which monitor network traffic for suspicious activity; and virtual private networks (VPNs), which secure remote connections.
+          Network security tools are the backbone of digital defense systems. They help detect, block, and respond to cyber threats in real time.
+          From securing endpoints to managing encrypted connections, each tool plays a vital role in ensuring a network’s resilience.
         </p>
         <p className="lesson-text">
-          Each tool plays a unique role in maintaining network integrity and preventing cyberattacks. Understanding these roles is crucial for designing an effective network security strategy.
+          Key tools include <strong>Firewalls</strong> to filter traffic, <strong>IDS/IPS</strong> systems to detect and prevent intrusions, and <strong>VPNs</strong> to protect remote communications.
+          Understanding these tools is crucial for building layered security strategies.
         </p>
       </div>
-      
+
+      {/* Tool Cards Section */}
       <div className="lesson-section">
-        <h2>Interactive Tool Cards</h2>
+        <h2>🛠️ Explore Network Tools</h2>
         <p className="lesson-text">
-          [Interactive Tool Cards Placeholder: Click each card to reveal details about how the tool works and its importance in network security.]
+          Click on each tool to learn more about how it defends your network.
         </p>
+
         <div className="tool-cards">
-          <div className="tool-card" onClick={() => toggleToolDetails("Firewall")}>
-            <h3>Firewall</h3>
-            {toolDetails["Firewall"] && (
-              <p className="lesson-text">
-                Firewalls filter incoming and outgoing traffic based on predefined security rules, helping to block unauthorized access.
-              </p>
-            )}
-          </div>
-          <div className="tool-card" onClick={() => toggleToolDetails("IDS/IPS")}>
-            <h3>IDS/IPS</h3>
-            {toolDetails["IDS/IPS"] && (
-              <p className="lesson-text">
-                Intrusion Detection and Prevention Systems monitor network activity and automatically respond to potential threats.
-              </p>
-            )}
-          </div>
-          <div className="tool-card" onClick={() => toggleToolDetails("VPN")}>
-            <h3>VPN</h3>
-            {toolDetails["VPN"] && (
-              <p className="lesson-text">
-                VPNs create secure, encrypted tunnels for remote users to access network resources safely.
-              </p>
-            )}
-          </div>
+          {[
+            {
+              name: "Firewall",
+              description:
+                "Firewalls act as gatekeepers, allowing or blocking data packets based on security rules. They prevent unauthorized access and stop malicious traffic."
+            },
+            {
+              name: "IDS/IPS",
+              description:
+                "Intrusion Detection Systems (IDS) monitor for suspicious activity, while Intrusion Prevention Systems (IPS) take immediate action to block threats."
+            },
+            {
+              name: "VPN",
+              description:
+                "Virtual Private Networks create encrypted tunnels for remote users, securing data and masking IP addresses on public networks."
+            }
+          ].map((tool) => (
+            <div
+              key={tool.name}
+              className="tool-card"
+              onClick={() => toggleToolDetails(tool.name)}
+            >
+              <h3>{tool.name}</h3>
+              {toolDetails[tool.name] && (
+                <p className="lesson-text">{tool.description}</p>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-      
+
+      {/* Learning Reflection */}
       <div className="lesson-section">
-        <h2>Concept Check Quiz</h2>
+        <h2>💡 Why This Matters</h2>
         <p className="lesson-text">
-          After reviewing the tools, test your understanding with a short quiz that asks you to match each tool with its primary function.
+          Each of these tools represents a layer in a concept called <strong>Defense in Depth</strong>. No single security measure is flawless—by combining them, you build a resilient system.
+        </p>
+        <p className="lesson-text">
+          Consider this: firewalls keep intruders out, but if one slips through, an IDS/IPS can catch the behavior. Meanwhile, VPNs ensure sensitive data stays protected, even on insecure networks.
         </p>
       </div>
-      
+
+      {/* Quiz CTA */}
+      <div className="lesson-section">
+        <h2>🧠 Concept Check Quiz</h2>
+        <p className="lesson-text">
+          Now that you’ve reviewed these core tools, test your understanding in a short matching quiz.
+        </p>
+      </div>
+
       <div className="navigation-button">
-        <button onClick={() => navigate('/lesson/networkquiz2')}>Proceed to Quiz</button>
+        <button onClick={() => navigate('/lesson/networkquiz2')}>
+          Proceed to Quiz
+        </button>
       </div>
     </div>
   );
 }
 
-export default NetworkSecurityLesson2;
+export default NetworkLesson2;

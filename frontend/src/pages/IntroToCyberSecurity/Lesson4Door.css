@@ -47,3 +47,77 @@
 .navigation-button button:hover {
   background-color: #33ff80;
 }
+
+
+.clickable-card {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.clickable-card:hover {
+  background-color: #313157;
+}
+
+.framework-game {
+  margin-top: 20px;
+  background-color: #1b1b33;
+  padding: 20px;
+  border-radius: 8px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.framework-question {
+  margin-bottom: 20px;
+}
+
+.framework-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.framework-option {
+  background-color: #2a2a4c;
+  color: #fff;
+  padding: 8px 16px;
+  border: 1px solid #00ccff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.framework-option:hover {
+  background-color: #00ccff;
+  color: #000;
+}
+
+.framework-option.selected {
+  background-color: #00ccff;
+  color: #000;
+}
+
+.framework-feedback {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.framework-feedback.correct {
+  color: #00ff8c;
+}
+
+.framework-feedback.incorrect {
+  color: #ff6363;
+}
+
+.submit-framework-game {
+  background-color: #00ccff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-framework-game:hover {
+  background-color: #339dff;
+}

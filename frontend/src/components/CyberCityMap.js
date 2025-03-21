@@ -4,7 +4,7 @@ import './CyberCityMap.css';
 const CyberCityMap = ({ sections, onModuleClick }) => {
   return (
     <div className="cybercity-map-container">
-      <h2 className="map-title">🌐 Cyber City: Your Hacker Journey</h2>
+      <h2 className="map-title">🌐 Cyber City: Travel through the adventures of CyberSpace!</h2>
       <div className="cybercity-map-path">
         {sections.map((section, index) => (
           <div

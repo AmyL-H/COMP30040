@@ -36,7 +36,7 @@ function HeroSection() {
       <div className='hero-motivation'>
         <h2>Not convinced?</h2>
         <p>Test your decryption skills and find the hidden intel that lurks upon this page.</p>
-        <p>Unlock the all possibilities this course can truly offer you.</p>
+        <p>Unlock all the possibilities this course can truly offer you.</p>
         <p>All it takes is one click...</p>
         <p>Can you find it?</p>
       </div>

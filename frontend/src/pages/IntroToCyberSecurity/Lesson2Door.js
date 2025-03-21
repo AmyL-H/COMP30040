@@ -14,7 +14,7 @@ const Lesson2Door = () => {
         <h1>Lesson 2: Importance of Cybersecurity</h1>
         <p>
           Cyber threats impact individuals, businesses, and governments. Understanding their implications is crucial for protecting sensitive data.
-          In this lesson, you’ll analyze the impact of cyber threats through real-world case studies, explore major cyber incidents,
+          In this lesson, you’ll analyse the impact of cyber threats through real-world case studies, explore major cyber incidents,
           and engage in collaborative discussions to deepen your understanding.
         </p>
       </div>
@@ -86,16 +86,20 @@ const Lesson2Door = () => {
         </button>
 
         {showDiscussion && (
-          <div className="discussion-container">
+          <div 
+            className="discussion-container discussion-clickable" 
+            onClick={() => navigate('/community/module1-intro-to-cybersecurity')}
+          >
             <h3 className="discussion-heading">🧠 Discussion Prompts:</h3>
             <ul>
               <li>1️⃣ Who should be held most responsible for cybersecurity—<span className="highlight">individuals, businesses, or governments?</span></li>
               <li>2️⃣ How could Equifax have prevented their data breach?</li>
               <li>3️⃣ Should governments enforce stricter cybersecurity regulations?</li>
             </ul>
-            <p>💬 <span className="bold">Join the discussion board to share your insights!</span></p>
+            <p>💬 <span className="bold">Click here to join the discussion board to share your insights!</span></p>
           </div>
         )}
+
       </div>
 
       {/* Quiz Section */}

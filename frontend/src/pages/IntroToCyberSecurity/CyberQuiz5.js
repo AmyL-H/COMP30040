@@ -92,7 +92,26 @@ const quizQuestions = [
       "Always block all traffic": "Incorrect. Zero-trust does not block all traffic; it verifies continuously.",
       "Allow all internal traffic": "Incorrect. Zero-trust requires verification even for internal traffic."
     }
+  },
+  {
+    id: 8,
+    type: 'multipleChoice',
+    question: "Cybersecurity Decision-Making Challenge:\n\nScenario: A new quantum malware is spreading. Choose your defense strategy:",
+    options: [
+      "Post-Quantum Cryptography",
+      "AI Threat Detection",
+      "Zero-Trust Architecture"
+    ],
+    correctAnswer: "Post-Quantum Cryptography",
+    explanation: {
+      "Post-Quantum Cryptography": "Correct! This strategy directly addresses the risk posed by quantum malware by using algorithms resistant to quantum decryption.",
+      "AI Threat Detection": "Incorrect. AI helps identify threats but does not directly protect against quantum-based attacks.",
+      "Zero-Trust Architecture": "Incorrect. Zero-trust is excellent for access control, but not sufficient alone against quantum threats."
+    }
   }
+  
+
+
 ];
 
 function CyberQuiz5() {
@@ -102,9 +121,9 @@ function CyberQuiz5() {
       backRoute="/cybersecurity-intro-L5"
       title="Cybersecurity Intro Quiz 5"
       currentLessonId="lesson5"
-      nextLessonId={null}            // If no next lesson, pass null or omit nextRoute
+      nextLessonId={null}           
       retakeRoute="/lesson/cyberquiz5"
-      nextRoute={null}               // No next lesson route if this is the final lesson in the module
+      nextRoute={null}               
       courseId="cybersecurity"
     />
   );

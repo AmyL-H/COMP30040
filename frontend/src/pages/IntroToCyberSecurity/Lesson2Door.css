@@ -96,3 +96,13 @@
 .quiz-button:hover {
   background-color: #33ff80;
 }
+
+.discussion-clickable {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.discussion-clickable:hover {
+  background-color: rgba(0, 140, 255, 0.1);
+  border-left: 4px solid #008cff;
+}

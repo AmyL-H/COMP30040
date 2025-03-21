@@ -8,11 +8,9 @@ function Footer() {
     <div className='footer-container'>
       <section className='footer-subscription'>
         <p className='footer-subscription-heading'>
-          Join the CyberIQ newsletter to receive info about new courses and opportunities
+          Join the CyberIQ newsletter to stay updated on new lessons, features, and cybersecurity tips.
         </p>
-        <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
-        </p>
+        <p className='footer-subscription-text'>Unsubscribe anytime.</p>
         <div className='input-areas'>
           <form>
             <input
@@ -25,91 +23,59 @@ function Footer() {
           </form>
         </div>
       </section>
-      <div class='footer-links'>
+
+      <div className='footer-links'>
         <div className='footer-link-wrapper'>
-          <div class='footer-link-items'>
-            <h2>About Us</h2>
-            <Link to='/sign-up'>How it works</Link>
-            <Link to='/'>Testimonials</Link>
-            <Link to='/'>Careers</Link>
-            <Link to='/'>Investors</Link>
-            <Link to='/'>Terms of Service</Link>
+          <div className='footer-link-items'>
+            <h2>Resources</h2>
+            <Link to='/resources'>Learning Resources</Link>
+            <Link to='/community'>Community</Link>
+            <Link to='/about'>About CyberIQ</Link>
           </div>
-          <div class='footer-link-items'>
-            <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
-            <Link to='/'>Support</Link>
-            <Link to='/'>Destinations</Link>
-            <Link to='/'>Sponsorships</Link>
-          </div>
-        </div>
-        <div className='footer-link-wrapper'>
-          <div class='footer-link-items'>
-            <h2>Videos</h2>
-            <Link to='/'>Submit Video</Link>
-            <Link to='/'>Ambassadors</Link>
-            <Link to='/'>Agency</Link>
-            <Link to='/'>Influencer</Link>
-          </div>
-          <div class='footer-link-items'>
-            <h2>Social Media</h2>
-            <Link to='/'>Instagram</Link>
-            <Link to='/'>Facebook</Link>
-            <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
+          <div className='footer-link-items'>
+            <h2>Support</h2>
+            <Link to='/community'>Contact Us</Link>
+            <Link to='/faq'>FAQs</Link>
           </div>
         </div>
       </div>
-      <section class='social-media'>
-        <div class='social-media-wrap'>
-          <div class='footer-logo'>
+
+      <section className='social-media'>
+        <div className='social-media-wrap'>
+          <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              CIQ
-              <i class='fab fa-typo3' />
+              CyberIQ <i className='fas fa-shield-alt' />
             </Link>
           </div>
-          <small class='website-rights'>CIQ © 2024</small>
-          <div class='social-icons'>
-            <Link
-              class='social-icon-link facebook'
-              to='/'
+          <small className='website-rights'>CyberIQ © {new Date().getFullYear()}</small>
+          <div className='social-icons'>
+            <a
+              className='social-icon-link linkedin'
+              href='https://linkedin.com'
               target='_blank'
-              aria-label='Facebook'
-            >
-              <i class='fab fa-facebook-f' />
-            </Link>
-            <Link
-              class='social-icon-link instagram'
-              to='/'
-              target='_blank'
-              aria-label='Instagram'
-            >
-              <i class='fab fa-instagram' />
-            </Link>
-            <Link
-              class='social-icon-link youtube'
-              to='/'
-              target='_blank'
-              aria-label='Youtube'
-            >
-              <i class='fab fa-youtube' />
-            </Link>
-            <Link
-              class='social-icon-link twitter'
-              to='/'
-              target='_blank'
-              aria-label='Twitter'
-            >
-              <i class='fab fa-twitter' />
-            </Link>
-            <Link
-              class='social-icon-link twitter'
-              to='/'
-              target='_blank'
+              rel='noopener noreferrer'
               aria-label='LinkedIn'
             >
-              <i class='fab fa-linkedin' />
-            </Link>
+              <i className='fab fa-linkedin' />
+            </a>
+            <a
+              className='social-icon-link github'
+              href='https://github.com'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='GitHub'
+            >
+              <i className='fab fa-github' />
+            </a>
+            <a
+              className='social-icon-link twitter'
+              href='https://twitter.com'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Twitter'
+            >
+              <i className='fab fa-twitter' />
+            </a>
           </div>
         </div>
       </section>

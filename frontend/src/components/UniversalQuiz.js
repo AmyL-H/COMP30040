@@ -100,18 +100,20 @@ const UniversalQuiz = ({
       })
       .then(res => {
         console.log('Progress updated', res.data);
-
+      
         let updatedUser = JSON.parse(localStorage.getItem('user')) || {};
         updatedUser.progress = updatedUser.progress || {};
         updatedUser.progress[quizId] = percentage;
-
+      
+        // ✅ Unlock next lesson
         if (nextLessonId && updatedUser.progress[nextLessonId] === undefined) {
           updatedUser.progress[nextLessonId] = 0;
         }
-
+      
         localStorage.setItem('user', JSON.stringify(updatedUser));
         window.dispatchEvent(new Event('progressUpdated'));
       })
+      
       .catch(err => {
         console.error('Failed to update progress', err.response ? err.response.data : err);
       });

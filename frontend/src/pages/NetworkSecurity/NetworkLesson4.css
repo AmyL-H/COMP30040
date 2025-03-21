@@ -66,3 +66,26 @@
     text-align: center;
   }
   
+  .styled-list {
+    list-style: disc;
+    padding-left: 25px;
+    margin-top: 15px;
+    color: #ffffff;
+  }
+  
+  .toggle-button {
+    margin-top: 10px;
+    background-color: #008CFF;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .toggle-button:hover {
+    background-color: #339DFF;
+  }
+  

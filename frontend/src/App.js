@@ -12,6 +12,8 @@ import CourseInfo from './pages/CourseInfo';
 import LessonHandler from './components/LessonHandler';
 import Community from './pages/Community';
 import DiscussionBoard from './components/DiscussionBoard';
+import Resources from './pages/Resources';
+import AboutUs from './pages/AboutUs';
 
 // Import Cybersecurity Intro Module Page
 import CybersecurityIntroModule from './pages/IntroToCyberSecurity/CybersecurityIntroModule';
@@ -117,6 +119,8 @@ function App() {
           <Route path="/course/:courseId" element={<CourseInfo />} />
           <Route path="/course/:courseId/lesson/:lessonId" element={<LessonHandler />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/community/:room" element={<DiscussionBoard />} />
 
           {/* Intro Module Pages */}

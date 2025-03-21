@@ -6,7 +6,7 @@ const courseContent = {
   "cybersecurity": {
     title: "Introduction to Cybersecurity",
     description: "Learn the fundamentals of cybersecurity and how to protect data and systems.",
-    duration: "4 weeks",
+    duration: "2 weeks",
     skillLevel: "Beginner",
     modules: [
       { id: "lesson1", title: "What is Cybersecurity?", status: "Completed" },
@@ -19,7 +19,7 @@ const courseContent = {
   "cryptography": {
     title: "Cryptography and Encryption",
     description: "Dive into cryptographic principles and techniques to secure communications.",
-    duration: "6 weeks",
+    duration: "3 weeks",
     skillLevel: "Intermediate",
     modules: [
       { id: "lesson1", title: "Introduction to Cryptography", status: "In Progress" },
@@ -32,7 +32,7 @@ const courseContent = {
   "network-security": {
     title: "Network Security",
     description: "Explore how to secure networks from various threats.",
-    duration: "5 weeks",
+    duration: "4 weeks",
     skillLevel: "Intermediate",
     modules: [
       { id: "lesson1", title: "Introduction to Network Security", status: "In Progress" },
@@ -45,7 +45,7 @@ const courseContent = {
   "ethical-hacking": {
     title: "Ethical Hacking and Penetration Testing",
     description: "Gain hands-on hacking experience ethically.",
-    duration: "7 weeks",
+    duration: "5 weeks",
     skillLevel: "Advanced",
     modules: [
       { id: "lesson1", title: "Introduction to Ethical Hacking", status: "In Progress" },
@@ -70,6 +70,8 @@ const CourseInfo = () => {
     return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
   });
 
+  
+
   useEffect(() => {
     const handleProgressUpdated = () => {
       const storedUser = localStorage.getItem('user');
@@ -78,9 +80,7 @@ const CourseInfo = () => {
       }
     };
     window.addEventListener('progressUpdated', handleProgressUpdated);
-    return () => {
-      window.removeEventListener('progressUpdated', handleProgressUpdated);
-    };
+    return () => window.removeEventListener('progressUpdated', handleProgressUpdated);
   }, []);
 
   useEffect(() => {
@@ -93,27 +93,23 @@ const CourseInfo = () => {
     return <h2 className="error-message">Course not found</h2>;
   }
 
-  // ✅ Updated logic: use quiz ID format e.g., "cybersecurityquiz1"
+  // Updated logic: use quiz ID format e.g., "cybersecurityquiz1"
   const isLessonUnlocked = (lessonId) => {
     if (lessonId === 'lesson1') return true;
     const lessonNumber = parseInt(lessonId.replace('lesson', ''), 10);
-    if (isNaN(lessonNumber) || lessonNumber <= 1) return true;
-
     const quizKey = `${courseId.replace(/-/g, '')}quiz${lessonNumber - 1}`;
     const userProgress = user?.progress || {};
     const prevScore = userProgress[quizKey];
-
-    return prevScore >= 50;
+    return prevScore !== undefined && prevScore >= 50;
   };
+
+  if (!course) return <h2 className="error-message">Course not found</h2>;
 
   return (
     <div className="course-info">
       <h1>{course.title}</h1>
       <p>{course.description}</p>
-      <p>
-        <strong>Duration:</strong> {course.duration} | <strong>Skill Level:</strong> {course.skillLevel}
-      </p>
-
+      <p><strong>Duration:</strong> {course.duration} | <strong>Skill Level:</strong> {course.skillLevel}</p>
       <div className="lesson-cards">
         {course.modules.map((module) => {
           const unlocked = isLessonUnlocked(module.id);
