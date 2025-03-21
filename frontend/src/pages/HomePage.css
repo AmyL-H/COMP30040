@@ -56,3 +56,14 @@ nav a {
     bottom: 0;
     width: 100%;
 }
+
+.sidebar-invite {
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin: 60px auto;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+  

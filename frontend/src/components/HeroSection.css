@@ -70,3 +70,22 @@ video {
       width: 100%;
     }
   }
+
+  .hero-motivation {
+  margin-top: 50px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.hero-motivation h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero-motivation p {
+  font-size: 24px;
+  margin: 5px 0;
+  color: #e0e0e0;
+}

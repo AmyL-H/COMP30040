@@ -25,10 +25,20 @@ function HeroSection() {
       <video src='/videos/homepagevid.mp4' autoPlay loop muted />
       <h1>YOUR CYBERSECURITY QUEST AWAITS</h1>
       <p>What are you waiting for?</p>
+
       <div className='hero-btns'>
         <Link to={user ? "/coursepage" : "/sign-up"} className='btn-link'>
           <button className='btn btn--outline btn--large'>GET STARTED</button>
         </Link>
+      </div>
+
+      {/* Motivational Message - Ripple #1 */}
+      <div className='hero-motivation'>
+        <h2>Not convinced?</h2>
+        <p>Test your decryption skills and find the hidden intel that lurks upon this page.</p>
+        <p>Unlock the all possibilities this course can truly offer you.</p>
+        <p>All it takes is one click...</p>
+        <p>Can you find it?</p>
       </div>
     </div>
   );
