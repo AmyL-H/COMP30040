@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './QuizSummary.css';
 
@@ -19,6 +19,25 @@ const QuizSummary = () => {
     nextRoute,
     courseId 
   } = location.state || {};
+
+  // Save quiz score and XP to localStorage (and trigger progressUpdated)
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && courseId) {
+      const quizId = location.pathname.split('/').pop(); // e.g., 'cyberquiz1'
+      const updatedUser = {
+        ...user,
+        xp: (user.xp || 0) + xpEarned,
+        progress: {
+          ...user.progress,
+          [quizId]: percentage
+        }
+      };
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      window.dispatchEvent(new Event('progressUpdated'));
+    }
+  }, []); // Run only once after mount
+
 
   const correctCount = score;
   const incorrectCount = total - score;
