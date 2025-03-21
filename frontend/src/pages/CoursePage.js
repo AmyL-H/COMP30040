@@ -25,7 +25,7 @@ const CoursePage = () => {
       <h1>Your Cybersecurity Journey</h1>
       <p>Progress through each stage to become a cybersecurity expert!</p>
 
-      {/* 🧠 Add Progress Summary */}
+      {/* 🧠 Add Streak Summary */}
       <UserProgressDashboard />
 
       <br />

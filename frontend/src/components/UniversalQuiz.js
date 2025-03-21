@@ -67,14 +67,16 @@ const UniversalQuiz = ({
 
     const percentage = (sc / questions.length) * 100;
     const currentQuizXP = sc * 5;
+    const quizId = `${courseId.replace(/-/g, '')}quiz${currentLessonId.replace('lesson', '')}`;
+
 
     let currentUser = JSON.parse(localStorage.getItem('user')) || {};
     if (!currentUser.quizXP) {
       currentUser.quizXP = {};
     }
-    const alreadyAwardedXP = currentUser.quizXP[currentLessonId] || 0;
+    const alreadyAwardedXP = currentUser.quizXP[quizId] || 0;
     const additionalXP = Math.max(0, currentQuizXP - alreadyAwardedXP);
-    currentUser.quizXP[currentLessonId] = Math.max(alreadyAwardedXP, currentQuizXP);
+    currentUser.quizXP[quizId] = Math.max(alreadyAwardedXP, currentQuizXP);
     currentUser.xp = (currentUser.xp || 0) + additionalXP;
     localStorage.setItem('user', JSON.stringify(currentUser));
 
@@ -88,8 +90,6 @@ const UniversalQuiz = ({
       console.error('Failed to update XP', err.response ? err.response.data : err);
     });
 
-    // Only update lesson progress if the user scores 50% or higher.
-    // We do not alert; we simply omit the nextRoute so that the summary page won't show the "Continue" button.
     if (percentage >= 50) {
       axios.put('http://localhost:5000/api/progress/update', {
         lessonId: currentLessonId,
@@ -100,12 +100,15 @@ const UniversalQuiz = ({
       })
       .then(res => {
         console.log('Progress updated', res.data);
+
         let updatedUser = JSON.parse(localStorage.getItem('user')) || {};
         updatedUser.progress = updatedUser.progress || {};
-        updatedUser.progress[currentLessonId] = percentage;
+        updatedUser.progress[quizId] = percentage;
+
         if (nextLessonId && updatedUser.progress[nextLessonId] === undefined) {
           updatedUser.progress[nextLessonId] = 0;
         }
+
         localStorage.setItem('user', JSON.stringify(updatedUser));
         window.dispatchEvent(new Event('progressUpdated'));
       })
@@ -125,7 +128,7 @@ const UniversalQuiz = ({
         backRoute,
         retakeRoute,
         nextRoute: percentage >= 50 ? nextRoute : undefined,
-        courseId: courseId || null  // Explicitly pass courseId with null fallback
+        courseId: courseId || null
       }
     });
   };

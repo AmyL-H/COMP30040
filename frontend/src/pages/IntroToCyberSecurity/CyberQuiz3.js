@@ -105,6 +105,7 @@ function CyberQuiz3() {
       nextLessonId="lesson4"
       retakeRoute="/lesson/cyberquiz3"
       nextRoute="/cybersecurity-intro-L4"
+      courseId="cybersecurity"
     />
   );
 }

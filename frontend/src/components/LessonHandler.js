@@ -1,8 +1,7 @@
-// src/components/LessonHandler.js
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-// Import all lesson components for each course
+// Lesson imports
 import IntroLesson1 from '../pages/IntroToCyberSecurity/Lesson1Door';
 import IntroLesson2 from '../pages/IntroToCyberSecurity/Lesson2Door';
 import IntroLesson3 from '../pages/IntroToCyberSecurity/Lesson3Door';
@@ -29,35 +28,23 @@ import EthicalLesson5 from '../pages/EthicalHacking&PenetrationTesting/EthicalLe
 
 const LessonHandler = () => {
   const { lessonId, courseId } = useParams();
-  // Retrieve user progress from localStorage
-  const storedUser = localStorage.getItem('user');
-  const [user, setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
+  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')));
 
-  // Function to check if a lesson is unlocked
   const isLessonUnlocked = (courseId, lessonId) => {
-    // Always unlock the first lesson of any course
     if (lessonId === 'lesson1') return true;
 
-    // Extract lesson number (e.g., "lesson3" becomes 3)
-    const lessonNumber = parseInt(lessonId.replace('lesson', ''));
-    if (isNaN(lessonNumber) || lessonNumber <= 1) return true;
+    const lessonNum = parseInt(lessonId.replace('lesson', ''));
+    if (isNaN(lessonNum) || lessonNum <= 1) return true;
 
-    // Determine the previous lesson's id (e.g., "lesson2" for "lesson3")
-    const previousLessonId = `lesson${lessonNumber - 1}`;
-
-    // Check if the user has a progress entry for the previous lesson with a score >= 50
-    return user && user.progress && user.progress[previousLessonId] && user.progress[previousLessonId] >= 50;
+    const prevQuizKey = `${courseId.replace(/-/g, '')}quiz${lessonNum - 1}`;
+    return user?.progress?.[prevQuizKey] >= 50;
   };
 
-  // Update user state if localStorage changes (e.g., after taking a quiz)
   useEffect(() => {
     const stored = localStorage.getItem('user');
-    if (stored) {
-      setUser(JSON.parse(stored));
-    }
+    if (stored) setUser(JSON.parse(stored));
   }, []);
 
-  // Define lesson mapping per course
   const lessonMap = {
     "cybersecurity": {
       lesson1: <IntroLesson1 />,
@@ -89,19 +76,15 @@ const LessonHandler = () => {
     }
   };
 
-  // If the lesson is locked, show a message
   if (!isLessonUnlocked(courseId, lessonId)) {
     return (
       <div style={{ padding: '20px', textAlign: 'center', color: 'red' }}>
         <h2>Lesson Locked</h2>
-        <p>
-          You must pass the previous lesson's quiz with a score of at least 50% to unlock this lesson.
-        </p>
+        <p>You must pass the previous quiz with at least 50% to unlock this lesson.</p>
       </div>
     );
   }
 
-  // Otherwise, render the lesson component
   return lessonMap[courseId]?.[lessonId] || <h2>Lesson Not Found</h2>;
 };
 

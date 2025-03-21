@@ -10,7 +10,9 @@ const UserProgressDashboard = () => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser && storedUser.progress) {
       const progress = storedUser.progress;
-      const completed = Object.values(progress).filter(score => score >= 50).length;
+      const completed = Object.entries(progress)
+        .filter(([key, score]) => /^([a-z]+)?quiz\d+$/i.test(key) && score >= 50)
+        .length;
       setQuizCount(completed);
       setUser(storedUser);
     }

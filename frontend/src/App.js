@@ -56,6 +56,18 @@ import NetworkQuiz3 from './pages/NetworkSecurity/NetworkQuiz3';
 import NetworkQuiz4 from './pages/NetworkSecurity/NetworkQuiz4';
 import NetworkQuiz5 from './pages/NetworkSecurity/NetworkQuiz5';
 
+// Ethical Hacking Module
+import EthicalLesson1 from './pages/EthicalHacking&PenetrationTesting/EthicalLesson1';
+import EthicalLesson2 from './pages/EthicalHacking&PenetrationTesting/EthicalLesson2';
+import EthicalLesson3 from './pages/EthicalHacking&PenetrationTesting/EthicalLesson3';
+import EthicalLesson4 from './pages/EthicalHacking&PenetrationTesting/EthicalLesson4';
+import EthicalLesson5 from './pages/EthicalHacking&PenetrationTesting/EthicalLesson5';
+import EthicalQuiz1 from './pages/EthicalHacking&PenetrationTesting/EthicalQuiz1';
+import EthicalQuiz2 from './pages/EthicalHacking&PenetrationTesting/EthicalQuiz2';
+import EthicalQuiz3 from './pages/EthicalHacking&PenetrationTesting/EthicalQuiz3';
+import EthicalQuiz4 from './pages/EthicalHacking&PenetrationTesting/EthicalQuiz4';
+import EthicalQuiz5 from './pages/EthicalHacking&PenetrationTesting/EthicalQuiz5';
+
 import QuizSummary from './components/QuizSummary';
 import './App.css';
 
@@ -148,6 +160,18 @@ function App() {
           <Route path="/lesson/networkquiz3" element={<NetworkQuiz3 />} />
           <Route path="/lesson/networkquiz4" element={<NetworkQuiz4 />} />
           <Route path="/lesson/networkquiz5" element={<NetworkQuiz5 />} />
+
+          {/* Ethical Hacking Module */}
+          <Route path="/ethical-L1" element={<EthicalLesson1 />} />
+          <Route path="/ethical-L2" element={<EthicalLesson2 />} />
+          <Route path="/ethical-L3" element={<EthicalLesson3 />} />
+          <Route path="/ethical-L4" element={<EthicalLesson4 />} />
+          <Route path="/ethical-L5" element={<EthicalLesson5 />} />
+          <Route path="/lesson/ethicalquiz1" element={<EthicalQuiz1 />} />
+          <Route path="/lesson/ethicalquiz2" element={<EthicalQuiz2 />} />
+          <Route path="/lesson/ethicalquiz3" element={<EthicalQuiz3 />} />
+          <Route path="/lesson/ethicalquiz4" element={<EthicalQuiz4 />} />
+          <Route path="/lesson/ethicalquiz5" element={<EthicalQuiz5 />} />
 
           <Route path="/quiz-summary" element={<QuizSummary />} />
         </Routes>

@@ -104,6 +104,7 @@ function CyberQuiz2() {
       nextLessonId="lesson3"             // Next lesson to unlock if passing score is achieved
       retakeRoute="/lesson/cyberquiz2"        // Route to retake this quiz
       nextRoute="/cybersecurity-intro-L3"// Route for the next lesson
+      courseId="cybersecurity"
     />
   );
 }

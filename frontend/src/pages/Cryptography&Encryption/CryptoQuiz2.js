@@ -35,6 +35,7 @@ function CryptoQuiz2() {
       nextLessonId="lesson3"
       retakeRoute="/cryptography-intro-quiz2"
       nextRoute="/cryptography-intro-L3"
+      courseId="cryptography"
     />
   );
 }

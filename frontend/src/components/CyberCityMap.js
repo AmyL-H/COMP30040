@@ -1,22 +1,27 @@
 import React from 'react';
 import './CyberCityMap.css';
 
-const CyberCityMap = ({ sections, onModuleClick }) => (
-  <div className="cybercity-map-container">
-    <h2>Cyber City Map</h2>
-    <div className="cybercity-map-grid">
-      {sections.map((section) => (
-        <div
-          key={section.id}
-          className={`cybercity-node ${section.locked ? 'locked' : 'unlocked'}`}
-          onClick={() => !section.locked && onModuleClick(section.id)}
-        >
-          <div className="node-icon">{section.locked ? "🔒" : "🏙️"}</div>
-          <p className="node-title">{section.title}</p>
-        </div>
-      ))}
+const CyberCityMap = ({ sections, onModuleClick }) => {
+  return (
+    <div className="cybercity-map-container">
+      <h2 className="map-title">🌐 Cyber City: Your Hacker Journey</h2>
+      <div className="cybercity-map-path">
+        {sections.map((section, index) => (
+          <div
+            key={section.id}
+            className={`city-stop ${section.locked ? 'locked' : 'unlocked'}`}
+            onClick={() => !section.locked && onModuleClick(section.id)}
+          >
+            <div className="building-icon">{section.locked ? '🔒' : '🏢'}</div>
+            <div className="module-label">
+              <span className="level-tag">Level {index + 1}</span>
+              <span className="title">{section.title}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CyberCityMap;

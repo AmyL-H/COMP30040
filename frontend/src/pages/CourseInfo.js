@@ -62,17 +62,14 @@ const CourseInfo = () => {
   const navigate = useNavigate();
   const course = courseContent[courseId];
 
-  // Read last accessed lesson from localStorage
   const [lastAccessed, setLastAccessed] = useState(() => {
     return JSON.parse(localStorage.getItem(`${courseId}-lastAccessed`)) || null;
   });
 
-  // Local state for user retrieved from localStorage
   const [user, setUser] = useState(() => {
     return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
   });
 
-  // Listen for progress updates and re-read the user object from localStorage
   useEffect(() => {
     const handleProgressUpdated = () => {
       const storedUser = localStorage.getItem('user');
@@ -86,7 +83,6 @@ const CourseInfo = () => {
     };
   }, []);
 
-  // Save lastAccessed lesson to localStorage when it changes
   useEffect(() => {
     if (lastAccessed) {
       localStorage.setItem(`${courseId}-lastAccessed`, JSON.stringify(lastAccessed));
@@ -97,19 +93,17 @@ const CourseInfo = () => {
     return <h2 className="error-message">Course not found</h2>;
   }
 
-  // Function to check if a lesson is unlocked.
-  // The first lesson is always unlocked.
-  // For subsequent lessons, the previous lesson's progress (stored as a percentage) must be at least 50.
+  // ✅ Updated logic: use quiz ID format e.g., "cybersecurityquiz1"
   const isLessonUnlocked = (lessonId) => {
     if (lessonId === 'lesson1') return true;
     const lessonNumber = parseInt(lessonId.replace('lesson', ''), 10);
     if (isNaN(lessonNumber) || lessonNumber <= 1) return true;
-    if (user && user.progress) {
-      const prevLessonId = `lesson${lessonNumber - 1}`;
-      const prevProgress = user.progress[prevLessonId];
-      return prevProgress !== undefined && prevProgress >= 50;
-    }
-    return false;
+
+    const quizKey = `${courseId.replace(/-/g, '')}quiz${lessonNumber - 1}`;
+    const userProgress = user?.progress || {};
+    const prevScore = userProgress[quizKey];
+
+    return prevScore >= 50;
   };
 
   return (
@@ -138,7 +132,7 @@ const CourseInfo = () => {
                 <button
                   onClick={() => {
                     if (unlocked) {
-                      setLastAccessed(module.id); // Update last accessed lesson
+                      setLastAccessed(module.id);
                       navigate(`/course/${courseId}/lesson/${module.id}`);
                     }
                   }}

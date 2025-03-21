@@ -105,6 +105,7 @@ function CyberQuiz5() {
       nextLessonId={null}            // If no next lesson, pass null or omit nextRoute
       retakeRoute="/lesson/cyberquiz5"
       nextRoute={null}               // No next lesson route if this is the final lesson in the module
+      courseId="cybersecurity"
     />
   );
 }

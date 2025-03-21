@@ -35,6 +35,7 @@ function CryptoQuiz5() {
       nextLessonId={null}  // Last lesson; no next lesson to unlock
       retakeRoute="/lesson/cryptoquiz1"
       nextRoute={null}
+      courseId="cryptography"
     />
   );
 }
