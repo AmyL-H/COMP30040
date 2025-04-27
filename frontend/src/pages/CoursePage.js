@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CyberCityMap from '../components/CyberCityMap';
 import Leaderboard from '../components/Leaderboard';
 import UserProgressDashboard from '../components/UserProgressDashboard';
+import RevisionCards from '../components/RevisionCards';
 import './CoursePage.css';
 
 const CoursePage = () => {
@@ -15,7 +16,6 @@ const CoursePage = () => {
     { id: "ethical-hacking", title: "Ethical Hacking and Penetration Testing", description: "Gain hands-on hacking experience ethically.", progress: 0, locked: false },
   ];
 
-  // Function to navigate to the module intro page
   const goToCourseInfo = (courseId) => {
     navigate(`/course/${courseId}-intro`);
   };
@@ -25,17 +25,27 @@ const CoursePage = () => {
       <h1>Your Cybersecurity Journey</h1>
       <p>Progress through each stage to become a cybersecurity expert!</p>
 
-      {/* 🧠 Add Streak Summary */}
-      <UserProgressDashboard />
+      {/* 🧠 New: Side-by-side layout for Progress + Revision */}
+      <div className="dashboard-section">
+        <div className="left-panel">
+          <UserProgressDashboard />
+        </div>
+        <div className="right-panel">
+          <RevisionCards />
+        </div>
+      </div>
 
       <br />
+
       {/* Render the module overview map */}
       <CyberCityMap 
         sections={courseSections} 
         onModuleClick={goToCourseInfo} 
       />
+
       <br />
-      {/* Render the leaderboard fetched from the backend */}
+
+      {/* Render the leaderboard */}
       <Leaderboard />
     </div>
   );

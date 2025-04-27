@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; //
 import './QuizSummary.css';
 
 const QuizSummary = () => {
@@ -20,22 +21,39 @@ const QuizSummary = () => {
   } = location.state || {};
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && courseId) {
-      const lessonNumber = location.state?.currentLessonId?.replace('lesson', '') || '';
-      const quizId = `${courseId.replace(/-/g, '')}quiz${lessonNumber}`;
-      const updatedUser = {
-        ...user,
-        xp: (user.xp || 0) + xpEarned,
-        progress: {
-          ...user.progress,
-          [quizId]: percentage
+    const updateUserProgress = async () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user && courseId) {
+        const lessonNumber = location.state?.currentLessonId?.replace('lesson', '') || '';
+        const quizId = `${courseId.replace(/-/g, '')}quiz${lessonNumber}`;
+        const updatedUser = {
+          ...user,
+          xp: (user.xp || 0) + xpEarned,
+          progress: {
+            ...user.progress,
+            [quizId]: percentage
+          }
+        };
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        window.dispatchEvent(new Event('progressUpdated'));
+
+        // --- NEW CODE: Update backend about lesson completion ---
+        try {
+          await axios.post('/api/progress/completeLesson', {
+            userId: user._id, // assuming your user object in localStorage has _id
+            courseId: courseId,
+            lessonId: location.state?.currentLessonId
+          });
+        } catch (error) {
+          console.error('Error updating backend progress:', error);
         }
-      };
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-      window.dispatchEvent(new Event('progressUpdated'));
-    }
+        // --- END NEW CODE ---
+      }
+    };
+    
+    updateUserProgress();
   }, []);
+
 
   const correctCount = score;
   const incorrectCount = total - score;
