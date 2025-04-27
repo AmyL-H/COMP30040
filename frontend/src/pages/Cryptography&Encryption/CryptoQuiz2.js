@@ -97,7 +97,7 @@ function CryptoQuiz2() {
   return (
     <UniversalQuiz
       questions={quizQuestions}
-      backRoute="/cryptography-intro-L2"
+      backRoute="/cryptography-L2"
       title="Cryptography Quiz 2"
       currentLessonId="lesson2"
       nextLessonId="lesson3"

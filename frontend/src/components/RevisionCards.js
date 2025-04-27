@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './RevisionCards.css';
 
-// Define cards grouped by lesson/module
 const allCards = {
-  cybersecurity: [
+  lesson1: [
     { id: 'cyber1', question: "What is Cybersecurity?", answer: "Cybersecurity protects systems, networks, and programs from digital attacks." },
-    { id: 'cyber2', question: "Give an example of a cyber threat.", answer: "Phishing, malware, ransomware, etc." },
+    { id: 'cyber2', question: "What are the three pillars of cybersecurity?", answer: "Confidentiality, Integrity, Availability (CIA Triad)." },
   ],
-  cryptography: [
-    { id: 'crypto1', question: "What does SSL stand for?", answer: "Secure Sockets Layer." },
-    { id: 'crypto2', question: "Name one symmetric encryption algorithm.", answer: "AES or DES." },
+  lesson2: [
+    { id: 'cyber3', question: "What is malware?", answer: "Malicious software designed to harm or exploit devices or networks." },
+    { id: 'cyber4', question: "Name one common type of malware.", answer: "Virus, Worm, Trojan Horse, Ransomware." },
   ],
-  networkSecurity: [
-    { id: 'network1', question: "What is a firewall used for?", answer: "To block unauthorized access to or from a private network." },
+  lesson3: [
+    { id: 'cyber5', question: "What is phishing?", answer: "A fraudulent attempt to obtain sensitive information by pretending to be a trustworthy entity." },
+    { id: 'cyber6', question: "How can you recognize a phishing email?", answer: "Look for suspicious links, spelling errors, and urgent requests." },
   ],
-  ethicalHacking: [
-    { id: 'ethics1', question: "What tool is used for network scanning?", answer: "Nmap." },
-  ]
+  lesson4: [
+    { id: 'cyber7', question: "What is a vulnerability?", answer: "A weakness that can be exploited to perform unauthorized actions." },
+    { id: 'cyber8', question: "What is a patch?", answer: "A software update that fixes vulnerabilities." },
+  ],
+  lesson5: [
+    { id: 'cyber9', question: "What is social engineering?", answer: "Manipulating people to give up confidential information." },
+    { id: 'cyber10', question: "Give an example of a social engineering attack.", answer: "Phishing, pretexting, baiting." },
+  ],
 };
 
 const getInitialProgress = () => {
@@ -30,16 +35,19 @@ const RevisionCards = () => {
   const [currentCard, setCurrentCard] = useState(null);
   const [flipped, setFlipped] = useState(false);
   const [flyAway, setFlyAway] = useState(false);
+  const [dueCardsCount, setDueCardsCount] = useState(0);
 
   useEffect(() => {
     loadUnlockedCards();
+    window.addEventListener('progressUpdated', loadUnlockedCards);
+    return () => window.removeEventListener('progressUpdated', loadUnlockedCards);
   }, []);
 
   useEffect(() => {
     if (availableCards.length > 0) {
       pickNextCard();
     }
-  }, [availableCards]);
+  }, [availableCards, progress]);
 
   const loadUnlockedCards = () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -48,26 +56,17 @@ const RevisionCards = () => {
       return;
     }
 
-    const unlockedLessons = Object.keys(user.progress).filter(
-      lessonId => user.progress[lessonId] >= 50 // Unlocked lessons are > 50%
-    );
-
-    let cards = [];
-
-    if (unlockedLessons.some(id => id.startsWith('lesson') || id.startsWith('cyber'))) {
-      cards = cards.concat(allCards.cybersecurity);
+    let newCards = [];
+    for (let i = 1; i <= 5; i++) {
+      const quizKey = `cybersecurityquiz${i}`;
+      if (user.progress[quizKey] >= 50) {
+        const lessonKey = `lesson${i}`;
+        if (allCards[lessonKey]) {
+          newCards = newCards.concat(allCards[lessonKey]);
+        }
+      }
     }
-    if (unlockedLessons.some(id => id.startsWith('crypto'))) {
-      cards = cards.concat(allCards.cryptography);
-    }
-    if (unlockedLessons.some(id => id.startsWith('network'))) {
-      cards = cards.concat(allCards.networkSecurity);
-    }
-    if (unlockedLessons.some(id => id.startsWith('ethical'))) {
-      cards = cards.concat(allCards.ethicalHacking);
-    }
-
-    setAvailableCards(cards);
+    setAvailableCards(newCards);
   };
 
   const pickNextCard = () => {
@@ -77,6 +76,8 @@ const RevisionCards = () => {
       return nextReview <= now;
     });
 
+    setDueCardsCount(dueCards.length);
+
     if (dueCards.length > 0) {
       setCurrentCard(dueCards[0]);
     } else {
@@ -85,33 +86,37 @@ const RevisionCards = () => {
   };
 
   const handleFlip = () => {
-    setFlipped(!flipped);
+    setFlipped(prev => !prev);
   };
 
   const handleAnswer = (difficulty) => {
     if (!currentCard) return;
 
-    const currentProgress = progress[currentCard.id] || { interval: 60000 };
-
-    let newInterval;
+    let baseInterval;
     switch (difficulty) {
       case 'again':
-        newInterval = 60000; // 1min
+        baseInterval = 60000; // 1 min
         break;
       case 'hard':
-        newInterval = currentProgress.interval * 1.5;
+        baseInterval = 5 * 60000; // 5 min
         break;
       case 'good':
-        newInterval = currentProgress.interval * 2;
+        baseInterval = 20 * 60000; // 20 min
         break;
       case 'easy':
-        newInterval = currentProgress.interval * 3;
+        baseInterval = 30 * 60000; // 30 min
         break;
       default:
-        newInterval = 60000;
+        baseInterval = 60000;
     }
 
-    newInterval = Math.min(newInterval, 7 * 24 * 60 * 60 * 1000); // Max 7 days
+    const previousInterval = progress[currentCard.id]?.interval || 60000;
+    let newInterval = (difficulty === 'again' || difficulty === 'hard')
+      ? previousInterval / 2
+      : previousInterval * 1.5;
+
+    newInterval = Math.max(baseInterval, newInterval);
+    newInterval = Math.min(newInterval, 7 * 24 * 60 * 60 * 1000); // 7 days
 
     const updatedProgress = {
       ...progress,
@@ -124,12 +129,25 @@ const RevisionCards = () => {
     setProgress(updatedProgress);
     localStorage.setItem('revisionProgress', JSON.stringify(updatedProgress));
 
-    // Animate fly away
     setFlyAway(true);
+
     setTimeout(() => {
       setFlyAway(false);
       setFlipped(false);
-      pickNextCard();
+
+      const now = Date.now();
+      const nextCards = availableCards.filter(card => {
+        const nextReview = updatedProgress[card.id]?.nextReview || 0;
+        return nextReview <= now && card.id !== currentCard.id;
+      });
+
+      setDueCardsCount(nextCards.length);
+
+      if (nextCards.length > 0) {
+        setCurrentCard(nextCards[0]);
+      } else {
+        setCurrentCard(null);
+      }
     }, 500);
   };
 
@@ -137,7 +155,7 @@ const RevisionCards = () => {
     return (
       <div className="revision-card-container">
         <h2>🧠 Revision Cards</h2>
-        <p>No unlocked cards yet. Complete lessons to unlock revision material!</p>
+        <p>No unlocked cards yet. Complete quizzes to unlock revision material!</p>
       </div>
     );
   }
@@ -154,8 +172,12 @@ const RevisionCards = () => {
   return (
     <div className="revision-card-container">
       <h2>🧠 Revision Cards</h2>
+      <p>{dueCardsCount} card(s) due</p>
 
-      <div className={`card ${flipped ? 'flipped' : ''} ${flyAway ? 'fly-away' : ''}`} onClick={handleFlip}>
+      <div
+        className={`card ${flipped ? 'flipped' : ''} ${flyAway ? 'fly-away' : ''}`}
+        onClick={handleFlip}
+      >
         <div className="card-front">
           <p>{currentCard.question}</p>
         </div>
@@ -165,10 +187,18 @@ const RevisionCards = () => {
       </div>
 
       <div className="answer-buttons">
-        <button onClick={() => handleAnswer('again')}>Again</button>
-        <button onClick={() => handleAnswer('hard')}>Hard</button>
-        <button onClick={() => handleAnswer('good')}>Good</button>
-        <button onClick={() => handleAnswer('easy')}>Easy</button>
+        <button className="again" onClick={() => handleAnswer('again')}>
+          Again<br /><small>1 min</small>
+        </button>
+        <button className="hard" onClick={() => handleAnswer('hard')}>
+          Hard<br /><small>5 min</small>
+        </button>
+        <button className="good" onClick={() => handleAnswer('good')}>
+          Good<br /><small>20 min</small>
+        </button>
+        <button className="easy" onClick={() => handleAnswer('easy')}>
+          Easy<br /><small>30 min</small>
+        </button>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import './CourseCard.css';
 
 const CourseCard = ({ title, description, progress, locked, onClick }) => {
   return (
-    <div className={`course-card ${locked ? 'locked' : ''}`} onClick={!locked ? onClick : null}>
+    <div className={`course-card ${locked ? 'locked' : ''}`} onClick={locked ? undefined : onClick}>
       <h2>{title}</h2>
       <p>{description}</p>
       <div className="progress-bar">

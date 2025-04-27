@@ -31,8 +31,24 @@ const LessonHandler = () => {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')));
 
   const isLessonUnlocked = (courseId, lessonId) => {
-    if (lessonId === 'lesson1') return true;
+    if (lessonId === 'lesson1') {
+      if (courseId === 'cybersecurity') return true; // First module always unlocked
 
+      // Check previous module's last quiz
+      const previousModules = {
+        "cryptography": { courseId: "cybersecurity", lastLessonQuiz: "cybersecurityquiz5" },
+        "network-security": { courseId: "cryptography", lastLessonQuiz: "cryptographyquiz5" },
+        "ethical-hacking": { courseId: "network-security", lastLessonQuiz: "networksecurityquiz5" }
+      };
+
+      const previousModule = previousModules[courseId];
+      if (previousModule) {
+        return user?.progress?.[previousModule.lastLessonQuiz] >= 50;
+      }
+      return false;
+    }
+
+    // Otherwise for lesson2-lesson5 inside the same module
     const lessonNum = parseInt(lessonId.replace('lesson', ''));
     if (isNaN(lessonNum) || lessonNum <= 1) return true;
 

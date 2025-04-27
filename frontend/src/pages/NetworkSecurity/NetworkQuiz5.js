@@ -95,7 +95,7 @@ function NetworkQuiz5() {
   return (
     <UniversalQuiz 
       questions={quizQuestions}
-      backRoute="/networksecurity-L5"
+      backRoute="/network-L5"
       title="Network Security Quiz 5"
       currentLessonId="lesson5"
       nextLessonId={null} 

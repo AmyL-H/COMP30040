@@ -63,13 +63,13 @@ function NetworkQuiz2() {
   return (
     <UniversalQuiz
       questions={quizQuestions}
-      backRoute="/lesson/networksecurity-L2"
+      backRoute="/network-L2"
       title="Network Security Quiz 2"
       currentLessonId="lesson2"
       nextLessonId="lesson3"
       retakeRoute="/lesson/networkquiz2"
-      nextRoute="/lesson/network-L3"
-      courseId="networksecurity"
+      nextRoute="/network-L3"
+      courseId="network-security"
     />
   );
 }
