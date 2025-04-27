@@ -42,3 +42,29 @@ exports.updateXP = async (req, res) => {
     return res.status(500).json({ msg: 'Server error while updating XP' });
   }
 };
+
+// --- ✅ New Complete Lesson Endpoint ---
+exports.completeLesson = async (req, res) => {
+  const { lessonId, courseId } = req.body;
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    if (!lessonId || !courseId) {
+      return res.status(400).json({ msg: 'Missing lessonId or courseId' });
+    }
+
+    // Save lesson as completed by setting progress to 100% if not already
+    if (!user.progress.has(lessonId)) {
+      user.progress.set(lessonId, 100);
+    }
+
+    await user.save();
+    return res.status(200).json({ msg: 'Lesson completed', updatedUser: user });
+  } catch (error) {
+    console.error('Complete lesson error:', error);
+    return res.status(500).json({ msg: 'Server error while completing lesson' });
+  }
+};
