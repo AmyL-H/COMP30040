@@ -4,11 +4,25 @@ import './Leaderboard.css';
 
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
+  const localUser = JSON.parse(localStorage.getItem('user')); // <-- bring local user
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/leaderboard')
       .then(response => {
-        const sortedData = response.data.sort((a, b) => b.xp - a.xp);
+        let data = response.data;
+
+        // Inject local user's XP update if they exist
+        if (localUser) {
+          const found = data.find(entry => entry.name === localUser.name);
+          if (found) {
+            found.xp = localUser.xp; // Update XP
+          } else {
+            // If not found, optionally push (optional)
+            data.push({ name: localUser.name, xp: localUser.xp, _id: 'local-user' });
+          }
+        }
+
+        const sortedData = data.sort((a, b) => b.xp - a.xp);
         setLeaderboardData(sortedData);
       })
       .catch(error => {
@@ -29,7 +43,7 @@ const Leaderboard = () => {
       <ul className="leaderboard-list">
         {leaderboardData.map((user, index) => (
           <li 
-            key={user._id} 
+            key={user._id || `${user.name}-${index}`} 
             className={`leaderboard-item ${index < 3 ? 'top-rank' : 'regular-rank'}`}
             style={{ animationDelay: `${index * 0.1}s` }}
           >

@@ -1,12 +1,17 @@
 .community-container {
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1400px; /* Make it bigger but still limit extreme screens */
   margin: 0 auto;
   padding: 40px 20px;
-  text-align: center;
+  min-height: 100vh; /* Full height view */
   background-color: #1e1e2f;
   color: white;
   font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 .community-title {
   font-size: 2.8rem;
@@ -21,10 +26,13 @@
 }
 
 .chatroom-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
 }
+
 
 /* General room styling: full width */
 .chatroom-card:first-child {
