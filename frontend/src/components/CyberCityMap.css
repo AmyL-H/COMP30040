@@ -6,6 +6,7 @@
   margin-top: 30px;
   color: white;
   box-shadow: 0 0 30px rgba(0, 255, 200, 0.2);
+  position: relative;
 }
 
 .map-title {
@@ -16,22 +17,25 @@
 
 .cybercity-map-path {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 60px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 50px;
   position: relative;
+  overflow-x: auto;
+  padding: 80px 0;
 }
 
 .city-stop {
   position: relative;
-  width: 300px;              
-  height: 250px;            
+  width: 250px;
+  height: 275px;
   padding: 20px;
   border-radius: 15px;
   background: linear-gradient(145deg, #2f2f4f, #1a1a3a);
   box-shadow: 0 5px 15px rgba(0, 255, 200, 0.1);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
 }
 
 
@@ -67,15 +71,12 @@
 }
 
 .title {
-  font-size: 2rem !important;      
-  font-weight: 10;
+  font-size: 2rem !important;
+  font-weight: 600;
   text-align: center;
   line-height: 1.2;
-  max-width: 100%;
   padding: 0 6px;
   word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
 }
 
 .progress-bar {
@@ -86,4 +87,36 @@
   background: #00ffc3;
   border-radius: 0 0 10px 10px;
   transition: width 0.4s ease-in-out;
+}
+
+.journey-path-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.journey-path {
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.journey-path.complete {
+  stroke: #00ff99;
+  stroke-dasharray: 12;
+  animation: dash-animate 1s linear infinite;
+}
+
+.journey-path.locked {
+  stroke: #666;
+  stroke-opacity: 0.3;
+}
+
+@keyframes dash-animate {
+  to {
+    stroke-dashoffset: -24;
+  }
 }

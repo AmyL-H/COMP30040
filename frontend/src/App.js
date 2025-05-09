@@ -113,6 +113,7 @@ function App() {
         <Navbar />
         <DarkModeToggle toggleDarkMode={toggleDarkMode} />
         <Routes>
+          <Route path="/modules/:courseId/:lessonId" element={<LessonHandler />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Register />} />
