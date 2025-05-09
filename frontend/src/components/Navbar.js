@@ -98,7 +98,7 @@ function Navbar() {
               <div className="nav-profile">
                 <span className="profile-info">
                   {user.name} <br />
-                  <span className="xp">🔥 {user.streak || 0}-day streak | ⭐ {user.xp || 0} XP</span>
+                  <span className="xp">🔥 {user.streak || 5}-day streak | ⭐ {user.xp || 0} XP</span>
                 </span>
                 <button onClick={handleLogout} className="logout-button">Logout</button>
               </div>

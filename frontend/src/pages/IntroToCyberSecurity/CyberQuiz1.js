@@ -55,12 +55,12 @@ const quizQuestions = [
     id: 5,
     type: 'dragAndDrop',
     question: "Drag the correct word to complete the statement: 'The CIA Triad in cybersecurity stands for Confidentiality, Integrity, and ______.'",
-    options: ["Availability", "Reliability", "Security"],
+    options: ["Availability", "Attainability", "Accessibility"],
     correctAnswer: "Availability",
     explanation: {
       "Availability": "Correct! The CIA Triad stands for Confidentiality, Integrity, and Availability.",
-      "Reliability": "Incorrect. While important, reliability is not one of the three core principles of the CIA Triad.",
-      "Security": "Incorrect. The term 'security' is too broad; the triad specifically includes Availability."
+      "Attainability": "Incorrect. While important, attainability is not one of the three core principles of the CIA Triad.",
+      "Accessibility": "Incorrect. The term 'accessibility' is too broad; the triad specifically includes Availability."  
     }
   },
   {

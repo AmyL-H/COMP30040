@@ -120,10 +120,12 @@ const CourseInfo = () => {
             >
               <h2>{module.title}</h2>
               <ul className="task-list">
-                <li>Read the article</li>
+                <li>Explore the interactive lesson</li>
                 <li>Complete the quiz</li>
-                <li>Take the final exam</li>
+                <li>Unlock revision cards</li>
+                <li>Earn XP and unlock the next lesson</li>
               </ul>
+
               <div className="card-buttons">
                 <button
                   onClick={() => {
